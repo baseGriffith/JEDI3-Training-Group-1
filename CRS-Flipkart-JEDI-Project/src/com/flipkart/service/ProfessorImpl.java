@@ -3,6 +3,8 @@
  */
 package com.flipkart.service;
 
+import com.flipkart.bean.Student;
+
 /**
  * @author dhruv
  *

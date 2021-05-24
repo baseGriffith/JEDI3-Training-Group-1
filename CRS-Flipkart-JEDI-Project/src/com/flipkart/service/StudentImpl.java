@@ -1,5 +1,6 @@
 package com.flipkart.service;
 
+import com.flipkart.bean.Course;
 import com.flipkart.bean.ReportCard;
 
 public class StudentImpl implements StudentInterface{
@@ -12,7 +13,7 @@ public class StudentImpl implements StudentInterface{
     @Override
     public Course[] viewRegisteredCourses(String studentId) {
         System.out.println("fetching courses");
-        return new Course[0];
+        return null;
     }
 
     @Override

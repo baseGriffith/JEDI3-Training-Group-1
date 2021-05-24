@@ -3,11 +3,13 @@
  */
 package com.flipkart.service;
 
+import com.flipkart.bean.Student;
+
 /**
  * @author dhruv
  *
  */
-public class Admin implements AdminImpl{
+public class AdminInterface implements AdminImpl{
 
 	@Override
 	public boolean approveStudent(Student student) {

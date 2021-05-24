@@ -1,5 +1,6 @@
 package com.flipkart.service;
 
+import com.flipkart.bean.Course;
 import com.flipkart.bean.ReportCard;
 
 public interface StudentInterface {
