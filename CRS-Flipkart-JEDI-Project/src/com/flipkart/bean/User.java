@@ -13,7 +13,14 @@ public class User {
 	protected String name;
 	protected String address;
 	protected String password;
-	
+
+	public User() {
+	}
+	public User(int userId, String password) {
+		this.userId = userId;
+		this.password = password;
+	}
+
 	public int getUserId() {
 		return userId;
 	}

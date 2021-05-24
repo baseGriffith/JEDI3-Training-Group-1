@@ -3,12 +3,23 @@
  */
 package com.flipkart.bean;
 
+import java.util.Arrays;
+
 /**
  * @author Kaustubh
  *
  */
 public class ReportCard {
-	
+	@Override
+	public String toString() {
+		return "ReportCard{" +
+				"semester=" + semester +
+				", rollNo='" + rollNo + '\'' +
+				", cgpa=" + cgpa +
+				", registeredCourses=" + Arrays.toString(registeredCourses) +
+				'}';
+	}
+
 	private int semester;
 	private String rollNo;
 	private double cgpa;

@@ -3,25 +3,26 @@ package com.flipkart.service;
 import com.flipkart.bean.Course;
 import com.flipkart.bean.ReportCard;
 
-public interface StudentInterface {
+public interface StudInterface {
     /**
      *
      * @param rollNumber
      * @return
      */
-    ReportCard viewReportCard(int rollNumber);
+
+    ReportCard viewReportCard(String rollNumber);
+
+    /**
+     *
+     * @param rollNumber
+     * @return
+     */
+    Course[] viewRegisteredCourses(String rollNumber);
 
     /**
      *
      * @param studentId
      * @return
      */
-    Course[] viewRegisteredCourses(String studentId);
-
-    /**
-     *
-     * @param studentId
-     * @return
-     */
-    boolean payFes(String studentId);
+    boolean payFees(String studentId);
 }
