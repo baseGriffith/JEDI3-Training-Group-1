@@ -1,3 +1,6 @@
+/**
+ * 
+ */
 package com.flipkart.service;
 
 import com.flipkart.bean.Professor;
@@ -7,6 +10,7 @@ import com.flipkart.bean.Student;
  * @author dhruv
  *
  */
+<<<<<<< HEAD
 public interface AdminImpl {
 	
 	/**
@@ -29,4 +33,28 @@ public interface AdminImpl {
 	 * @return Report card data
 	 */
 	public String generateReportCard(String studentRollNumber);
+=======
+public class AdminImpl implements AdminInterface{
+
+	@Override
+	public boolean approveStudent(Student student) {
+		// TODO Auto-generated method stub
+		System.out.println("Student approved");
+		return false;
+	}
+
+	@Override
+	public void addProfessor(ProfessorImpl professor) {
+		// TODO Auto-generated method stub
+		System.out.println("Professor added");
+	}
+
+	@Override
+	public String generateReportCard(int studentId) {
+		// TODO Auto-generated method stub
+		System.out.println("Report card generated");
+		return null;
+	}
+
+>>>>>>> bc442c1b75b354763974a13d60bc68c4d324cad4
 }
