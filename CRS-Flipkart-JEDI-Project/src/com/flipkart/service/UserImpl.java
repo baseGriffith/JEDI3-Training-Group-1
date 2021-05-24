@@ -2,7 +2,6 @@
  * 
  */
 package com.flipkart.service;
-
 /**
  * @author dhruv
  *
@@ -11,14 +10,14 @@ public class UserImpl implements UserInterface{
 
 	@Override
 	public boolean login(int userId, String password) {
-		// TODO Auto-generated method stub		
-		return 1;
+		// TODO Auto-generated method stub
+		return true;
 	}
 
 	@Override
 	public boolean updatePassword(int userId, String password) {
 		// TODO Auto-generated method stub
-		return 1;
+		return true;
 	}
 
 	@Override

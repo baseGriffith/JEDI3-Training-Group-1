@@ -11,10 +11,10 @@ public interface UserInterface {
 	 * @param password
 	 * @return
 	 */
-	public boolean login(int userId,String password);
+	boolean login(int userId, String password);
 	
-	public boolean updatePassword(int userId,String password);
+	boolean updatePassword(int userId, String password);
 	
-	public Course[] getCourseCatalog(int semester);
+	Course[] getCourseCatalog(int semester);
 	
 }
