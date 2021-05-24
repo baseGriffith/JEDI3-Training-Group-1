@@ -10,30 +10,7 @@ import com.flipkart.bean.Student;
  * @author dhruv
  *
  */
-<<<<<<< HEAD
-public interface AdminImpl {
-	
-	/**
-	 * Approve if student is verified
-	 * @param Student
-	 * @return boolean indicating if the student was approved
-	 */
-	public boolean approveStudent(Student student);
-		
-	/**
-	 * Adds a new professor to database
-	 * @param ProfessorImpl
-	 * @return boolean indicating if the student was approved
-	 */
-	public void addProfessor(Professor professor);
-	
-	/**
-	 * Generate report card based on studentId
-	 * @param studentId
-	 * @return Report card data
-	 */
-	public String generateReportCard(String studentRollNumber);
-=======
+
 public class AdminImpl implements AdminInterface{
 
 	@Override
@@ -44,17 +21,17 @@ public class AdminImpl implements AdminInterface{
 	}
 
 	@Override
-	public void addProfessor(ProfessorImpl professor) {
+	public void addProfessor(Professor professor) {
 		// TODO Auto-generated method stub
 		System.out.println("Professor added");
 	}
 
 	@Override
-	public String generateReportCard(int studentId) {
+	public String generateReportCard(int rollNumber) {
 		// TODO Auto-generated method stub
 		System.out.println("Report card generated");
 		return null;
 	}
 
->>>>>>> bc442c1b75b354763974a13d60bc68c4d324cad4
+
 }
