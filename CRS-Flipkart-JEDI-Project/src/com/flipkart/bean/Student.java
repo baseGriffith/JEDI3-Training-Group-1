@@ -10,8 +10,8 @@ import java.util.Date;
  *
  */
 public class Student extends User{
-		
-	private String rollNumber;	
+
+	private String rollNumber;
 	private String branch;	
 	private Date joiningDate;
 	
@@ -39,5 +39,5 @@ public class Student extends User{
 		this.joiningDate = joiningDate;
 	}
 	
-	
+
 }
