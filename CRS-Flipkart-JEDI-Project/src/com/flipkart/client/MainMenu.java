@@ -3,6 +3,7 @@ package com.flipkart.client;
 import com.flipkart.bean.Professor;
 import com.flipkart.bean.Student;
 import com.flipkart.bean.User;
+import com.flipkart.service.ProfessorImpl;
 import com.flipkart.service.StudentImpl;
 
 import java.util.Scanner;
@@ -72,14 +73,22 @@ public class MainMenu {
 	public static void professorFunctionalities(Professor professor) {
 		while(true) {
 			MainMenu.professorMenu();
+			ProfessorImpl professorImpl=new ProfessorImpl();
 			int choice  = MainMenu.get_choice();
 			if(choice == 4) break;
 			switch (choice) {
 				case 1:
+					int courseId=MainMenu.get_choice();
+					professorImpl.registerCourse(courseId);
 					break;
 				case 2:
+					courseId=MainMenu.get_choice();
+					professorImpl.getEnrolledStudents(courseId);
 					break;
 				case 3:
+					courseId=MainMenu.get_choice();
+					int studentId=MainMenu.get_choice();
+					professorImpl.gradeStudent(courseId,studentId,'A');
 					break;
 				default:
 					System.out.println("Invalid Choice");
