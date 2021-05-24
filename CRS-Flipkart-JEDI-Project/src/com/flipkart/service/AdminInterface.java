@@ -3,6 +3,7 @@
  */
 package com.flipkart.service;
 
+import com.flipkart.bean.Professor;
 import com.flipkart.bean.Student;
 
 /**
@@ -19,13 +20,13 @@ public class AdminInterface implements AdminImpl{
 	}
 
 	@Override
-	public void addProfessor(ProfessorImpl professor) {
+	public void addProfessor(Professor professor) {
 		// TODO Auto-generated method stub
 		System.out.println("Professor added");
 	}
 
 	@Override
-	public String generateReportCard(int studentId) {
+	public String generateReportCard(String studentRollNumber) {
 		// TODO Auto-generated method stub
 		System.out.println("Report card generated");
 		return null;

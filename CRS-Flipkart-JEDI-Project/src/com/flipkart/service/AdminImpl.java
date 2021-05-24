@@ -1,5 +1,6 @@
 package com.flipkart.service;
 
+import com.flipkart.bean.Professor;
 import com.flipkart.bean.Student;
 
 /**
@@ -20,12 +21,12 @@ public interface AdminImpl {
 	 * @param ProfessorImpl
 	 * @return boolean indicating if the student was approved
 	 */
-	public void addProfessor(ProfessorImpl professor);
+	public void addProfessor(Professor professor);
 	
 	/**
 	 * Generate report card based on studentId
 	 * @param studentId
 	 * @return Report card data
 	 */
-	public String generateReportCard(int studentId);
+	public String generateReportCard(String studentRollNumber);
 }
