@@ -8,6 +8,5 @@ public class PaymentImpl implements PaymentInterface{
 		System.out.println("Payment Failed");
 		return false;
 	}
-
 	
 }
