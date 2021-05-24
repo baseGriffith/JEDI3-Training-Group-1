@@ -1,3 +1,6 @@
+/**
+ * 
+ */
 package com.flipkart.service;
 
 import com.flipkart.bean.Student;
@@ -6,26 +9,26 @@ import com.flipkart.bean.Student;
  * @author dhruv
  *
  */
-public interface AdminImpl {
-	
-	/**
-	 * Approve if student is verified
-	 * @param Student
-	 * @return boolean indicating if the student was approved
-	 */
-	public boolean approveStudent(Student student);
-		
-	/**
-	 * Adds a new professor to database
-	 * @param ProfessorImpl
-	 * @return boolean indicating if the student was approved
-	 */
-	public void addProfessor(ProfessorImpl professor);
-	
-	/**
-	 * Generate report card based on studentId
-	 * @param studentId
-	 * @return Report card data
-	 */
-	public String generateReportCard(int studentId);
+public class AdminImpl implements AdminInterface{
+
+	@Override
+	public boolean approveStudent(Student student) {
+		// TODO Auto-generated method stub
+		System.out.println("Student approved");
+		return false;
+	}
+
+	@Override
+	public void addProfessor(ProfessorImpl professor) {
+		// TODO Auto-generated method stub
+		System.out.println("Professor added");
+	}
+
+	@Override
+	public String generateReportCard(int studentId) {
+		// TODO Auto-generated method stub
+		System.out.println("Report card generated");
+		return null;
+	}
+
 }
