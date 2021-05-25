@@ -8,14 +8,14 @@ package com.flipkart.bean;
  *
  */
 public class Grade {
-	private char value;
+	private String value;
 
-	public char getValue() {
+	public String getValue() {
 		System.out.println("Gets the grade for the registered course");
 		return value;
 	}
 
-	public void setValue(char value) {
+	public void setValue(String value) {
 		System.out.println("Sets the grade for the registered course");
 		this.value = value;
 	}
