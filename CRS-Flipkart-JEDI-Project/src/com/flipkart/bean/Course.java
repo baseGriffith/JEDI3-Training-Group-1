@@ -2,9 +2,12 @@ package com.flipkart.bean;
 
 public class Course {
     private String courseName;
-    private String courseId;
+    private int courseId;
     private String department;
     private int professorId;
+    private int semester;
+    private String courseCode;
+    
     private RegisteredCourse[] registeredCourses;
 
     public String getCourseName(){
@@ -15,11 +18,11 @@ public class Course {
         this.courseName = courseName;
     }
 
-    public String getCourseId(){
+    public int getCourseId(){
         return courseId;
     }
 
-    public void setCourseId(String courseId){
+    public void setCourseId(int courseId){
         this.courseId = courseId;
     }
 
@@ -46,4 +49,22 @@ public class Course {
     public void setRegisteredCourses(RegisteredCourse[] registeredCourses){
         this.registeredCourses = registeredCourses;
     }
+
+	public int getSemester() {
+		return semester;
+	}
+
+	public void setSemester(int semester) {
+		this.semester = semester;
+	}
+
+	public String getCourseCode() {
+		return courseCode;
+	}
+
+	public void setCourseCode(String courseCode) {
+		this.courseCode = courseCode;
+	}
+    
+    
 }
