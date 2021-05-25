@@ -9,18 +9,32 @@ package com.flipkart.bean;
  */
 public class RegisteredCourse {
 	private int studentId;
-	private String courseId;
+	private int courseId;
+	private String grade;
+	
+	public RegisteredCourse(int studentId, int courseId, String grade){
+		this.studentId = studentId;
+		this.courseId = courseId;
+		this.grade = grade;
+	}
+	
 	public int getStudentId() {
 		return studentId;
 	}
 	public void setStudentId(int studentId) {
 		this.studentId = studentId;
 	}
-	public String getCourseId() {
+	public int getCourseId() {
 		return courseId;
 	}
-	public void setCourseId(String courseId) {
+	public void setCourseId(int courseId) {
 		this.courseId = courseId;
+	}
+	public String getGrade() {
+		return grade;
+	}
+	public void setGrade(String grade) {
+		this.grade = grade;
 	}
 	
 }
