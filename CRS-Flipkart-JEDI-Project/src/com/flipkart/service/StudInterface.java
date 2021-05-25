@@ -2,6 +2,8 @@ package com.flipkart.service;
 
 import com.flipkart.bean.Course;
 import com.flipkart.bean.ReportCard;
+import com.flipkart.exception.PaymentFailedException;
+import com.flipkart.exception.ReportCardGenerationFailedException;
 
 public interface StudInterface {
     /**
@@ -10,7 +12,7 @@ public interface StudInterface {
      * @return
      */
 
-    ReportCard viewReportCard(String rollNumber);
+    ReportCard viewReportCard(String rollNumber) throws ReportCardGenerationFailedException;
 
     /**
      *
@@ -24,5 +26,5 @@ public interface StudInterface {
      * @param studentId
      * @return
      */
-    boolean payFees(String studentId);
+    boolean payFees(String studentId) throws PaymentFailedException;
 }

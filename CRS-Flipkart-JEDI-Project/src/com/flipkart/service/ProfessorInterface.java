@@ -1,6 +1,8 @@
 package com.flipkart.service;
 
 import com.flipkart.bean.Student;
+import com.flipkart.exception.CourseAlreadyRegisteredException;
+import com.flipkart.exception.CourseRegistrationFailed;
 
 /**
  * @author dhruv
@@ -23,7 +25,7 @@ public interface ProfessorInterface {
 	 * @param courseId
 	 * @return boolean indicating if professor was registered to a course or not
 	 */
-	public boolean registerCourse(int courseId);
+	public boolean registerCourse(int courseId) throws CourseAlreadyRegisteredException,CourseRegistrationFailed;
 	
 	
 	/**

@@ -4,6 +4,8 @@
 package com.flipkart.service;
 
 import com.flipkart.bean.Student;
+import com.flipkart.exception.CourseAlreadyRegisteredException;
+import com.flipkart.exception.CourseRegistrationFailed;
 
 /**
  * @author dhruv
@@ -12,14 +14,14 @@ import com.flipkart.bean.Student;
 public class ProfessorImpl implements ProfessorInterface{
 
 	@Override
-	public void gradeStudent(int courseId, int studentId, char gradeAlloted) {
+	public void gradeStudent(int courseId, int studentId, char gradeAlloted){
 		// TODO Auto-generated method stub
 		System.out.println("Student graded");
 		
 	}
 
 	@Override
-	public boolean registerCourse(int courseId) {
+	public boolean registerCourse(int courseId) throws CourseAlreadyRegisteredException,CourseRegistrationFailed{
 		// TODO Auto-generated method stub
 		System.out.println("Course registered");
 		return false;
