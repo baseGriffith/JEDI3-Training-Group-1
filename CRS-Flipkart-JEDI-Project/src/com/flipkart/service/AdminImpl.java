@@ -16,7 +16,7 @@ import com.flipkart.exception.StudentNotApprovedException;
 
 public class AdminImpl implements AdminInterface{
 
-	@Override
+	@Override	
 	public boolean approveStudent(Student student) throws StudentNotApprovedException{
 		// TODO Auto-generated method stub
 		System.out.println("Student approved");

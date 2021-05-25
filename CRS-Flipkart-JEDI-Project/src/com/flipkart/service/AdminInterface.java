@@ -13,10 +13,27 @@ import com.flipkart.exception.StudentNotApprovedException;
 
 public interface AdminInterface{
 	
+	/**
+	 * Approve a student based on the details provided
+	 * @param student
+	 * @return
+	 * @throws StudentNotApprovedException
+	 */
 	public boolean approveStudent(Student student) throws StudentNotApprovedException;
 
+	/**
+	 * Add a new professor to the application
+	 * @param professor
+	 * @throws ProfessorAlreadyExistException
+	 */
 	public void addProfessor(Professor professor) throws ProfessorAlreadyExistException;
 	
+	/**
+	 * Generate report card based on the student roll number
+	 * @param rollNumber
+	 * @return
+	 * @throws ReportCardGenerationFailedException
+	 */
 	public String generateReportCard(String rollNumber) throws ReportCardGenerationFailedException;
 }
 
