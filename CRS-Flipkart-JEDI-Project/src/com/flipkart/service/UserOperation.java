@@ -10,7 +10,7 @@ import com.flipkart.exception.LoginException;
  * @author dhruv
  *
  */
-public class UserImpl implements UserInterface{
+public class UserOperation implements UserInterface{
 
 	@Override
 	public boolean login(int userId, String password) throws LoginException{

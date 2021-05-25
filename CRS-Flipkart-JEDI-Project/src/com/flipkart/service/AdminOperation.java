@@ -14,7 +14,7 @@ import com.flipkart.exception.StudentNotApprovedException;
  *
  */
 
-public class AdminImpl implements AdminInterface{
+public class AdminOperation implements AdminInterface{
 
 	@Override	
 	public boolean approveStudent(Student student) throws StudentNotApprovedException{

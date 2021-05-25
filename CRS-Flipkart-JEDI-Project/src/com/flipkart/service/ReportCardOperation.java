@@ -9,7 +9,7 @@ import com.flipkart.exception.ReportCardGenerationFailedException;
  * @author Kaustubh
  *
  */
-public class ReportCardImpl implements ReportCardInterface{
+public class ReportCardOperation implements ReportCardInterface{
 	
 	@Override
 

@@ -11,7 +11,7 @@ import com.flipkart.exception.GradeNotAssignedException;
  * @author Nayan
  *
  */
-public class RegisteredCourseImpl implements RegisteredCourse {
+public class RegisteredCourseOperation implements RegisteredCourse {
 		
 	@Override
 	public boolean dropCourse(String studentId, int courseId) throws CourseNotFoundException {

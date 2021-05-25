@@ -4,7 +4,7 @@ import com.flipkart.bean.Course;
 import com.flipkart.exception.CourseAlreadyExistsException;
 import com.flipkart.exception.CourseNotFoundException;
 
-public class CourseCatalogueImpl implements CourseCatalogueInterface {
+public class CourseCatalogueOperation implements CourseCatalogueInterface {
     public void addCourse(Course newCourse) throws CourseAlreadyExistsException{
         System.out.println("Course successfully added!");
     }

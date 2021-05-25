@@ -3,11 +3,11 @@ package com.flipkart.client;
 import com.flipkart.bean.Professor;
 import com.flipkart.bean.Student;
 import com.flipkart.bean.User;
-import com.flipkart.service.AdminImpl;
+import com.flipkart.service.AdminOperation;
 import com.flipkart.service.AdminInterface;
 
-import com.flipkart.service.ProfessorImpl;
-import com.flipkart.service.StudentImpl;
+import com.flipkart.service.ProfessorOperation;
+import com.flipkart.service.StudentOperation;
 
 import java.util.Scanner;
 
@@ -55,7 +55,7 @@ public class MainMenu {
 		while(true) {
 			MainMenu.studentMenu();
 			int choice  = MainMenu.get_choice();
-			StudentImpl f = new StudentImpl();
+			StudentOperation f = new StudentOperation();
 			if(choice == 4) break;
 			switch (choice) {
 				case 1:
@@ -76,7 +76,7 @@ public class MainMenu {
 	public static void professorFunctionalities(Professor professor) {
 		while(true) {
 			MainMenu.professorMenu();
-			ProfessorImpl professorImpl=new ProfessorImpl();
+			ProfessorOperation professorImpl=new ProfessorOperation();
 			int choice  = MainMenu.get_choice();
 			if(choice == 4) break;
 			switch (choice) {
@@ -103,7 +103,7 @@ public class MainMenu {
 		while(true) {
 			MainMenu.adminMenu();
 			int choice  = MainMenu.get_choice();
-			AdminInterface a = new AdminImpl();
+			AdminInterface a = new AdminOperation();
 			if(choice == 5) break;
 			switch (choice) {
 				case 1:

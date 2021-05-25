@@ -10,7 +10,7 @@ import com.flipkart.exception.StudentRegistrationFailedException;
  * @author nayan
  *
  */
-public class SemesterRegistrationImpl implements SemesterRegistrationInterface {
+public class SemesterRegistrationOperation implements SemesterRegistrationInterface {
 
 	@Override
 	public boolean register(String rollNumber, int semester) throws StudentRegistrationFailedException{
