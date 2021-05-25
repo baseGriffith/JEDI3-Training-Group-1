@@ -3,6 +3,8 @@
  */
 package com.flipkart.service;
 
+import com.flipkart.exception.ReportCardGenerationFailedException;
+
 /**
  * @author Kaustubh
  *
@@ -10,7 +12,7 @@ package com.flipkart.service;
 public class ReportCardImpl implements ReportCardInterface{
 	
 	@Override
-	public void printReportCard() {
+	public void printReportCard() throws ReportCardGenerationFailedException {
 		System.out.println("Print the report card with all the details");
 	}
 	
