@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.flipkart.service;
 
 /**
@@ -10,8 +7,15 @@ package com.flipkart.service;
 public class NotificationImpl implements NotificationInterface {
 	
 	@Override
-	public void notifyStudent() {
+	public String notifyStudent() {
 		System.out.println("Notify the student with the appropriate message");
+		return null;
+	}
+
+	@Override
+	public String prepareMessage() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

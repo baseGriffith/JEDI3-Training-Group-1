@@ -7,24 +7,26 @@ import com.flipkart.exception.ReportCardGenerationFailedException;
 
 public interface StudInterface {
     /**
-     *
+     * Gets the reportCard for the semester
      * @param rollNumber
-     * @return
+     * @throws ReportCardGenerationFailedException
+     * @return ReportCard
      */
 
     ReportCard viewReportCard(String rollNumber) throws ReportCardGenerationFailedException;
 
     /**
-     *
+     *View the courses registered during this semester
      * @param rollNumber
-     * @return
+     * @return Course[]
      */
     Course[] viewRegisteredCourses(String rollNumber);
 
     /**
-     *
+     * Pay fees after the regsistration 
      * @param studentId
-     * @return
+     * @throws PaymentFailedException
+     * @return boolean indicating if payment was successful
      */
     boolean payFees(String studentId) throws PaymentFailedException;
 }

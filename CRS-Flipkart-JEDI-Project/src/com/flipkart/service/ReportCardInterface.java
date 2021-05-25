@@ -11,7 +11,11 @@ import com.flipkart.exception.ReportCardGenerationFailedException;
  */
 public interface ReportCardInterface{
 	
-
+	
+	/**
+	 * Get the report card for the student
+	 * @throws ReportCardGenerationFailedException
+	 */
 	public void printReportCard() throws ReportCardGenerationFailedException;
 
 	

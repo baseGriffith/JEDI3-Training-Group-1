@@ -12,7 +12,7 @@ import com.flipkart.exception.GradeNotAssignedException;
  *
  */
 public class RegisteredCourseImpl implements RegisteredCourse {
-
+		
 	@Override
 	public boolean dropCourse(String studentId, int courseId) throws CourseNotFoundException {
 		// TODO Auto-generated method stub

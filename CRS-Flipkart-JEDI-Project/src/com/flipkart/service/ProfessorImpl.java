@@ -5,7 +5,7 @@ package com.flipkart.service;
 
 import com.flipkart.bean.Student;
 import com.flipkart.exception.CourseAlreadyRegisteredException;
-import com.flipkart.exception.CourseRegistrationFailed;
+import com.flipkart.exception.CourseNotFoundException;
 
 /**
  * @author dhruv
@@ -21,7 +21,7 @@ public class ProfessorImpl implements ProfessorInterface{
 	}
 
 	@Override
-	public boolean registerCourse(int courseId) throws CourseAlreadyRegisteredException,CourseRegistrationFailed{
+	public boolean registerCourse(int courseId) throws CourseAlreadyRegisteredException,CourseNotFoundException{
 		// TODO Auto-generated method stub
 		System.out.println("Course registered");
 		return false;
