@@ -15,6 +15,6 @@ public interface PaymentInterface {
 	 * @return
 	 * @throws PaymentFailedException
 	 */
-	public boolean makePayment(int studentId, float amount) throws PaymentFailedException;
+	public boolean payFees(int studentId,int amount,String mode) throws PaymentFailedException;
 
 }

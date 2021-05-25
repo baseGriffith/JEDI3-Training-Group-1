@@ -3,7 +3,8 @@ package com.flipkart.dao;
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Grade;
 import com.flipkart.bean.Professor;
-import com.flipkart.bean.Student;
+
+import java.util.ArrayList;
 
 public interface AdminDaoInterface {
     /**
@@ -35,6 +36,6 @@ public interface AdminDaoInterface {
      * @param studentId
      * @return
      */
-    Grade[] fetchGrade(int studentId);
+    ArrayList<Grade> fetchGrade(int studentId);
 
 }

@@ -1,9 +1,9 @@
 package com.flipkart.exception;
 
 public class PaymentFailedException extends Exception{
-    private String studentId;
+    private int studentId;
 
-    public PaymentFailedException(String studentId) {
+    public PaymentFailedException(int studentId) {
         this.studentId = studentId;
     }
 

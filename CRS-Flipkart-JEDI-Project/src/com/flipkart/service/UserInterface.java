@@ -1,5 +1,7 @@
 package com.flipkart.service;
 
+import java.util.ArrayList;
+
 import com.flipkart.bean.Course;
 import com.flipkart.exception.LoginException;
 
@@ -26,7 +28,7 @@ public interface UserInterface {
 	 * @return boolean indicating if successful or not
 	 * @throws LoginException
 	 */
-	boolean updatePassword(int userId, String password) throws LoginException;
+	boolean updatePassword(int userId, String password);
 	
 	
 	/**
@@ -34,6 +36,6 @@ public interface UserInterface {
 	 * @param semester
 	 * @return Course[]
 	 */
-	Course[] getCourseCatalog(int semester);
+	ArrayList <Course> getCourseCatalog(int semester);
 	
 }

@@ -1,5 +1,7 @@
 package com.flipkart.service;
 
+import java.util.ArrayList;
+
 import com.flipkart.bean.Course;
 import com.flipkart.bean.ReportCard;
 import com.flipkart.exception.PaymentFailedException;
@@ -20,7 +22,7 @@ public interface StudInterface {
      * @param rollNumber
      * @return Course[]
      */
-    Course[] viewRegisteredCourses(String rollNumber);
+    ArrayList<Course> viewRegisteredCourses(int studentId);
 
     /**
      * Pay fees after the regsistration 
@@ -28,5 +30,5 @@ public interface StudInterface {
      * @throws PaymentFailedException
      * @return boolean indicating if payment was successful
      */
-    boolean payFees(String studentId) throws PaymentFailedException;
+    boolean payFees(int studentId,int amount,String mode) throws PaymentFailedException;
 }
