@@ -15,6 +15,7 @@ public class UserDaoImpl implements UserDaoInterface {
 	public boolean login(int userId, String password) {
 		// TODO Auto-generated method stub		
 		Connection conn = DBUtil.getConnection();
+		System.out.println("connection created");
 		String validPassword="";
 		try {
 			String sql = "SELECT * FROM `crs-flipkart`.user where userId=(?)";
