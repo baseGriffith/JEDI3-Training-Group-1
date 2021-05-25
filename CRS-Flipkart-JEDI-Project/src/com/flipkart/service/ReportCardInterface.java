@@ -11,6 +11,8 @@ import com.flipkart.exception.ReportCardGenerationFailedException;
  */
 public interface ReportCardInterface{
 	
-	public void printReportCard()  throws ReportCardGenerationFailedException;
+
+	public void printReportCard() throws ReportCardGenerationFailedException;
+
 	
 }

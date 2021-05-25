@@ -12,7 +12,9 @@ import com.flipkart.exception.ReportCardGenerationFailedException;
 public class ReportCardImpl implements ReportCardInterface{
 	
 	@Override
-	public void printReportCard() throws ReportCardGenerationFailedException{
+
+	public void printReportCard() throws ReportCardGenerationFailedException {
+
 		System.out.println("Print the report card with all the details");
 	}
 	
