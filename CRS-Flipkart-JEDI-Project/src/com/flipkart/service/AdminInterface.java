@@ -14,6 +14,6 @@ public interface AdminInterface{
 
 	public void addProfessor(Professor professor);
 	
-	public String generateReportCard(int rollNumber);
+	public String generateReportCard(String rollNumber);
 }
 

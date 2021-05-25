@@ -3,11 +3,9 @@ package com.flipkart.client;
 import com.flipkart.bean.Professor;
 import com.flipkart.bean.Student;
 import com.flipkart.bean.User;
-<<<<<<< HEAD
 import com.flipkart.service.AdminImpl;
 import com.flipkart.service.AdminInterface;
-=======
->>>>>>> bc442c1b75b354763974a13d60bc68c4d324cad4
+
 import com.flipkart.service.ProfessorImpl;
 import com.flipkart.service.StudentImpl;
 
@@ -105,7 +103,7 @@ public class MainMenu {
 		while(true) {
 			MainMenu.adminMenu();
 			int choice  = MainMenu.get_choice();
-			AdminInterface a = new AdminInterface();
+			AdminInterface a = new AdminImpl();
 			if(choice == 5) break;
 			switch (choice) {
 				case 1:

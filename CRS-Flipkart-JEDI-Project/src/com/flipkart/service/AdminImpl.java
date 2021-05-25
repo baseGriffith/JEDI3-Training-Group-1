@@ -27,7 +27,7 @@ public class AdminImpl implements AdminInterface{
 	}
 
 	@Override
-	public String generateReportCard(int rollNumber) {
+	public String generateReportCard(String rollNumber) {
 		// TODO Auto-generated method stub
 		System.out.println("Report card generated");
 		return null;
