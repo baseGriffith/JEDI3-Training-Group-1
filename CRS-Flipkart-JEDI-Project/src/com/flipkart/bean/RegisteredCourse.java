@@ -11,11 +11,13 @@ public class RegisteredCourse {
 	private int studentId;
 	private int courseId;
 	private String grade;
+	private String courseName;
 	
-	public RegisteredCourse(int studentId, int courseId, String grade){
+	public RegisteredCourse(int studentId, int courseId, String grade, String courseName){
 		this.studentId = studentId;
 		this.courseId = courseId;
 		this.grade = grade;
+		this.courseName = courseName;
 	}
 	
 	public int getStudentId() {
@@ -35,6 +37,12 @@ public class RegisteredCourse {
 	}
 	public void setGrade(String grade) {
 		this.grade = grade;
+	}
+	public String getCourseName() {
+		return courseName;
+	}
+	public void setCourseName(String courseName) {
+		this.courseName = courseName;
 	}
 	
 }

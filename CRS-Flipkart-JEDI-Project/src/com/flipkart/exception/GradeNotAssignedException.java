@@ -1,10 +1,10 @@
 package com.flipkart.exception;
 
 public class GradeNotAssignedException extends Exception{
-    private String studentId;
-    private String courseId;
+    private int studentId;
+    private int courseId;
 
-    public GradeNotAssignedException(String studentId, String courseId) {
+    public GradeNotAssignedException(int studentId, int courseId) {
         this.studentId = studentId;
         this.courseId = courseId;
     }

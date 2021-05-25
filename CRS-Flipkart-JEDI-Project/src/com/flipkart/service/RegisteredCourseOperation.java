@@ -3,7 +3,8 @@
  */
 package com.flipkart.service;
 
-import com.flipkart.bean.Student;
+import com.flipkart.dao.RegistrationDaoImpl;
+import com.flipkart.dao.RegistrationDaoInterface;
 import com.flipkart.exception.CourseNotFoundException;
 import com.flipkart.exception.GradeNotAssignedException;
 
@@ -11,33 +12,36 @@ import com.flipkart.exception.GradeNotAssignedException;
  * @author Nayan
  *
  */
-public class RegisteredCourseOperation implements RegisteredCourse {
+public class RegisteredCourseOperation implements RegisteredCourseInterface {
 		
 	@Override
-	public boolean dropCourse(String studentId, int courseId) throws CourseNotFoundException {
+	public boolean dropCourse(int studentId, int courseId) throws CourseNotFoundException {
 		// TODO Auto-generated method stub
-		System.out.println("Course dropped");
-		return false;
+		try {
+			RegistrationDaoInterface semesterRegistration = new RegistrationDaoImpl();
+			if(semesterRegistration.dropCourse(studentId, courseId)) {
+				System.out.println("Course dropped");
+				return true;
+			}
+			else throw new CourseNotFoundException(courseId); 
+		} catch(CourseNotFoundException e) {
+			System.out.println(e.getMessage());
+			return false;
+		}
 	}
 
 	@Override
-	public String viewGrade(String studentId, int courseId) throws GradeNotAssignedException {
+	public String viewGrade(int studentId, int courseId) throws GradeNotAssignedException {
 		// TODO Auto-generated method stub
-		System.out.println("Returns Grade");
-		return null;
+		try {
+			RegistrationDaoInterface semesterRegistration = new RegistrationDaoImpl();
+			
+			String grade = semesterRegistration.getRegisteredCourse(studentId, courseId).getGrade();
+			
+			if(grade.equals("NA")) throw new GradeNotAssignedException(studentId, courseId);
+			return grade; 	
+		} catch(GradeNotAssignedException e){
+			return e.getMessage();
+		}
 	}
-
-	@Override
-	public void addGrade(String studentRollNumber, int courseId) {
-		// TODO Auto-generated method stub
-		System.out.println("Student graded for the course");
-	}
-
-	@Override
-	public Student[] getStudents(int courseId) {
-		// TODO Auto-generated method stub
-		System.out.println("return list of student enrolled in a course");
-		return null;
-	}
-	
 }

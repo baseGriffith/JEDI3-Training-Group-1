@@ -3,6 +3,7 @@
  */
 package com.flipkart.service;
 
+import com.flipkart.exception.CourseAlreadyFullException;
 import com.flipkart.exception.CourseAlreadyRegisteredException;
 import com.flipkart.exception.StudentRegistrationFailedException;
 
@@ -12,13 +13,6 @@ import com.flipkart.exception.StudentRegistrationFailedException;
  */
 public interface SemesterRegistrationInterface {
 	
-	/** Register students for the semester
-	 * @param rollNumber
-	 * @param semester
-	 * @return
-	 */
-	public boolean register(String rollNumber, int semester) throws StudentRegistrationFailedException;
-	
 	/** To request a course
 	 * @param rollNumber
 	 * @param courseId
@@ -26,7 +20,7 @@ public interface SemesterRegistrationInterface {
 	 * @return
 	 */
 	
-	public boolean addCourse(String rollNumber, int courseId,int semester) throws CourseAlreadyRegisteredException;
+	public boolean addCourse(int studentId, int courseId) throws CourseAlreadyRegisteredException, CourseAlreadyFullException;
 	
 	/** To drop a course 
 	 * @param rollNumber
@@ -34,19 +28,12 @@ public interface SemesterRegistrationInterface {
 	 * @param semester
 	 * @return
 	 */
-	public boolean dropCourse(String rollNumber, int courseId,int semester);
-	
-	/** Check status of the registration
-	 * @param rollNumber
-	 * @param semester
-	 * @return
-	 */
-	public boolean checkStatus(String rollNumber, int semester);
+	public boolean dropCourse(int studentId, int courseId);
 
 	/** print list of courses in which the student is enrolled 
 	 * @param rollNumber
 	 * @param semester
 	 */
-	public void showRegisteredCourses(String rollNumber, int semester);
+	public boolean showRegisteredCourses(int studentId, int semester);
 	
 }

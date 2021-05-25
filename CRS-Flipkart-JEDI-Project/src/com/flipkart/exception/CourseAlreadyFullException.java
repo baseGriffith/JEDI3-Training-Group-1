@@ -1,9 +1,9 @@
 package com.flipkart.exception;
 
 public class CourseAlreadyFullException extends Exception{
-    private String courseId;
+    private int courseId;
 
-    public CourseAlreadyFullException(String courseId) {
+    public CourseAlreadyFullException(int courseId) {
         this.courseId = courseId;
     }
 
