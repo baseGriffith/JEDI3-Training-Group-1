@@ -5,7 +5,25 @@ public class Course {
     private String courseId;
     private String department;
     private int professorId;
+    private int semester;
+    private String courseCode;
     private RegisteredCourse[] registeredCourses;
+
+    public int getSemester() {
+        return semester;
+    }
+
+    public String getCourseCode() {
+        return courseCode;
+    }
+
+    public void setCourseCode(String courseCode) {
+        this.courseCode = courseCode;
+    }
+
+    public void setSemester(int semester) {
+        this.semester = semester;
+    }
 
     public String getCourseName(){
         return courseName;
