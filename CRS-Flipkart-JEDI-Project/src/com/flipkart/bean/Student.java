@@ -11,17 +11,8 @@ import java.util.Date;
  */
 public class Student extends User{
 
-	private String rollNumber;
 	private String branch;	
 	private Date joiningDate;
-
-	public String getRollNumber() {
-		return rollNumber;
-	}
-
-	public void setRollNumber(String rollNumber) {
-		this.rollNumber = rollNumber;
-	}
 	
 	public String getBranch() {
 		return branch;

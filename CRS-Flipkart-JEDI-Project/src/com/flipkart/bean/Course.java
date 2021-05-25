@@ -4,7 +4,7 @@ public class Course {
     private String courseName;
     private String courseId;
     private String department;
-    private String professorId;
+    private int professorId;
     private RegisteredCourse[] registeredCourses;
 
     public String getCourseName(){
@@ -31,11 +31,11 @@ public class Course {
         this.department = department;
     }
 
-    public String getProfessorId(){
+    public int getProfessorId(){
         return professorId;
     }
 
-    public void setProfessorId(String professorId){
+    public void setProfessorId(int professorId){
         this.professorId = professorId;
     }
 

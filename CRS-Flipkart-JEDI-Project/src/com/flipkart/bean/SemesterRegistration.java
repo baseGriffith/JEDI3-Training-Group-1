@@ -10,16 +10,10 @@ import java.sql.Date;
  *
  */
 public class SemesterRegistration {
-	private String rollNumber;
+	private int studentId;
 	private int semester;
 	private Date registrationDate;
 	private Course[] registeredCourse;
-	public String getRollNumber() {
-		return rollNumber;
-	}
-	public void setRollNumber(String rollNumber) {
-		this.rollNumber = rollNumber;
-	}
 	public int getSemester() {
 		return semester;
 	}
@@ -39,4 +33,11 @@ public class SemesterRegistration {
 		this.registeredCourse = registeredCourse;
 	}
 
+	public int getStudentId() {
+		return studentId;
+	}
+
+	public void setStudentId(int studentId) {
+		this.studentId = studentId;
+	}
 }

@@ -10,7 +10,6 @@ package com.flipkart.bean;
 public class Professor extends User{
 	
 	private String department;
-	private String professorId;
 	
 	public String getDepartment() {
 		return department;
@@ -18,14 +17,6 @@ public class Professor extends User{
 	
 	public void setDepartment(String department) {
 		this.department = department;
-	}
-	
-	public String getProfessorId() {
-		return professorId;
-	}
-	
-	public void setProfessorId(String professorId) {
-		this.professorId = professorId;
 	}
 
 }
