@@ -3,6 +3,9 @@
  */
 package com.flipkart.service;
 
+import com.flipkart.exception.CourseAlreadyRegisteredException;
+import com.flipkart.exception.StudentRegistrationFailedException;
+
 /**
  * @author nayan
  *
@@ -14,7 +17,7 @@ public interface SemesterRegistrationInterface {
 	 * @param semester
 	 * @return
 	 */
-	public boolean register(String rollNumber, int semester);
+	public boolean register(String rollNumber, int semester) throws StudentRegistrationFailedException;
 	
 	/** To request a course
 	 * @param rollNumber
@@ -23,7 +26,7 @@ public interface SemesterRegistrationInterface {
 	 * @return
 	 */
 	
-	public boolean addCourse(String rollNumber, int courseId,int semester);
+	public boolean addCourse(String rollNumber, int courseId,int semester) throws CourseAlreadyRegisteredException;
 	
 	/** To drop a course 
 	 * @param rollNumber

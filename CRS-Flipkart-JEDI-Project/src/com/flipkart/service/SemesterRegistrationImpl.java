@@ -3,6 +3,9 @@
  */
 package com.flipkart.service;
 
+import com.flipkart.exception.CourseAlreadyRegisteredException;
+import com.flipkart.exception.StudentRegistrationFailedException;
+
 /**
  * @author nayan
  *
@@ -10,14 +13,14 @@ package com.flipkart.service;
 public class SemesterRegistrationImpl implements SemesterRegistrationInterface {
 
 	@Override
-	public boolean register(String rollNumber, int semester) {
+	public boolean register(String rollNumber, int semester) throws StudentRegistrationFailedException{
 		// TODO Auto-generated method stub
 		System.out.println("registration successful");
 		return false;
 	}
 
 	@Override
-	public boolean addCourse(String rollNumber, int courseId, int semester) {
+	public boolean addCourse(String rollNumber, int courseId, int semester) throws CourseAlreadyRegisteredException {
 		// TODO Auto-generated method stub
 		System.out.println("student succesfully enrolled in the course");
 		return false;

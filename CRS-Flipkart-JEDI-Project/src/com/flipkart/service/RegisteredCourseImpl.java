@@ -4,6 +4,8 @@
 package com.flipkart.service;
 
 import com.flipkart.bean.Student;
+import com.flipkart.exception.CourseNotFoundException;
+import com.flipkart.exception.GradeNotAssignedException;
 
 /**
  * @author Nayan
@@ -12,14 +14,14 @@ import com.flipkart.bean.Student;
 public class RegisteredCourseImpl implements RegisteredCourse {
 
 	@Override
-	public boolean dropCourse(String studentId, int courseId) {
+	public boolean dropCourse(String studentId, int courseId) throws CourseNotFoundException {
 		// TODO Auto-generated method stub
 		System.out.println("Course dropped");
 		return false;
 	}
 
 	@Override
-	public String viewGrade(String studentId, int courseId) {
+	public String viewGrade(String studentId, int courseId) throws GradeNotAssignedException {
 		// TODO Auto-generated method stub
 		System.out.println("Returns Grade");
 		return null;

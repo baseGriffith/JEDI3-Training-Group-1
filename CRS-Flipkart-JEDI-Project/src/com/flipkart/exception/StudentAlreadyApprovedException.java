@@ -1,9 +1,9 @@
 package com.flipkart.exception;
 
-public class StudentAlreadyExistsException extends Exception{
+public class StudentAlreadyApprovedException extends Exception{
     private String studentId;
 
-    public StudentAlreadyExistsException(String studentId) {
+    public StudentAlreadyApprovedException(String studentId) {
         this.studentId = studentId;
     }
 
