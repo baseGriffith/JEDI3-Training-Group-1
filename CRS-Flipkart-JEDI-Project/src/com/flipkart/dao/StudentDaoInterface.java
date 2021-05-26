@@ -44,4 +44,5 @@ public interface StudentDaoInterface {
      * @return
      */
 	boolean removeStudent(int studentId);
+	void approveStudent(int studentId);
 }

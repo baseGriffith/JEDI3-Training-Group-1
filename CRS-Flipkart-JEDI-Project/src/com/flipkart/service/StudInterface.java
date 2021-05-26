@@ -59,5 +59,6 @@ public interface StudInterface {
      * @param studentId
      * @return
      */
-    public boolean removeStudent(int studentId);
+    boolean removeStudent(int studentId);
+    void approveStudent(int studentId);
 }

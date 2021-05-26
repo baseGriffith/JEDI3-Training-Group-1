@@ -81,4 +81,10 @@ public class StudentOperation implements StudInterface{
         StudentDaoImpl sdi = new StudentDaoImpl();
         return sdi.removeStudent(studentId);
     }
+
+    @Override
+    public void approveStudent(int studentId) {
+        StudentDaoImpl sdi = new StudentDaoImpl();
+        sdi.approveStudent(studentId);
+    }
 }

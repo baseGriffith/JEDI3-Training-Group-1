@@ -195,4 +195,17 @@ public class StudentDaoImpl implements StudentDaoInterface {
 		}
 		return ok;
 	}
+
+	@Override
+	public void approveStudent(int studentId) {
+		try {
+			Connection con = DBUtil.getConnection();
+			Statement stmt = con.createStatement();
+			String sql = "update student set isApproved = true where studentId = " + studentId;
+			stmt.executeUpdate(sql);
+		}
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
 }
