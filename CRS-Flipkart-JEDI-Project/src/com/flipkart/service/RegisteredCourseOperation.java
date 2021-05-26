@@ -44,4 +44,5 @@ public class RegisteredCourseOperation implements RegisteredCourseInterface {
 			return e.getMessage();
 		}
 	}
+
 }
