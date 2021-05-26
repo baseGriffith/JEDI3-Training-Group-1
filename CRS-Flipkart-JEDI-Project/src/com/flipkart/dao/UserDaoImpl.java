@@ -63,7 +63,7 @@ public class UserDaoImpl implements UserDaoInterface {
 		ArrayList <Course> courses=new ArrayList<Course>();
 		
 		try {
-			String sql = "SELECT * FROM `crs-flipkart`.course where semester=(?)";
+			String sql = "SELECT * FROM course where semester=(?)";
 			PreparedStatement statement = conn.prepareStatement(sql);
 			statement.setInt(1, semester);
 			

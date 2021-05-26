@@ -57,7 +57,7 @@ public class StudentDaoImpl implements StudentDaoInterface {
 		Connection conn = DBUtil.getConnection();
 		boolean paymentSuccess = true;
 		try {
-			String sql = "INSERT INTO `crs-flipkart`.`payment` (`amount`, `studentId`, `paymentMode`) VALUES (?, ?, ?);";
+			String sql = "INSERT INTO `crs-flipkart`.`payment` (`amount`, `studentId`, `paymentMode`) VALUES (?, ?, ?)";
 			PreparedStatement statement = conn.prepareStatement(sql);
 
 			statement.setInt(1, amount);
@@ -68,10 +68,7 @@ public class StudentDaoImpl implements StudentDaoInterface {
 			statement.close();
 			//conn.close();
 		} catch (SQLException se) {
-			paymentSuccess = false;
-		} catch (Exception e) {
-			System.out.println(e);
-
+//			paymentSuccess = false;
 		}
 		return paymentSuccess;
 	}

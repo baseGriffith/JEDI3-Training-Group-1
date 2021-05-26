@@ -18,7 +18,7 @@ public class MenuStudent {
 		Scanner in = new Scanner(System.in);
 		return in.nextInt();
 	}
-	
+
 	public static void studentMenu() {
 		System.out.println("What do you want: ");
 		System.out.println("(1).View Course Catalog");
@@ -30,21 +30,22 @@ public class MenuStudent {
 		System.out.println("(7).View report card.");
 		System.out.println("(8).Logout");
 	}
-	
+
 	public static void studentFunctionalities(Student student) throws ReportCardGenerationFailedException, PaymentFailedException {
+		ArrayList<Integer> courseIdPrimary = new ArrayList<Integer>(), courseIdAlternate = new ArrayList<Integer>();
 		while(true) {
 			System.out.println("HI");
 			Scanner in;
 			studentMenu();
-			int choice  = MainMenu.get_choice();
+			int choice  = MenuStudent.get_choice();
 			StudentOperation f = new StudentOperation();
 			ReportCardInterface reportCard = new ReportCardOperation();
 			if(choice == 7) break;
-			ArrayList<Integer> courseIdPrimary = new ArrayList<Integer>(), courseIdAlternate = new ArrayList<Integer>();
-			
-			
+
+
+
 			switch (choice) {
-				
+
 				case 1:
 					UserInterface user = new UserOperation();
 					ArrayList<Course> courseCatalog = user.getCourseCatalog(student.getSemester());
@@ -53,6 +54,8 @@ public class MenuStudent {
 					}
 					break;
 				case 2:
+					courseIdPrimary.clear();
+					courseIdAlternate.clear();
 					in = new Scanner(System.in);
 					System.out.println("Enter the primary course ids you want to register: ");
 					for(int i=0;i<4;i++) {
@@ -62,17 +65,19 @@ public class MenuStudent {
 					for(int i=0;i<2;i++) {
 						courseIdAlternate.add(in.nextInt());
 					}
+					System.out.println(courseIdPrimary);
+					System.out.println(courseIdAlternate);
 					break;
-					
+
 				case 3:
-					
+
 					in = new Scanner(System.in);
 					System.out.println("(1).Add primary course  (2)Add alternate course");
 					int courseChoice = in.nextInt();
 					switch(courseChoice) {
-					
+
 						case 1:
-							
+
 							if(courseIdPrimary.size() >= 4) {
 								System.out.println("Primary course list already full");
 								break;
@@ -92,9 +97,9 @@ public class MenuStudent {
 							}
 							courseIdPrimary.add(courseId);
 							break;
-							
+
 						case 2:
-							
+
 							if(courseIdAlternate.size() >= 4) {
 								System.out.println("Alternate course list already full");
 								break;
@@ -113,19 +118,20 @@ public class MenuStudent {
 								break;
 							}
 							courseIdAlternate.add(courseId);
+
 							break;
 					}
 					break;
-					
+
 				case 4:
-					
+
 					in = new Scanner(System.in);
 					System.out.println("(1).Drop primary course  (2)Drop alternate course");
 					courseChoice = in.nextInt();
 					switch(courseChoice) {
-					
+
 						case 1:
-							
+
 							System.out.println("Enter the courseId: ");
 							int courseId = in.nextInt();
 							int dropped = 0;
@@ -138,6 +144,8 @@ public class MenuStudent {
 								}
 								count++;
 							}
+							System.out.println(courseIdPrimary);
+							System.out.println(courseIdAlternate);
 							if(dropped == 1) {
 								System.out.println("Course dropped");
 							}
@@ -145,7 +153,7 @@ public class MenuStudent {
 								System.out.println("Course not found");
 							}
 							break;
-							
+
 						case 2:
 							System.out.println("Enter the courseId: ");
 							courseId = in.nextInt();
@@ -168,7 +176,7 @@ public class MenuStudent {
 							break;
 					}
 					break;
-					
+
 				case 5:
 					in = new Scanner(System.in);
 					if(courseIdPrimary.size()<4 || courseIdAlternate.size()<2 ) {
@@ -182,18 +190,19 @@ public class MenuStudent {
 					String modeOfPayment = modeOfPaymentChoice == 1 ? "Card" : "Net Banking";
 					f.payFees(student.getUserId(), amount, modeOfPayment);
 					break;
-					
+
 				case 6:
 					f.viewRegisteredCourses(student.getUserId());
 					break;
-					
+
 				case 7:
 					in = new Scanner(System.in);
 					System.out.println("Enter the semester: ");
 					int semester = in.nextInt();
 					reportCard.printReportCard(student.getUserId(), semester);
 					break;
-					
+				case 8:
+					return;
 				default:
 					System.out.println("Invalid Choice");
 			}
