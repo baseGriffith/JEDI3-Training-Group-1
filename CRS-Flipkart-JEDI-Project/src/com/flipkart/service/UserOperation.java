@@ -43,4 +43,14 @@ public class UserOperation implements UserInterface{
 		ArrayList <Course> courses=userDaoImpl.getCourseCatalog(semester);
 		return courses;
 	}	
+	
+	@Override
+	public boolean getRole(int userId,int choice) throws LoginException{
+		UserDaoImpl userDaoImpl=new UserDaoImpl();
+		boolean response=userDaoImpl.getRole(userId,choice);
+		if(response==false) {
+			throw new LoginException(userId);
+		}
+		return response;
+	}
 }
