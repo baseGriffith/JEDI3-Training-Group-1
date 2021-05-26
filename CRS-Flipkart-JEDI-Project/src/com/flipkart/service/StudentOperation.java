@@ -13,6 +13,11 @@ import com.flipkart.bean.Student;
 import com.flipkart.exception.StudentAlreadyExistsException;
 import com.flipkart.exception.StudentRegistrationFailedException;
 
+/**
+ * Class used for services provided to student users
+ * @author JEDI-Group1
+ *
+ */
 public class StudentOperation implements StudInterface{
     @Override
     public ReportCard viewReportCard(String rollNumber) throws ReportCardGenerationFailedException{

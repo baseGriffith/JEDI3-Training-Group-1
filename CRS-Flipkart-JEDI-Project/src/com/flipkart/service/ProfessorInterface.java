@@ -7,7 +7,7 @@ import com.flipkart.bean.Student;
 import com.flipkart.exception.*;
 
 /**
- * 
+ * Services provided to the professor
  * @author JEDI-Group1
  *
  */

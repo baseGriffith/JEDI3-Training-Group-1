@@ -6,7 +6,8 @@ package com.flipkart.service;
 import com.flipkart.exception.ReportCardGenerationFailedException;
 
 /**
- * @author Kaustubh
+ * Class used for services for report card
+ * @author JEDI-Group1
  *
  */
 public interface ReportCardInterface{

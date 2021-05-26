@@ -4,6 +4,11 @@ import com.flipkart.bean.Course;
 import com.flipkart.exception.CourseNotFoundException;
 import com.flipkart.exception.ProfessorDoesNotExistException;
 
+/**
+ * Course details manipulating services
+ * @author JEDI-Group1
+ *
+ */
 public interface CourseInterface {
     /**
      * Modify details fo a course in course catalog

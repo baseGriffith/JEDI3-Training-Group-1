@@ -8,10 +8,7 @@ import com.flipkart.dao.RegistrationDaoInterface;
 import com.flipkart.exception.CourseNotFoundException;
 import com.flipkart.exception.GradeNotAssignedException;
 
-/**
- * @author Nayan
- *
- */
+
 public class RegisteredCourseOperation implements RegisteredCourseInterface {
 		
 	@Override

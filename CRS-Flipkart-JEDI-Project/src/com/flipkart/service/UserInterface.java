@@ -1,12 +1,12 @@
 package com.flipkart.service;
 
 import java.util.ArrayList;
-
 import com.flipkart.bean.Course;
 import com.flipkart.exception.LoginException;
 
 /**
- * @author dhruv
+ * Class used for services for users
+ * @author JEDI-Group1
  *
  */
 public interface UserInterface {		

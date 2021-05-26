@@ -8,7 +8,8 @@ import com.flipkart.exception.CourseAlreadyRegisteredException;
 import com.flipkart.exception.StudentRegistrationFailedException;
 
 /**
- * @author nayan
+ * Class used for services for registered courses
+ * @author JEDI-Group1
  *
  */
 public interface SemesterRegistrationInterface {
