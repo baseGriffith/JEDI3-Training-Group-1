@@ -6,6 +6,12 @@ import com.flipkart.bean.Professor;
 import com.flipkart.bean.Student;
 import com.flipkart.bean.User;
 import com.flipkart.exception.*;
+import com.flipkart.dao.StudentDaoImpl;
+import com.flipkart.dao.StudentDaoInterface;
+import com.flipkart.exception.CourseAlreadyFullException;
+import com.flipkart.exception.CourseAlreadyRegisteredException;
+import com.flipkart.exception.PaymentFailedException;
+import com.flipkart.exception.ReportCardGenerationFailedException;
 import com.flipkart.service.StudentOperation;
 import com.flipkart.service.UserOperation;
 import org.apache.log4j.Logger;
@@ -19,7 +25,8 @@ public class MainMenu {
 		System.out.println("*****Welcome*******");
 		System.out.println("#Press 1 for login");
 		System.out.println("#Press 2 for updatePassword");
-		System.out.println("#Press 3 for exiting the application");
+		System.out.println("#Press 3 for register");
+		System.out.println("#Press 4 for exiting the application");
 		System.out.println("***************\n");
 	}
 
@@ -101,7 +108,29 @@ public class MainMenu {
 
 			} else if(actionChoice==2){
 				userUpdatePassword();
-			}else {
+			} else if(actionChoice==3){
+				in = new Scanner(System.in);
+				System.out.println("Enter a userId: ");
+				int userId = in.nextInt();
+				System.out.println("Enter your name: ");
+				String name = in.next();
+				System.out.println("Enter your address: ");
+				String address = in.next();
+				System.out.println("Enter a password: ");
+				String password = in.next();
+				System.out.println("Enter branch: ");
+				String branch = in.next();
+
+				Student student = new Student(userId, name, address, password, branch);
+				StudentOperation studentOperation = new StudentOperation();
+				try {
+					studentOperation.register(student);
+				} catch(Exception e) {
+					System.out.println(e.getMessage());
+				}
+
+				System.out.println("\n********* STUDENT REGISTRATION SUCCESSFUL! *********\n\n");
+			} else {
 				System.out.println("Exiting\n");
 				break;
 			}
