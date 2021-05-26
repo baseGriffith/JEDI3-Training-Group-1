@@ -5,17 +5,22 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import org.apache.log4j.Logger;
+
 import com.flipkart.bean.RegisteredCourse;
-import com.flipkart.utils.*;
+import com.flipkart.constants.SQLQueriesConstants;
+import com.flipkart.utils.DBUtil;
 
 public class RegistrationDaoImpl implements RegistrationDaoInterface {
+	
+	private static Logger logger = Logger.getLogger(RegistrationDaoImpl.class);
 	
 	public int addCourse(int courseId, int studentId) {
 
 		try {
 			Connection conn = DBUtil.getConnection();
 			
-			String sqlCheck = "select * from registeredcourses where studentId=? and courseId=?";
+			String sqlCheck = SQLQueriesConstants.REGISTERED_COURSE_QUERY;;
 			PreparedStatement stmt = conn.prepareStatement(sqlCheck);
 			stmt.setInt(1, studentId);
 			stmt.setInt(2, courseId);
@@ -25,7 +30,7 @@ public class RegistrationDaoImpl implements RegistrationDaoInterface {
 			}
 
 			
-			sqlCheck = "select COUNT(*) from registeredcourses where courseId=?";
+			sqlCheck = SQLQueriesConstants.VIEW_STUDENT_COUNT_QUERY;;
 			stmt = conn.prepareStatement(sqlCheck);
 			stmt.setInt(1, courseId);
 			rs =stmt.executeQuery();
@@ -34,7 +39,7 @@ public class RegistrationDaoImpl implements RegistrationDaoInterface {
 				return 1;
 			}
 			
-			String sql1 = "select courseName from course where courseId=?";
+			String sql1 = SQLQueriesConstants.VIEW_COURSE_NAME_QUERY;
 			stmt = conn.prepareStatement(sql1);
 			
 			stmt.setInt(1, courseId);
@@ -42,7 +47,7 @@ public class RegistrationDaoImpl implements RegistrationDaoInterface {
 			rs.next();
 			String courseName = rs.getString(1);
 			
-			String sql="insert into registeredcourses values(?,?,?,?)";
+			String sql=SQLQueriesConstants.REGISTER_COURSE_QUERY;;
 			stmt = conn.prepareStatement(sql);
 			
 			stmt.setInt(1, studentId);
@@ -66,7 +71,7 @@ public class RegistrationDaoImpl implements RegistrationDaoInterface {
 		
 		try {
 			Connection conn = DBUtil.getConnection();
-			String sql="delete from registeredcourses where studentId=? and courseId=?";
+			String sql=SQLQueriesConstants.DROP_COURSE_QUERY;
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			
 			stmt.setInt(1, studentId);
@@ -88,7 +93,7 @@ public class RegistrationDaoImpl implements RegistrationDaoInterface {
 		
 		try {
 			Connection conn = DBUtil.getConnection();
-			String sql="select registeredcourses.studentId, registeredcourses.courseId, registeredcourses.grade, course.courseName from registeredcourses join course on registeredcourses.courseId = course.courseId where studentId=? and semester=?";
+			String sql=SQLQueriesConstants.VIEW_REGISTERED_COURSES_QUERY;
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			
 			stmt.setInt(1, studentId);
@@ -117,7 +122,7 @@ public class RegistrationDaoImpl implements RegistrationDaoInterface {
 	public RegisteredCourse getRegisteredCourse(int studentId, int courseId) {
 		try {
 			Connection conn = DBUtil.getConnection();
-			String sql="select * from registeredcourses where studentId=? and courseId=?";
+			String sql=SQLQueriesConstants.REGISTERED_COURSE_QUERY;
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			
 			stmt.setInt(1, studentId);

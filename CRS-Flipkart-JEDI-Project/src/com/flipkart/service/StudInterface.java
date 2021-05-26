@@ -60,4 +60,6 @@ public interface StudInterface {
      * @return
      */
     public boolean removeStudent(int studentId);
+    
+    void approveStudent(int studentId);
 }

@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import org.apache.log4j.Logger;
@@ -205,6 +206,19 @@ public class StudentDaoImpl implements StudentDaoInterface {
 			System.out.println(e.getMessage());
 		}
 		return ok;
+	}
+	
+	@Override
+	public void approveStudent(int studentId) {
+		try {
+			Connection con = DBUtil.getConnection();
+			Statement stmt = con.createStatement();
+			String sql = "update student set isApproved = true where studentId = " + studentId;
+			stmt.executeUpdate(sql);
+		}
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}
 	
 }
