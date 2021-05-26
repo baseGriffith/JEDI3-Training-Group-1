@@ -51,7 +51,7 @@ public class StudentOperation implements StudInterface{
         }catch(Exception e){
          System.out.println(e.getMessage());
             return false;
-        }
+        }}
 
     public Student getStudent(int studentId) {
         StudentDaoImpl s = new StudentDaoImpl();
