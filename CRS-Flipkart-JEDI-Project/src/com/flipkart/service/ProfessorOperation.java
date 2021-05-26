@@ -27,7 +27,7 @@ public class ProfessorOperation implements ProfessorInterface {
 			return true;
 		}
 		catch(Exception e) {
-			throw new CourseAlreadyBeingTaughtException(courseId, professorId);
+			throw new CourseAlreadyBeingTaughtException(courseId, professorId);			
 		}
 	
 	}
