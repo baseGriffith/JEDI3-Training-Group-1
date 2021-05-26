@@ -1,9 +1,6 @@
 package com.flipkart.dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 
 import com.flipkart.bean.Course;
@@ -41,6 +38,7 @@ public class StudentDaoImpl implements StudentDaoInterface {
 				student.setName(rs.getString("name"));
 				student.setAddress(rs.getString("address"));
 				student.setPassword(rs.getString("password"));
+				student.setIsApproved(rs.getBoolean("isApproved"));
 			}
 
 			//conn.close();
@@ -160,5 +158,41 @@ public class StudentDaoImpl implements StudentDaoInterface {
 
 		return courses;
 	}
-	
+
+	public ArrayList<Student> fetchAllStudents() {
+		ArrayList<Student> st = new ArrayList<Student>();
+		try {
+			Connection conn = DBUtil.getConnection();
+			String sql = "SELECT * FROM `crs-flipkart`.student where isApproved is false";
+			PreparedStatement statement = conn.prepareStatement(sql);
+			ResultSet rs = statement.executeQuery();
+			while(rs.next()) {
+				Student student = new Student();
+				student.setUserId(rs.getInt("studentId"));
+				student.setIsApproved(rs.getBoolean("isApproved"));
+				student.setSemester(rs.getInt("semester"));
+				student.setBranch(rs.getString("branch"));
+				st.add(student);
+			}
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		return st;
+	}
+
+	public boolean removeStudent(int studentId) {
+		boolean ok = true;
+		try {
+			Connection con = DBUtil.getConnection();
+			Statement stmt = con.createStatement();
+			String sql = "delete from student where studentId = " + studentId;
+			stmt.executeUpdate(sql);
+		}
+		catch (Exception e) {
+			ok = false;
+			System.out.println(e.getMessage());
+		}
+		return ok;
+	}
 }

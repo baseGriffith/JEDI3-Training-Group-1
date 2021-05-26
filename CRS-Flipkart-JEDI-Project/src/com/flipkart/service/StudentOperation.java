@@ -1,5 +1,6 @@
 package com.flipkart.service;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import com.flipkart.bean.Course;
@@ -57,19 +58,27 @@ public class StudentOperation implements StudInterface{
 
             return true;
 
-        } catch (Exception e) {
+        } 
+         catch (Exception e) {
             logger.info(e.getMessage());
+
             return false;
-<<<<<<< HEAD
-        }}
-=======
         }
-    }       
->>>>>>> ff2f97d026ffb1c3d904e1cd3271df420ccb2dda
+    }
 
     public Student getStudent(int studentId) {
         StudentDaoImpl s = new StudentDaoImpl();
         Student ret = s.getStudent(studentId);
         return ret;
+    }
+    public ArrayList<Student> fetchAllStudents() {
+        ArrayList<Student> st = new ArrayList<Student>();
+        StudentDaoImpl sdi = new StudentDaoImpl();
+        return sdi.fetchAllStudents();
+    }
+
+    public boolean removeStudent(int studentId) {
+        StudentDaoImpl sdi = new StudentDaoImpl();
+        return sdi.removeStudent(studentId);
     }
 }

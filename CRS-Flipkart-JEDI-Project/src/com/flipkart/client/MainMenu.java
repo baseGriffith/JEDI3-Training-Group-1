@@ -51,7 +51,7 @@ public class MainMenu {
 		return new User(userId, password);
 	}
 
-	public static void main(String[] args) throws ProfessorAlreadyExistException {
+	public static void main(String[] args) throws ProfessorAlreadyExistException, CourseNotFoundException, CourseAlreadyExistsException, LoginException {
 		// TODO Auto-generated method stub
 
 		Scanner in = new Scanner(System.in);
@@ -157,10 +157,10 @@ public class MainMenu {
 		}
 	}
 
-	public static void userUpdatePassword() {
+	public static void userUpdatePassword() throws LoginException {
 		User user = MainMenu.getUsernamePassword();
 		UserOperation userOperation = new UserOperation();
-
+		userOperation.login(user.getUserId(), user.getPassword());
 		Scanner in=new Scanner(System.in);
 
 		System.out.println("Enter your user new password\n");

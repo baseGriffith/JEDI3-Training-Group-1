@@ -47,4 +47,17 @@ public interface StudInterface {
      * @return the student
      */
     Student getStudent(int studentId);
+
+    /**
+     *
+     * @return
+     */
+    public ArrayList<Student> fetchAllStudents();
+
+    /**
+     *
+     * @param studentId
+     * @return
+     */
+    public boolean removeStudent(int studentId);
 }

@@ -26,7 +26,6 @@ public class UserDaoImpl implements UserDaoInterface {
 			rs.next();
 			
 			validPassword=rs.getString(4);
-			System.out.println(validPassword);
 			
 		} catch (Exception e) {
 			System.out.println(e);
@@ -98,7 +97,7 @@ public class UserDaoImpl implements UserDaoInterface {
 				statement.setInt(1, userId);
 				
 				ResultSet rs=statement.executeQuery();
-				return rs.next();
+				return (rs.next() && rs.getBoolean("isApproved"));
 			}
 			catch(Exception e) {
 				return false;
@@ -130,6 +129,4 @@ public class UserDaoImpl implements UserDaoInterface {
 		}	
 		return false;
 	}
-
-
 }
