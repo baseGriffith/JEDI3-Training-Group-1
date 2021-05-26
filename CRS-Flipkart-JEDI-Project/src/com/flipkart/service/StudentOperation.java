@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.flipkart.bean.Course;
 import com.flipkart.bean.ReportCard;
 import com.flipkart.bean.Student;
+import com.flipkart.client.MainMenu;
 import com.flipkart.dao.StudentDaoImpl;
 import com.flipkart.dao.StudentDaoInterface;
 import com.flipkart.exception.PaymentFailedException;
@@ -12,8 +13,11 @@ import com.flipkart.exception.ReportCardGenerationFailedException;
 import com.flipkart.bean.Student;
 import com.flipkart.exception.StudentAlreadyExistsException;
 import com.flipkart.exception.StudentRegistrationFailedException;
+import org.apache.log4j.Logger;
 
 public class StudentOperation implements StudInterface{
+    private static Logger logger = Logger.getLogger(StudentOperation.class);
+
     @Override
     public ReportCard viewReportCard(String rollNumber) throws ReportCardGenerationFailedException{
     	//TODO
@@ -41,17 +45,18 @@ public class StudentOperation implements StudInterface{
     @Override
 
     public boolean register(Student student) throws StudentAlreadyExistsException, StudentRegistrationFailedException {
-     try{
+        try {
             StudentDaoInterface studentDao = new StudentDaoImpl();
             int flag = studentDao.register(student);
             if (flag == 0) throw new StudentAlreadyExistsException(student.getUserId());
             else if (flag == 2) throw new StudentRegistrationFailedException(student.getUserId());
 
             return true;
-        }catch(Exception e){
-         System.out.println(e.getMessage());
+        } catch (Exception e) {
+            logger.info(e.getMessage());
             return false;
         }
+    }
 
     public Student getStudent(int studentId) {
         StudentDaoImpl s = new StudentDaoImpl();

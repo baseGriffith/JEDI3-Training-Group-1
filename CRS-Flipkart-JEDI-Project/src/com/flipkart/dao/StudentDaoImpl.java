@@ -64,7 +64,6 @@ public class StudentDaoImpl implements StudentDaoInterface {
 			ResultSet rs = statement.executeQuery();
 			rs.next();
 			if(rs.getInt(1) > 0){
-				System.out.println(rs.getInt(1));
 				return 0;
 			}
 
@@ -90,7 +89,6 @@ public class StudentDaoImpl implements StudentDaoInterface {
 
 			return 1;
 		} catch(Exception e){
-			System.out.println(e.getMessage());
 			return 2;
 		}
 	}

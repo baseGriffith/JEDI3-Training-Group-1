@@ -3,7 +3,9 @@ package com.flipkart.dao;
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Grade;
 import com.flipkart.bean.Professor;
+import com.flipkart.service.AdminOperation;
 import com.flipkart.utils.DBUtil;
+import org.apache.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,6 +14,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class AdminDaoImpl implements AdminDaoInterface{
+    private static Logger logger = Logger.getLogger(AdminDaoImpl.class);
+
     @Override
     public void approveStudent(int studentId) {
         try {
@@ -36,7 +40,7 @@ public class AdminDaoImpl implements AdminDaoInterface{
         }
         catch (Exception e) {
             ok = false;
-            System.out.println(e.getMessage());
+            logger.info(e.getMessage());
         }
         return ok;
     }
@@ -54,7 +58,7 @@ public class AdminDaoImpl implements AdminDaoInterface{
         }
         catch (Exception e) {
             ok = false;
-            System.out.println(e.getMessage());
+            logger.info(e.getMessage());
         }
         return ok;
     }
@@ -70,7 +74,7 @@ public class AdminDaoImpl implements AdminDaoInterface{
         }
         catch (Exception e) {
             ok = false;
-            System.out.println(e.getMessage());
+            logger.info(e.getMessage());
         }
         return ok;
     }
