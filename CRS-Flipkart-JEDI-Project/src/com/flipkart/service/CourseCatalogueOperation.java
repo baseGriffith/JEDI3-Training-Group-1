@@ -1,15 +1,30 @@
 package com.flipkart.service;
 
 import com.flipkart.bean.Course;
+import com.flipkart.dao.AdminDaoImpl;
+import com.flipkart.dao.AdminDaoInterface;
 import com.flipkart.exception.CourseAlreadyExistsException;
 import com.flipkart.exception.CourseNotFoundException;
 
 public class CourseCatalogueOperation implements CourseCatalogueInterface {
     public void addCourse(Course newCourse) throws CourseAlreadyExistsException{
-        System.out.println("Course successfully added!");
+        AdminDaoInterface admin = new AdminDaoImpl();
+        boolean ok = admin.addCourse(newCourse);
+        if(ok)
+            System.out.println("Course successfully added!");
+        else {
+            throw new CourseAlreadyExistsException(newCourse.getCourseId());
+        }
     }
 
-    public void deleteCourse(String courseId) throws CourseNotFoundException{
+    public void deleteCourse(int courseId) throws CourseNotFoundException{
+        AdminDaoInterface admin = new AdminDaoImpl();
+        boolean ok = admin.removeCourse(courseId);
+        if(ok)
+            System.out.println("Course successfully added!");
+        else {
+            throw new CourseNotFoundException(courseId);
+        }
         System.out.println("Course successfully deleted!");
     }
 }

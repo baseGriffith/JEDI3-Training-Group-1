@@ -19,5 +19,5 @@ public interface CourseCatalogueInterface {
      * @param courseId
      * @throws CourseNotFoundException
      */
-    public void deleteCourse(String courseId) throws CourseNotFoundException;
+    public void deleteCourse(int courseId) throws CourseNotFoundException;
 }
