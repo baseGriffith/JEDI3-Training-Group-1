@@ -1,7 +1,5 @@
 package com.flipkart.client;
-/**
- * @author JEDI-Group-1
- */
+
 import com.flipkart.bean.Professor;
 import com.flipkart.bean.Student;
 import com.flipkart.exception.ProfessorAlreadyExistException;

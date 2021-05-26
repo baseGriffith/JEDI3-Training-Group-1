@@ -1,7 +1,5 @@
 package com.flipkart.client;
-/**
- * @author JEDI-Group-1
- */
+
 import java.util.Scanner;
 
 import com.flipkart.bean.Professor;
