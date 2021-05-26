@@ -2,24 +2,28 @@ package com.flipkart.client;
 
 import java.util.Scanner;
 
+import org.apache.log4j.Logger;
+
 import com.flipkart.bean.Professor;
 import com.flipkart.bean.Student;
 import com.flipkart.bean.User;
+<<<<<<< HEAD
+=======
+
 import com.flipkart.exception.*;
-import com.flipkart.dao.StudentDaoImpl;
-import com.flipkart.dao.StudentDaoInterface;
+
+>>>>>>> ff2f97d026ffb1c3d904e1cd3271df420ccb2dda
 import com.flipkart.exception.CourseAlreadyFullException;
 import com.flipkart.exception.CourseAlreadyRegisteredException;
 import com.flipkart.exception.PaymentFailedException;
+import com.flipkart.exception.ProfessorAlreadyExistException;
 import com.flipkart.exception.ReportCardGenerationFailedException;
 import com.flipkart.service.StudentOperation;
 import com.flipkart.service.UserOperation;
-import org.apache.log4j.Logger;
-import sun.applet.Main;
 
 public class MainMenu {
 	public static int loggedInUser;
-	private static Logger logger = Logger.getLogger(MainMenu.class);
+	private static logger logger = Logger.getLogger(MainMenu.class);
 
 	public static void topMenu() {
 		System.out.println("*****Welcome*******");
@@ -124,12 +128,12 @@ public class MainMenu {
 				Student student = new Student(userId, name, address, password, branch);
 				StudentOperation studentOperation = new StudentOperation();
 				try {
-					studentOperation.register(student);
+					if(studentOperation.register(student)){
+						System.out.println("\n********* STUDENT REGISTRATION SUCCESSFUL! *********\n\n");
+					}
 				} catch(Exception e) {
-					System.out.println(e.getMessage());
+					e.getMessage();
 				}
-
-				System.out.println("\n********* STUDENT REGISTRATION SUCCESSFUL! *********\n\n");
 			} else {
 				System.out.println("Exiting\n");
 				break;

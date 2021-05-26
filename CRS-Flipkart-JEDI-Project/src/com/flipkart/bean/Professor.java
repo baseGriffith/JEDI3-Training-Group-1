@@ -4,7 +4,8 @@
 package com.flipkart.bean;
 
 /**
- * @author dhruv
+ * Professor class which derives properties from User class
+ * @author JEDI-Group1
  *
  */
 public class Professor extends User{

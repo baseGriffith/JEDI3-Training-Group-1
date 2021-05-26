@@ -5,6 +5,8 @@ package com.flipkart.service;
 
 import java.util.ArrayList;
 
+import org.apache.log4j.Logger;
+
 import com.flipkart.bean.RegisteredCourse;
 import com.flipkart.dao.RegistrationDaoImpl;
 import com.flipkart.dao.RegistrationDaoInterface;
@@ -12,14 +14,15 @@ import com.flipkart.exception.CourseAlreadyFullException;
 import com.flipkart.exception.CourseAlreadyRegisteredException;
 
 /**
- * @author nayan
+ * @author JEDI-Group1
  *
  */
 public class SemesterRegistrationOperation implements SemesterRegistrationInterface {
 
+	private static Logger logger = Logger.getLogger(AdminOperation.class);
+	
 	@Override
 	public boolean addCourse(int studentId, int courseId) throws CourseAlreadyRegisteredException, CourseAlreadyFullException {
-		// TODO Auto-generated method stub
 		try {
 			RegistrationDaoInterface semesterRegistration = new RegistrationDaoImpl();
 			
@@ -33,14 +36,12 @@ public class SemesterRegistrationOperation implements SemesterRegistrationInterf
 				throw new CourseAlreadyFullException(courseId);
 			}
 		} catch(Exception e) {
-			System.out.println(e.getMessage());
 			return false;
 		}
 	}
 
 	@Override
 	public boolean dropCourse(int studentId, int courseId) {
-		// TODO Auto-generated method stub
 
 		RegistrationDaoInterface semesterRegistration = new RegistrationDaoImpl();
 		if(semesterRegistration.dropCourse(courseId, studentId)) {
@@ -52,16 +53,14 @@ public class SemesterRegistrationOperation implements SemesterRegistrationInterf
 
 	@Override
 	public boolean showRegisteredCourses(int studentId, int semester) {
-		// TODO Auto-generated method stub
 		
 		RegistrationDaoInterface semesterRegistration = new RegistrationDaoImpl();
 		
 		ArrayList<RegisteredCourse> registeredCourses = semesterRegistration.viewRegisteredCourses(studentId, semester);
-		
-		System.out.println("Registered Courses in "+semester+" semester:-->");
+		logger.info("Registered Courses in " + semester + " semester:-->");
 		
 		for(RegisteredCourse registeredCourse : registeredCourses) {
-			System.out.println("CourseId: "+registeredCourse.getCourseId()+"  CourseName: "+registeredCourse.getCourseName()+"  Grade: "+registeredCourse.getGrade());
+			logger.info("CourseId: "+registeredCourse.getCourseId()+"  CourseName: "+registeredCourse.getCourseName()+"  Grade: "+registeredCourse.getGrade());
 		}
 		return true;
 	}
