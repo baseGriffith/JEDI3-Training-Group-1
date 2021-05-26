@@ -7,14 +7,11 @@ import org.apache.log4j.Logger;
 import com.flipkart.bean.Professor;
 import com.flipkart.bean.Student;
 import com.flipkart.bean.User;
-<<<<<<< HEAD
-=======
-
-import com.flipkart.exception.*;
-
->>>>>>> ff2f97d026ffb1c3d904e1cd3271df420ccb2dda
+import com.flipkart.exception.CourseAlreadyExistsException;
 import com.flipkart.exception.CourseAlreadyFullException;
 import com.flipkart.exception.CourseAlreadyRegisteredException;
+import com.flipkart.exception.CourseNotFoundException;
+import com.flipkart.exception.LoginException;
 import com.flipkart.exception.PaymentFailedException;
 import com.flipkart.exception.ProfessorAlreadyExistException;
 import com.flipkart.exception.ReportCardGenerationFailedException;
@@ -23,7 +20,7 @@ import com.flipkart.service.UserOperation;
 
 public class MainMenu {
 	public static int loggedInUser;
-	private static logger logger = Logger.getLogger(MainMenu.class);
+	private static Logger logger = Logger.getLogger(MainMenu.class);
 
 	public static void topMenu() {
 		System.out.println("*****Welcome*******");

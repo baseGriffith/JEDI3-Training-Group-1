@@ -1,11 +1,14 @@
 package com.flipkart.dao;
 
+/**
+ * @author JEDI-Group-1
+ */
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Grade;
 import com.flipkart.bean.Professor;
-import com.flipkart.service.AdminOperation;
+import com.flipkart.client.MainMenu;
+import com.flipkart.constant.SQLQueriesConstants;
 import com.flipkart.utils.DBUtil;
-import org.apache.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,9 +16,11 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class AdminDaoImpl implements AdminDaoInterface{
-    private static Logger logger = Logger.getLogger(AdminDaoImpl.class);
+import org.apache.log4j.Logger;
 
+public class AdminDaoImpl implements AdminDaoInterface{
+	
+	private static Logger logger = Logger.getLogger(AdminDaoImpl.class);
     @Override
     public void approveStudent(int studentId) {
         try {
@@ -40,7 +45,7 @@ public class AdminDaoImpl implements AdminDaoInterface{
         }
         catch (Exception e) {
             ok = false;
-            logger.info(e.getMessage());
+            logger.debug(e.getMessage());
         }
         return ok;
     }
@@ -58,7 +63,7 @@ public class AdminDaoImpl implements AdminDaoInterface{
         }
         catch (Exception e) {
             ok = false;
-            logger.info(e.getMessage());
+            logger.debug(e.getMessage());
         }
         return ok;
     }
@@ -74,7 +79,7 @@ public class AdminDaoImpl implements AdminDaoInterface{
         }
         catch (Exception e) {
             ok = false;
-            logger.info(e.getMessage());
+            logger.debug(e.getMessage());
         }
         return ok;
     }
@@ -105,7 +110,7 @@ public class AdminDaoImpl implements AdminDaoInterface{
         boolean ok = true;
         try {
             Connection con = DBUtil.getConnection();
-            String sql = "update Course set courseName = ?, department = ?, professorId = ?, semester = ?, courseCode = ? where courseId = ?";
+            String sql = SQLQueriesConstants.UPDATE_COURSE_QUERY;
             PreparedStatement stmt = con.prepareStatement(sql);
             stmt.setString(1, course.getCourseName());
             stmt.setString(2,course.getDepartment());
