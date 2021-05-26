@@ -22,7 +22,7 @@ public class MenuStudent {
 	public static void studentMenu() {
 		System.out.println("What do you want: ");
 		System.out.println("(1).View Course Catalog");
-		System.out.println("(2).Register");
+		System.out.println("(2).Semester Registration");
 		System.out.println("(3).Add Course");
 		System.out.println("(4).Drop Course");
 		System.out.println("(5).Pay Fees");

@@ -14,6 +14,15 @@ public class Student extends User{
 	private String branch;	
 	private Date joiningDate;
 	private int semester;
+
+	public Student(){};
+
+	public Student(int userId, String name, String address, String password, String branch){
+		super(userId, name, address, password);
+
+		this.branch = branch;
+		this.semester = 1;
+	}
 	
 	public String getBranch() {
 		return branch;

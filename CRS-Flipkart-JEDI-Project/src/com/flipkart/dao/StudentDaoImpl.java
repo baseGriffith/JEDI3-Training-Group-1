@@ -51,6 +51,48 @@ public class StudentDaoImpl implements StudentDaoInterface {
 
 	}
 
+	public int register(Student student) {
+		try {
+			Connection conn = DBUtil.getConnection();
+			String sql = "select count(*) from User where userId = ?";
+			PreparedStatement statement = conn.prepareStatement(sql);
+
+			statement.setInt(1, student.getUserId());
+
+			ResultSet rs = statement.executeQuery();
+			rs.next();
+			if(rs.getInt(1) > 0){
+				System.out.println(rs.getInt(1));
+				return 0;
+			}
+
+			sql = "insert into User values (?, ?, ?, ?)";
+			statement = conn.prepareStatement(sql);
+
+
+			statement.setInt(1, student.getUserId());
+			statement.setString(2, student.getName());
+			statement.setString(3, student.getAddress());
+			statement.setString(4, student.getPassword());
+
+			statement.executeUpdate();
+
+			sql = "insert into Student(studentId, branch, joiningDate, semester) values(?, ?, CURDATE(), ?)";
+			statement = conn.prepareStatement(sql);
+
+			statement.setInt(1, student.getUserId());
+			statement.setString(2, student.getBranch());
+			statement.setInt(3, student.getSemester());
+
+			statement.executeUpdate();
+
+			return 1;
+		} catch(Exception e){
+			System.out.println(e.getMessage());
+			return 2;
+		}
+	}
+
 	@Override
 	public boolean payFees(int studentId, int amount, String mode) {
 		// TODO Auto-generated method stub
