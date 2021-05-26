@@ -6,7 +6,7 @@ package com.flipkart.bean;
 import java.sql.Date;
 
 /**
- * @author JEDI-Group-1
+ * @author Nayan
  *
  */
 public class SemesterRegistration {

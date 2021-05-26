@@ -6,7 +6,7 @@ package com.flipkart.bean;
 import java.util.Date;
 
 /**
- * @author JEDI-Group-1
+ * @author lenovo
  *
  */
 public class Card extends Payment {

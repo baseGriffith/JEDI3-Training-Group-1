@@ -4,7 +4,7 @@
 package com.flipkart.bean;
 
 /**
- * @author JEDI-Group-1
+ * @author dhruv
  *
  */
 public class User {
