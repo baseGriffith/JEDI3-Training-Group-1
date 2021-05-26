@@ -38,4 +38,10 @@ public interface AdminDaoInterface {
      */
     ArrayList<Grade> fetchGrade(int studentId);
 
+    /**
+     *
+     * @param course
+     */
+    void modifyCourseDetails(Course course);
+
 }
