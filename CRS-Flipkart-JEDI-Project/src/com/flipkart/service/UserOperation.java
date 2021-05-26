@@ -5,19 +5,22 @@ package com.flipkart.service;
 
 import java.util.ArrayList;
 
+import org.apache.log4j.Logger;
+
 import com.flipkart.bean.Course;
 import com.flipkart.dao.UserDaoImpl;
 import com.flipkart.exception.LoginException;
 
 /**
- * @author dhruv
+ * @author JEDI-Group1
  *
  */
 public class UserOperation implements UserInterface{
 
+	private static Logger logger = Logger.getLogger(AdminOperation.class);
+	
 	@Override
 	public boolean login(int userId, String password) throws LoginException{
-		// TODO Auto-generated method stub
 		UserDaoImpl userDaoImpl=new UserDaoImpl();
 		boolean response=userDaoImpl.login(userId, password);
 		if(response==false) {
@@ -28,17 +31,14 @@ public class UserOperation implements UserInterface{
 
 	@Override
 	public boolean updatePassword(int userId, String password){
-		// TODO Auto-generated method stub
 		UserDaoImpl userDaoImpl=new UserDaoImpl();
 		boolean response=userDaoImpl.updatePassword(userId, password);
-		
-		System.out.println(response);
+		logger.info(response);
 		return response;		
 	}
 
 	@Override
 	public ArrayList <Course> getCourseCatalog(int semester) {
-		// TODO Auto-generated method stub
 		UserDaoImpl userDaoImpl=new UserDaoImpl();
 		ArrayList <Course> courses=userDaoImpl.getCourseCatalog(semester);
 		return courses;

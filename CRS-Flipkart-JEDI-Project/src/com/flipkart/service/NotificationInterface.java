@@ -4,7 +4,8 @@
 package com.flipkart.service;
 
 /**
- * @author Kaustubh
+ * Notifications services used for payment & registration notifications
+ * @author JEDI-Group1
  *
  */
 public interface NotificationInterface {
