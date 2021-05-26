@@ -15,18 +15,21 @@ public class RegistrationDaoImpl implements RegistrationDaoInterface {
 		try {
 			Connection conn = DBUtil.getConnection();
 			
-			String sqlCheck = "select* from registered_course where studentId=? and courseId=?";
+			String sqlCheck = "select * from registeredcourses where studentId=? and courseId=?";
 			PreparedStatement stmt = conn.prepareStatement(sqlCheck);
-			
+			stmt.setInt(1, studentId);
+			stmt.setInt(2, courseId);
 			ResultSet rs = stmt.executeQuery();
-			if(rs!=null) {
-				 return 0;
+			if(rs.next()) {
+				return 0;
 			}
+
 			
-			sqlCheck = "select COUNT(*) from registered_course where courseId=?";
+			sqlCheck = "select COUNT(*) from registeredcourses where courseId=?";
 			stmt = conn.prepareStatement(sqlCheck);
+			stmt.setInt(1, courseId);
 			rs =stmt.executeQuery();
-			
+			rs.next();
 			if(rs.getInt(1) >= 10) {
 				return 1;
 			}
@@ -36,10 +39,10 @@ public class RegistrationDaoImpl implements RegistrationDaoInterface {
 			
 			stmt.setInt(1, courseId);
 			rs = stmt.executeQuery();
-			
+			rs.next();
 			String courseName = rs.getString(1);
 			
-			String sql="insert into registered_course values(?,?,?,?)";
+			String sql="insert into registeredcourses values(?,?,?,?)";
 			stmt = conn.prepareStatement(sql);
 			
 			stmt.setInt(1, studentId);
@@ -49,7 +52,6 @@ public class RegistrationDaoImpl implements RegistrationDaoInterface {
 			stmt.executeUpdate();
 			
 			stmt.close();
-//		    conn.close();
 		    
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -64,7 +66,7 @@ public class RegistrationDaoImpl implements RegistrationDaoInterface {
 		
 		try {
 			Connection conn = DBUtil.getConnection();
-			String sql="delete from registered_course where studentId=? and courseId=?";
+			String sql="delete from registeredcourses where studentId=? and courseId=?";
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			
 			stmt.setInt(1, studentId);
@@ -86,7 +88,7 @@ public class RegistrationDaoImpl implements RegistrationDaoInterface {
 		
 		try {
 			Connection conn = DBUtil.getConnection();
-			String sql="select studentId, courseId, grade, courseName from registered_course join course on courseId where studentId=? and semester=?";
+			String sql="select registeredcourses.studentId, registeredcourses.courseId, registeredcourses.grade, course.courseName from registeredcourses join course on registeredcourses.courseId = course.courseId where studentId=? and semester=?";
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			
 			stmt.setInt(1, studentId);
@@ -104,11 +106,8 @@ public class RegistrationDaoImpl implements RegistrationDaoInterface {
 				
 				RegisteredCourse registeredCourse = new RegisteredCourse(studentIdSQL, courseIdSQL, gradeSQL, courseName);
 				registeredCourses.add(registeredCourse);
-				return registeredCourses;
 			}
-			
-			stmt.close();
-		    conn.close();
+			return registeredCourses;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -118,7 +117,7 @@ public class RegistrationDaoImpl implements RegistrationDaoInterface {
 	public RegisteredCourse getRegisteredCourse(int studentId, int courseId) {
 		try {
 			Connection conn = DBUtil.getConnection();
-			String sql="select * from registered_course where studentId=? and courseId=?";
+			String sql="select * from registeredcourses where studentId=? and courseId=?";
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			
 			stmt.setInt(1, studentId);

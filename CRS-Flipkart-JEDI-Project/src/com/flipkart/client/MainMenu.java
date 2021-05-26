@@ -5,12 +5,16 @@ import java.util.Scanner;
 import com.flipkart.bean.Professor;
 import com.flipkart.bean.Student;
 import com.flipkart.bean.User;
+import com.flipkart.exception.CourseAlreadyFullException;
+import com.flipkart.exception.CourseAlreadyRegisteredException;
 import com.flipkart.exception.PaymentFailedException;
 import com.flipkart.exception.ReportCardGenerationFailedException;
+import com.flipkart.service.StudentOperation;
 import com.flipkart.service.UserOperation;
+import sun.applet.Main;
 
 public class MainMenu {
-
+	public static int loggedInUser;
 	public static void topMenu() {
 		System.out.println("*****Welcome*******");
 		System.out.println("#Press 1 for login");
@@ -42,7 +46,6 @@ public class MainMenu {
 		Scanner in = new Scanner(System.in);
 
 		while (true) {
-
 			MainMenu.topMenu();
 			int actionChoice = in.nextInt();
 
@@ -59,12 +62,16 @@ public class MainMenu {
 					case 1:
 						if(login(userChoice)==true) {
 							try {
-								Student st = new Student();
-								st.setSemester(2);
+								StudentOperation stOp = new StudentOperation();
+								Student st = stOp.getStudent(MainMenu.loggedInUser);
 								MenuStudent.studentFunctionalities(st);
 							} catch (ReportCardGenerationFailedException e) {
 								e.printStackTrace();
 							} catch (PaymentFailedException e) {
+								e.printStackTrace();
+							} catch (CourseAlreadyRegisteredException e) {
+								e.printStackTrace();
+							} catch (CourseAlreadyFullException e) {
 								e.printStackTrace();
 							}
 						}
@@ -110,6 +117,7 @@ public class MainMenu {
 			userOperation.getRole(user.getUserId(),userChoice);
 
 			System.out.println("Login successful!!!\n");
+			MainMenu.loggedInUser =  user.getUserId();
 			return true;
 		} catch (Exception e) {
 			return false;

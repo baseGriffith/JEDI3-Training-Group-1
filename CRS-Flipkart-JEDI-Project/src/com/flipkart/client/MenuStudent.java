@@ -5,13 +5,11 @@ import java.util.Scanner;
 
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Student;
+import com.flipkart.exception.CourseAlreadyFullException;
+import com.flipkart.exception.CourseAlreadyRegisteredException;
 import com.flipkart.exception.PaymentFailedException;
 import com.flipkart.exception.ReportCardGenerationFailedException;
-import com.flipkart.service.ReportCardInterface;
-import com.flipkart.service.ReportCardOperation;
-import com.flipkart.service.StudentOperation;
-import com.flipkart.service.UserInterface;
-import com.flipkart.service.UserOperation;
+import com.flipkart.service.*;
 
 public class MenuStudent {
 	public static int get_choice() {
@@ -31,19 +29,14 @@ public class MenuStudent {
 		System.out.println("(8).Logout");
 	}
 
-	public static void studentFunctionalities(Student student) throws ReportCardGenerationFailedException, PaymentFailedException {
+	public static void studentFunctionalities(Student student) throws ReportCardGenerationFailedException, PaymentFailedException, CourseAlreadyRegisteredException, CourseAlreadyFullException {
 		ArrayList<Integer> courseIdPrimary = new ArrayList<Integer>(), courseIdAlternate = new ArrayList<Integer>();
+		Scanner in = new Scanner(System.in);
 		while(true) {
-			System.out.println("HI");
-			Scanner in;
 			studentMenu();
 			int choice  = MenuStudent.get_choice();
 			StudentOperation f = new StudentOperation();
 			ReportCardInterface reportCard = new ReportCardOperation();
-			if(choice == 7) break;
-
-
-
 			switch (choice) {
 
 				case 1:
@@ -71,7 +64,6 @@ public class MenuStudent {
 
 				case 3:
 
-					in = new Scanner(System.in);
 					System.out.println("(1).Add primary course  (2)Add alternate course");
 					int courseChoice = in.nextInt();
 					switch(courseChoice) {
@@ -125,7 +117,6 @@ public class MenuStudent {
 
 				case 4:
 
-					in = new Scanner(System.in);
 					System.out.println("(1).Drop primary course  (2)Drop alternate course");
 					courseChoice = in.nextInt();
 					switch(courseChoice) {
@@ -178,7 +169,6 @@ public class MenuStudent {
 					break;
 
 				case 5:
-					in = new Scanner(System.in);
 					if(courseIdPrimary.size()<4 || courseIdAlternate.size()<2 ) {
 						System.out.println("You have not selected the required number of courses");
 						break;
@@ -188,15 +178,23 @@ public class MenuStudent {
 					System.out.println("Choose mode of payment: 1) Card 2)Net Banking");
 					int modeOfPaymentChoice = in.nextInt();
 					String modeOfPayment = modeOfPaymentChoice == 1 ? "Card" : "Net Banking";
-					f.payFees(student.getUserId(), amount, modeOfPayment);
+					boolean status = f.payFees(student.getUserId(), amount, modeOfPayment);
+					if(status) {
+						SemesterRegistrationOperation sro = new SemesterRegistrationOperation();
+						for(Integer x: courseIdPrimary) {
+							sro.addCourse(student.getUserId(), x);
+						}
+					}
 					break;
 
 				case 6:
-					f.viewRegisteredCourses(student.getUserId());
+					ArrayList<Course> registeredCourse = f.viewRegisteredCourses(student.getUserId());
+					for(Course course:registeredCourse) {
+						System.out.println("Course Code: "+course.getCourseCode()+" Course Name: "+course.getCourseName());
+					}
 					break;
 
 				case 7:
-					in = new Scanner(System.in);
 					System.out.println("Enter the semester: ");
 					int semester = in.nextInt();
 					reportCard.printReportCard(student.getUserId(), semester);
