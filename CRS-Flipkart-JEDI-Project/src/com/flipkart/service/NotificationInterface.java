@@ -4,8 +4,8 @@
 package com.flipkart.service;
 
 /**
+ * @author Kaustubh
  * 
- * @author JEDI-Group-1
  */
 public interface NotificationInterface {
 	

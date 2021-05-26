@@ -12,7 +12,7 @@ import com.flipkart.exception.CourseAlreadyFullException;
 import com.flipkart.exception.CourseAlreadyRegisteredException;
 
 /**
- * @author JEDI-Group-1
+ * @author nayan
  * 
  */
 public class SemesterRegistrationOperation implements SemesterRegistrationInterface {

@@ -10,7 +10,7 @@ import com.flipkart.dao.UserDaoImpl;
 import com.flipkart.exception.LoginException;
 
 /**
- * @author JEDI-Group-1
+ * @author dhruv
  * 
  */
 public class UserOperation implements UserInterface{

@@ -8,7 +8,7 @@ import com.flipkart.exception.CourseNotFoundException;
 import com.flipkart.exception.GradeNotAssignedException;
 
 /**
- * @author JEDI-Group-1
+ * @author Nayan
  * 
  */
 public interface RegisteredCourseInterface {
