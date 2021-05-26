@@ -1,10 +1,10 @@
 package com.flipkart.exception;
 
 public class CourseAlreadyBeingTaughtException extends Exception{
-    private String courseId;
-    private String professorId;
+    private int courseId;
+    private int professorId;
 
-    public CourseAlreadyBeingTaughtException(String courseId, String professorId) {
+    public CourseAlreadyBeingTaughtException(int courseId, int professorId) {
         this.courseId = courseId;
         this.professorId = professorId;
     }

@@ -1,13 +1,10 @@
 package com.flipkart.service;
 
-import com.flipkart.bean.Student;
-import com.flipkart.exception.CourseAlreadyRegisteredException;
-import com.flipkart.exception.CourseNotFoundException;
+import java.util.ArrayList;
 
-/**
- * @author dhruv
- *
- */
+import com.flipkart.bean.Student;
+import com.flipkart.exception.*;
+
 public interface ProfessorInterface {
 	
 	
@@ -17,23 +14,23 @@ public interface ProfessorInterface {
 	 * @param studentId
 	 * @param gradeAlloted
 	 */
-	public void gradeStudent(int courseId,int studentId,char gradeAlloted);
+	public void gradeStudent(int courseId,int studentId,String gradeAlloted);
 	
 	
 	/**
-	 * Enrol a professor for teaching a course
+	 * Enroll a professor for teaching a course
 	 * @param courseId
 	 * @return boolean indicating if professor was registered to a course or not
 	 * @throws CourseNotFoundException 
 	 */
-	public boolean registerCourse(int courseId) throws CourseAlreadyRegisteredException, CourseNotFoundException;
+	public boolean registerCourse(int professorId, int courseId) throws CourseAlreadyBeingTaughtException, CourseNotFoundException;
 	
 	
 	/**
-	 * Prof. enters the course Id and the enrolled students are returned
+	 * Professor enters the course Id and the enrolled students are returned
 	 * @param courseId
 	 * @return list of students enrolled in a course
 	 */
-	public Student[] getEnrolledStudents(int courseId);
+	public ArrayList<Integer> getEnrolledStudents(int courseId) throws CourseNotFoundException;
 	
 }
