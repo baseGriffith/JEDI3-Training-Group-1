@@ -7,6 +7,9 @@ import org.apache.log4j.Logger;
 import com.flipkart.bean.Professor;
 import com.flipkart.bean.Student;
 import com.flipkart.bean.User;
+
+import com.flipkart.exception.*;
+
 import com.flipkart.exception.CourseAlreadyFullException;
 import com.flipkart.exception.CourseAlreadyRegisteredException;
 import com.flipkart.exception.PaymentFailedException;
@@ -122,12 +125,12 @@ public class MainMenu {
 				Student student = new Student(userId, name, address, password, branch);
 				StudentOperation studentOperation = new StudentOperation();
 				try {
-					studentOperation.register(student);
+					if(studentOperation.register(student)){
+						System.out.println("\n********* STUDENT REGISTRATION SUCCESSFUL! *********\n\n");
+					}
 				} catch(Exception e) {
-					System.out.println(e.getMessage());
+					e.getMessage();
 				}
-
-				System.out.println("\n********* STUDENT REGISTRATION SUCCESSFUL! *********\n\n");
 			} else {
 				System.out.println("Exiting\n");
 				break;
