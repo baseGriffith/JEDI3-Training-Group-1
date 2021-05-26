@@ -4,9 +4,10 @@
 package com.flipkart.bean;
 
 /**
- * @author dhruv
+ * Stores the properties corresponding to Admin
+ * @author JEDI-Group1
  *
  */
 public class Admin extends User{
-	
+	private int adminId;
 }

@@ -1,5 +1,10 @@
 package com.flipkart.bean;
 
+/** 
+ * Stores the properties corresponding to the CourseCatalog
+ * @author JEDI-Group1
+ *
+ */
 public class CourseCatalogue {
     private int semester;
     private Course[] courses;

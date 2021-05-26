@@ -6,7 +6,8 @@ package com.flipkart.bean;
 import java.sql.Date;
 
 /**
- * @author Nayan
+ * Class containing properties and setter-getter for student registration
+ * @author JEDI-Group1
  *
  */
 public class SemesterRegistration {

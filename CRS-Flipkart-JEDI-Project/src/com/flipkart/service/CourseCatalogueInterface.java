@@ -4,6 +4,11 @@ import com.flipkart.bean.Course;
 import com.flipkart.exception.CourseAlreadyExistsException;
 import com.flipkart.exception.CourseNotFoundException;
 
+/**
+ * Course catalog services used by Admin
+ * @author JEDI-Group1
+ *
+ */
 public interface CourseCatalogueInterface {
 	
     /**

@@ -4,7 +4,8 @@
 package com.flipkart.bean;
 
 /**
- * @author Kaustubh
+ * Class corresponding to notifcations given to user
+ * @author JEDI-Group1
  *
  */
 public class Notification {

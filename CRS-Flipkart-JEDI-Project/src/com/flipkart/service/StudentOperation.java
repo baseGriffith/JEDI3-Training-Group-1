@@ -15,12 +15,16 @@ import com.flipkart.exception.StudentAlreadyExistsException;
 import com.flipkart.exception.StudentRegistrationFailedException;
 import org.apache.log4j.Logger;
 
+/**
+ * Class used for services provided to student users
+ * @author JEDI-Group1
+ *
+ */
 public class StudentOperation implements StudInterface{
     private static Logger logger = Logger.getLogger(StudentOperation.class);
 
     @Override
     public ReportCard viewReportCard(String rollNumber) throws ReportCardGenerationFailedException{
-    	//TODO
         return null;
     }
 
@@ -52,11 +56,12 @@ public class StudentOperation implements StudInterface{
             else if (flag == 2) throw new StudentRegistrationFailedException(student.getUserId());
 
             return true;
+
         } catch (Exception e) {
             logger.info(e.getMessage());
             return false;
         }
-    }
+    }       
 
     public Student getStudent(int studentId) {
         StudentDaoImpl s = new StudentDaoImpl();
