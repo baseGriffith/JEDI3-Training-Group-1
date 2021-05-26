@@ -10,8 +10,20 @@ import java.util.Date;
  *
  */
 public class Student extends User{
+	@Override
+	public String toString() {
+		return "Student{" +
+				"branch='" + branch + '\'' +
+				", joiningDate=" + joiningDate +
+				", semester=" + semester +
+				", userId=" + userId +
+				", name='" + name + '\'' +
+				", address='" + address + '\'' +
+				", password='" + password + '\'' +
+				'}';
+	}
 
-	private String branch;	
+	private String branch;
 	private Date joiningDate;
 	private int semester;
 	

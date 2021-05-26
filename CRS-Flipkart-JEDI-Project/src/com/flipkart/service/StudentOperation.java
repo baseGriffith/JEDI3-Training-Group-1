@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.flipkart.bean.Course;
 import com.flipkart.bean.ReportCard;
+import com.flipkart.bean.Student;
 import com.flipkart.dao.StudentDaoImpl;
 import com.flipkart.exception.PaymentFailedException;
 import com.flipkart.exception.ReportCardGenerationFailedException;
@@ -31,5 +32,12 @@ public class StudentOperation implements StudInterface{
     		throw new PaymentFailedException(studentId);
     	}
         return feeStatus;
-    }   
+    }
+
+    @Override
+    public Student getStudent(int studentId) {
+        StudentDaoImpl s = new StudentDaoImpl();
+        Student ret = s.getStudent(studentId);
+        return ret;
+    }
 }
