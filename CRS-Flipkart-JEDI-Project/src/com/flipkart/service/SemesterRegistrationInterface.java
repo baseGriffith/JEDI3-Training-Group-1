@@ -8,16 +8,19 @@ import com.flipkart.exception.CourseAlreadyRegisteredException;
 import com.flipkart.exception.StudentRegistrationFailedException;
 
 /**
- * @author nayan
+ * Class used for services for registered courses
+ * @author JEDI-Group1
  *
  */
 public interface SemesterRegistrationInterface {
 	
-	/** To request a course
-	 * @param rollNumber
+	/**
+	 * 
+	 * @param studentId
 	 * @param courseId
-	 * @param semester
-	 * @return
+	 * @return whether the course has been added or not 
+	 * @throws CourseAlreadyRegisteredException
+	 * @throws CourseAlreadyFullException
 	 */
 	
 	public boolean addCourse(int studentId, int courseId) throws CourseAlreadyRegisteredException, CourseAlreadyFullException;
@@ -26,13 +29,16 @@ public interface SemesterRegistrationInterface {
 	 * @param rollNumber
 	 * @param courseId
 	 * @param semester
-	 * @return
+	 * @return whether the course has been dropped or not
 	 */
 	public boolean dropCourse(int studentId, int courseId);
 
-	/** print list of courses in which the student is enrolled 
-	 * @param rollNumber
+	
+	/**
+	 * prints the list of courses registered by the student
+	 * @param studentId
 	 * @param semester
+	 * @return whether the list has been returned or not
 	 */
 	public boolean showRegisteredCourses(int studentId, int semester);
 	

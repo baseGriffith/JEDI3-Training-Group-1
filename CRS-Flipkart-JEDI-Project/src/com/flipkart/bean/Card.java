@@ -6,7 +6,8 @@ package com.flipkart.bean;
 import java.util.Date;
 
 /**
- * @author lenovo
+ * Stores the properties corresponding to card payment
+ * @author JEDI-Group1
  *
  */
 public class Card extends Payment {

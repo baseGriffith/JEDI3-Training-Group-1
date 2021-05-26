@@ -6,14 +6,18 @@ package com.flipkart.service;
 import com.flipkart.exception.ReportCardGenerationFailedException;
 
 /**
- * @author Kaustubh
+ * Class used for services for report card
+ * @author JEDI-Group1
  *
  */
 public interface ReportCardInterface{
 	
 	
 	/**
-	 * Get the report card for the student
+	 * 
+	 * @param studentId
+	 * @param semester
+	 * @return whether the report card has been generated
 	 * @throws ReportCardGenerationFailedException
 	 */
 	public boolean printReportCard(int studentId, int semester) throws ReportCardGenerationFailedException;

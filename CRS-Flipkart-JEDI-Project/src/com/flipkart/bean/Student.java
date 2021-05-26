@@ -6,7 +6,8 @@ package com.flipkart.bean;
 import java.util.Date;
 
 /**
- * @author dhruv
+ * student user class
+ * @author JEDI-Group1
  *
  */
 public class Student extends User{

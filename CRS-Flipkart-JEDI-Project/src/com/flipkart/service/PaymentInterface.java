@@ -3,7 +3,8 @@ package com.flipkart.service;
 import com.flipkart.exception.PaymentFailedException;
 
 /**
- * @author dhruv
+ * Service used by the student to pay fees for registering for a semester
+ * @author JEDI-Group1
  *
  */
 public interface PaymentInterface {	

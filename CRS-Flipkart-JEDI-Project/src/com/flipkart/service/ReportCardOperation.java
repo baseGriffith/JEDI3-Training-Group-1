@@ -5,17 +5,20 @@ package com.flipkart.service;
 
 import java.util.ArrayList;
 
+import org.apache.log4j.Logger;
+
 import com.flipkart.dao.RegistrationDaoImpl;
 import com.flipkart.dao.RegistrationDaoInterface;
 import com.flipkart.exception.ReportCardGenerationFailedException;
 import com.flipkart.bean.RegisteredCourse;
 
 /**
- * @author Kaustubh
+ * @author JEDI-Group1
  *
  */
 public class ReportCardOperation implements ReportCardInterface{
 	
+	private static Logger logger = Logger.getLogger(AdminOperation.class);
 	@Override
 
 	public boolean printReportCard(int studentId, int semester) throws ReportCardGenerationFailedException {
@@ -29,11 +32,10 @@ public class ReportCardOperation implements ReportCardInterface{
 			}
 			
 			for(RegisteredCourse registeredCourse : registeredCourses) {
-				System.out.println("Student "+studentId+" has got "+registeredCourse.getGrade()+" grade in "+registeredCourse.getCourseName()+ " course");
+				logger.info("Student "+studentId+" has got "+registeredCourse.getGrade()+" grade in "+registeredCourse.getCourseName()+ " course");
 			}
 			return true;
 		} catch(ReportCardGenerationFailedException e) {
-			System.out.println(e.getMessage());
 			return false;
 		}
 	}

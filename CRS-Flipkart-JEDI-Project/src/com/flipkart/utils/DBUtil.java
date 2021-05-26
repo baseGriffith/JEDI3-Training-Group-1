@@ -21,7 +21,7 @@ public class DBUtil {
             	Properties prop = new Properties();
                 InputStream inputStream = DBUtil.class.getClassLoader().getResourceAsStream("./config.properties");
                 prop.load(inputStream);
-                String driver = prop.getProperty("driver");
+                String driver = "com.mysql.cj.jdbc.Driver";
                 String url = prop.getProperty("url");
                 String user = prop.getProperty("user");
                 String password = "root";

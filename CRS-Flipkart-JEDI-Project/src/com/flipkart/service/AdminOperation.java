@@ -3,6 +3,8 @@
  */
 package com.flipkart.service;
 
+import org.apache.log4j.Logger;
+
 import com.flipkart.bean.Professor;
 import com.flipkart.bean.Student;
 import com.flipkart.dao.AdminDaoImpl;
@@ -12,12 +14,14 @@ import com.flipkart.exception.ReportCardGenerationFailedException;
 import com.flipkart.exception.StudentNotApprovedException;
 
 /**
- * @author dhruv
+ * @author JEDI-Group1
  *
  */
 
 public class AdminOperation implements AdminInterface{
 
+	private static Logger logger = Logger.getLogger(AdminOperation.class);
+	
 	@Override	
 	public boolean approveStudent(Student student) throws StudentNotApprovedException{
 		// TODO Auto-generated method stub
@@ -30,17 +34,17 @@ public class AdminOperation implements AdminInterface{
 		AdminDaoInterface admin = new AdminDaoImpl();
 		boolean ok = admin.addProfessor(professor);
 		if(ok)
-			System.out.println("Professor added");
+			logger.info("Professor added");
 		else {
 			throw new ProfessorAlreadyExistException(professor.getUserId());
 		}
 	}
 
 	@Override
-	public String generateReportCard(String rollNumber) throws ReportCardGenerationFailedException{
+	public void generateReportCard(String rollNumber) throws ReportCardGenerationFailedException{
 		// TODO Auto-generated method stub
-		System.out.println("Report card generated");
-		return null;
+		logger.info("Print the grade sheet");
+		return;
 	}
 
 
