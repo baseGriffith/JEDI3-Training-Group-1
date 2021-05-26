@@ -16,7 +16,7 @@ public interface ReportCardInterface{
 	 * Get the report card for the student
 	 * @throws ReportCardGenerationFailedException
 	 */
-	public void printReportCard() throws ReportCardGenerationFailedException;
+	public boolean printReportCard(int studentId, int semester) throws ReportCardGenerationFailedException;
 
 	
 }

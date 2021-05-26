@@ -9,9 +9,10 @@ public interface RegistrationDaoInterface {
 	 * 
 	 * @param courseId
 	 * @param studentId
+	 * @param courseName
 	 * @return
 	 */
-	boolean addCourse(int courseId, int studentId);
+	int addCourse(int courseId, int studentId);
 	/**
 	 * 
 	 * @param courseId
@@ -24,6 +25,10 @@ public interface RegistrationDaoInterface {
 	 * @param studentId
 	 * @return
 	 */
-	ArrayList<RegisteredCourse> viewRegisteredCourses(int studentId);
+	ArrayList<RegisteredCourse> viewRegisteredCourses(int studentId, int semester);
+	
+	RegisteredCourse getRegisteredCourse(int studentId, int courseId);
+	
+	
 	
 }

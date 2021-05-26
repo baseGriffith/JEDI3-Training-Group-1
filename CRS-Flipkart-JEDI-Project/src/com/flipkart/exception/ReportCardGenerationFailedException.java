@@ -1,9 +1,9 @@
 package com.flipkart.exception;
 
 public class ReportCardGenerationFailedException extends Exception{
-    private String studentId;
+    private int studentId;
 
-    public ReportCardGenerationFailedException(String studentId) {
+    public ReportCardGenerationFailedException(int studentId) {
         this.studentId = studentId;
     }
 
