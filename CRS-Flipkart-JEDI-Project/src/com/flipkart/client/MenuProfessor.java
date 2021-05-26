@@ -14,12 +14,13 @@ public class MenuProfessor {
 		return in.nextInt();
 	}
 	public static void professorMenu() {
-		System.out.println("What do you want:  ");
+		System.out.println("*******What do you want*********");
 		System.out.println("(1).Register Course ");
 		System.out.println("(2).View  Enrolled Students");
 		System.out.println("(3).Grade Students of a course ");
 		System.out.println("(4).Get all teaching courses");
 		System.out.println("(5).if you want to logout");
+		System.out.println("********************************");
 	}
 
 	public static void professorFunctionalities(Professor professor) {
