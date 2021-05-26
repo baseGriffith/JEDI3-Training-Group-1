@@ -5,7 +5,19 @@ import java.util.Scanner;
 import com.flipkart.bean.Professor;
 import com.flipkart.bean.Student;
 import com.flipkart.bean.User;
+<<<<<<< HEAD
+import com.flipkart.exception.PaymentFailedException;
+import com.flipkart.exception.ReportCardGenerationFailedException;
+import com.flipkart.service.AdminOperation;
+import com.flipkart.service.AdminInterface;
+
+import com.flipkart.service.ProfessorOperation;
+import com.flipkart.service.StudentOperation;
+
+import java.util.Scanner;
+=======
 import com.flipkart.service.UserOperation;
+>>>>>>> 7b52b9aaeeb62f8bf07313ac5bbb17eb464e2307
 
 public class MainMenu {
 
@@ -34,7 +46,7 @@ public class MainMenu {
 		return new User(userId, password);
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws PaymentFailedException, ReportCardGenerationFailedException {
 		// TODO Auto-generated method stub
 
 		Scanner in = new Scanner(System.in);
@@ -42,6 +54,25 @@ public class MainMenu {
 		while (true) {
 
 			MainMenu.topMenu();
+<<<<<<< HEAD
+			int choice = MainMenu.get_choice();
+			if(choice == 4) break;
+			// get username password
+			User u = MainMenu.getUsernamePassword();
+			switch (choice) {
+				case 1:
+					//authorize - make student function call
+					// make student using user we fetched
+					MenuStudent.studentFunctionalities(new Student());
+					break;
+				case 2:
+					//authorize - similar to  student
+					new MenuProfessor().professorFunctionalities(new Professor());
+					break;
+				case 3:
+					//authorize - similar to student
+					new MenuAdmin().adminFunctionalities(new Student(),new Professor());
+=======
 			int actionChoice = in.nextInt();
 
 			if (actionChoice == 1) {
@@ -51,6 +82,7 @@ public class MainMenu {
 				
 				// to exit the user menu area
 				if (userChoice == 4)
+>>>>>>> 7b52b9aaeeb62f8bf07313ac5bbb17eb464e2307
 					break;
 
 				switch (userChoice) {
