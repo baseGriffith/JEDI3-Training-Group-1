@@ -16,6 +16,20 @@ import com.flipkart.utils.DBUtil;
 
 public class UserDaoImpl implements UserDaoInterface {
 
+	private static volatile UserDaoImpl instance = null;
+	 
+    // private constructor
+    private UserDaoImpl() {}
+ 
+    public static UserDaoImpl getInstance() {
+        if (instance == null) {
+            synchronized (UserDaoImpl.class) {
+                instance = new UserDaoImpl();
+            }
+        }
+        return instance;
+    }
+	
 	private static Logger logger = Logger.getLogger(UserDaoImpl.class);
 	@Override
 	public boolean login(int userId, String password) {

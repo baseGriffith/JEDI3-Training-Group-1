@@ -15,6 +15,20 @@ public class RegistrationDaoImpl implements RegistrationDaoInterface {
 	
 	private static Logger logger = Logger.getLogger(RegistrationDaoImpl.class);
 	
+	private static volatile RegistrationDaoImpl instance = null;
+	 
+    // private constructor
+    private RegistrationDaoImpl() {}
+ 
+    public static RegistrationDaoImpl getInstance() {
+        if (instance == null) {
+            synchronized (RegistrationDaoImpl.class) {
+                instance = new RegistrationDaoImpl();
+            }
+        }
+        return instance;
+    }
+	
 	public int addCourse(int courseId, int studentId) {
 
 		try {

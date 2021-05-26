@@ -3,3 +3,5 @@
 01:24:30,119  INFO AdminOperation,main:37 - Professor added
 01:24:47,234  INFO AdminOperation,main:19 - Course successfully added!
 01:24:56,515  INFO AdminOperation,main:29 - Course successfully added!
+01:40:19,009  INFO StudentDaoImpl,main:75 - 1
+01:40:19,011  INFO StudentOperation,main:63 - Student with id 1 already exists

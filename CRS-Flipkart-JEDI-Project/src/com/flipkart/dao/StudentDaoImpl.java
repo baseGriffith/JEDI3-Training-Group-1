@@ -19,6 +19,20 @@ import com.flipkart.utils.DBUtil;
 
 public class StudentDaoImpl implements StudentDaoInterface {
 	
+	private static volatile StudentDaoImpl instance = null;
+	 
+    // private constructor
+    private StudentDaoImpl() {}
+ 
+    public static StudentDaoImpl getInstance() {
+        if (instance == null) {
+            synchronized (StudentDaoImpl.class) {
+                instance = new StudentDaoImpl();
+            }
+        }
+        return instance;
+    }
+	
 	private static Logger logger = Logger.getLogger(StudentDaoImpl.class);
 	@Override
 	public Student getStudent(int studentId) {
