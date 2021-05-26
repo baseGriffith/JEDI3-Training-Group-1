@@ -28,6 +28,7 @@ public class MenuAdmin {
 	
 	public static void adminFunctionalities() throws ProfessorAlreadyExistException, CourseNotFoundException, CourseAlreadyExistsException {
 		Scanner in = new Scanner(System.in);
+		System.out.println("");
 		while(true) {
 			MenuAdmin.adminMenu();
 			int choice  = MenuAdmin.get_choice();
