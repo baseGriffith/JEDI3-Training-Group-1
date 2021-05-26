@@ -47,7 +47,9 @@ public class StudentOperation implements StudInterface{
 
     @Override
     public ArrayList<Course> viewRegisteredCourses(int studentId) {
-    	StudentDaoImpl s=StudentDaoImpl.getInstance();
+
+    	StudentDaoImpl s= StudentDaoImpl.getInstance();
+
     	ArrayList<Course> courses = s.viewRegisteredCourses(studentId);
     	return courses;
     }
@@ -55,7 +57,8 @@ public class StudentOperation implements StudInterface{
     @Override
     public boolean payFees(int studentId,int amount,String mode) throws PaymentFailedException{
         // implement whole frees payment function
-    	StudentDaoImpl s=StudentDaoImpl.getInstance();
+    	StudentDaoImpl s= StudentDaoImpl.getInstance();
+
     	boolean feeStatus=s.payFees(studentId, amount, mode);
     	if(feeStatus==false) {
     		throw new PaymentFailedException(studentId);
@@ -67,7 +70,8 @@ public class StudentOperation implements StudInterface{
 
     public boolean register(Student student) throws StudentAlreadyExistsException, StudentRegistrationFailedException {
         try {
-            StudentDaoInterface studentDao = StudentDaoImpl.getInstance();
+        	StudentDaoInterface studentDao =  StudentDaoImpl.getInstance();
+
             int flag = studentDao.register(student);
             if (flag == 0) throw new StudentAlreadyExistsException(student.getUserId());
             else if (flag == 2) throw new StudentRegistrationFailedException(student.getUserId());
@@ -89,18 +93,21 @@ public class StudentOperation implements StudInterface{
     }
     public ArrayList<Student> fetchAllStudents() {
         ArrayList<Student> st = new ArrayList<Student>();
-        StudentDaoImpl sdi = new StudentDaoImpl();
+        StudentDaoImpl sdi =  StudentDaoImpl.getInstance();
         return sdi.fetchAllStudents();
     }
 
     public boolean removeStudent(int studentId) {
-        StudentDaoImpl sdi = StudentDaoImpl.getInstance();
+        StudentDaoImpl sdi =  StudentDaoImpl.getInstance();
+
         return sdi.removeStudent(studentId);
     }
     
     @Override
     public void approveStudent(int studentId) {
-        StudentDaoImpl sdi =StudentDaoImpl.getInstance();
+
+        StudentDaoImpl sdi =  StudentDaoImpl.getInstance();
+
         sdi.approveStudent(studentId);
     }
 }

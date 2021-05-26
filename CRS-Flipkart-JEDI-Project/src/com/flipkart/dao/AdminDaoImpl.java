@@ -20,6 +20,21 @@ import com.flipkart.utils.DBUtil;
 public class AdminDaoImpl implements AdminDaoInterface{
 	
 	private static Logger logger = Logger.getLogger(AdminDaoImpl.class);
+	
+	private static volatile AdminDaoImpl instance = null;
+	 
+    // private constructor
+    private AdminDaoImpl() {}
+ 
+    public static AdminDaoImpl getInstance() {
+        if (instance == null) {
+            synchronized (AdminDaoImpl.class) {
+                instance = new AdminDaoImpl();
+            }
+        }
+        return instance;
+    }
+	
     @Override
     public void approveStudent(int studentId) {
         try {

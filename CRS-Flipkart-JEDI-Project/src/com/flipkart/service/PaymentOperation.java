@@ -23,7 +23,9 @@ public class PaymentOperation implements PaymentInterface{
 	@Override
     public boolean payFees(int studentId,int amount,String mode) throws PaymentFailedException{
         // implement whole frees payment function
-    	StudentDaoImpl s=StudentDaoImpl.getInstance();
+
+    	StudentDaoImpl s= StudentDaoImpl.getInstance();
+
     	boolean feeStatus=s.payFees(studentId, amount, mode);
     	if(feeStatus==false) {
     		throw new PaymentFailedException(studentId);

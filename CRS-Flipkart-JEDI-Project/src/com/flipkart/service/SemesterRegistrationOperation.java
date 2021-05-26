@@ -39,7 +39,8 @@ public class SemesterRegistrationOperation implements SemesterRegistrationInterf
 	@Override
 	public boolean addCourse(int studentId, int courseId) throws CourseAlreadyRegisteredException, CourseAlreadyFullException {
 		try {
-			RegistrationDaoInterface semesterRegistration = RegistrationDaoImpl.getInstance();
+
+			RegistrationDaoInterface semesterRegistration =  RegistrationDaoImpl.getInstance();
 			
 			if(semesterRegistration.addCourse(courseId, studentId) == 2) {
 				return true;
@@ -58,7 +59,9 @@ public class SemesterRegistrationOperation implements SemesterRegistrationInterf
 	@Override
 	public boolean dropCourse(int studentId, int courseId) {
 
-		RegistrationDaoInterface semesterRegistration = RegistrationDaoImpl.getInstance();
+
+		RegistrationDaoInterface semesterRegistration =  RegistrationDaoImpl.getInstance();
+
 		if(semesterRegistration.dropCourse(courseId, studentId)) {
 			return true;
 		};
