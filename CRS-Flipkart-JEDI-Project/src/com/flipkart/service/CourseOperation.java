@@ -14,7 +14,7 @@ public class CourseOperation implements CourseInterface {
 	private static Logger logger = Logger.getLogger(AdminOperation.class);
 	
     public void modifyDetails(Course modifiedCourse)  throws CourseNotFoundException{
-        AdminDaoInterface admin = new AdminDaoImpl();
+        AdminDaoInterface admin = AdminDaoImpl.getInstance();
         boolean ok = admin.modifyCourseDetails(modifiedCourse);
         if(ok)
             logger.info("Course details modified!");

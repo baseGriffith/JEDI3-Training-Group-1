@@ -13,7 +13,7 @@ public class CourseCatalogueOperation implements CourseCatalogueInterface {
 	private static Logger logger = Logger.getLogger(AdminOperation.class);
 	
     public void addCourse(Course newCourse) throws CourseAlreadyExistsException{
-        AdminDaoInterface admin = new AdminDaoImpl();
+        AdminDaoInterface admin = AdminDaoImpl.getInstance();
         boolean ok = admin.addCourse(newCourse);
         if(ok)
            logger.info("Course successfully added!");
@@ -23,7 +23,7 @@ public class CourseCatalogueOperation implements CourseCatalogueInterface {
     }
 
     public void deleteCourse(int courseId) throws CourseNotFoundException{
-        AdminDaoInterface admin = new AdminDaoImpl();
+        AdminDaoInterface admin = AdminDaoImpl.getInstance();
         boolean ok = admin.removeCourse(courseId);
         if(ok)
             logger.info("Course successfully added!");

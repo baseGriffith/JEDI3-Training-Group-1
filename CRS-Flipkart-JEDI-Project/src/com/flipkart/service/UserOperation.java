@@ -21,7 +21,7 @@ public class UserOperation implements UserInterface{
 	
 	@Override
 	public boolean login(int userId, String password) throws LoginException{
-		UserDaoImpl userDaoImpl=new UserDaoImpl();
+		UserDaoImpl userDaoImpl= UserDaoImpl.getInstance();
 		boolean response=userDaoImpl.login(userId, password);
 		if(response==false) {
 			throw new LoginException(userId);
@@ -31,7 +31,7 @@ public class UserOperation implements UserInterface{
 
 	@Override
 	public boolean updatePassword(int userId, String password){
-		UserDaoImpl userDaoImpl=new UserDaoImpl();
+		UserDaoImpl userDaoImpl= UserDaoImpl.getInstance();
 		boolean response=userDaoImpl.updatePassword(userId, password);
 		logger.info(response);
 		return response;		
@@ -39,14 +39,14 @@ public class UserOperation implements UserInterface{
 
 	@Override
 	public ArrayList <Course> getCourseCatalog(int semester) {
-		UserDaoImpl userDaoImpl=new UserDaoImpl();
+		UserDaoImpl userDaoImpl= UserDaoImpl.getInstance();
 		ArrayList <Course> courses=userDaoImpl.getCourseCatalog(semester);
 		return courses;
 	}	
 	
 	@Override
 	public boolean getRole(int userId,int choice) throws LoginException{
-		UserDaoImpl userDaoImpl=new UserDaoImpl();
+		UserDaoImpl userDaoImpl= UserDaoImpl.getInstance();
 		boolean response=userDaoImpl.getRole(userId,choice);
 		if(response==false) {
 			throw new LoginException(userId);

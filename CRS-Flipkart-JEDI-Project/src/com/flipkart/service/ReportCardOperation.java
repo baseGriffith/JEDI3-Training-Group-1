@@ -23,7 +23,7 @@ public class ReportCardOperation implements ReportCardInterface{
 
 	public boolean printReportCard(int studentId, int semester) throws ReportCardGenerationFailedException {
 		try {
-			RegistrationDaoInterface semesterRegistration = new RegistrationDaoImpl();
+			RegistrationDaoInterface semesterRegistration = RegistrationDaoImpl.getInstance();
 			
 			ArrayList<RegisteredCourse> registeredCourses = semesterRegistration.viewRegisteredCourses(studentId, semester);
 			

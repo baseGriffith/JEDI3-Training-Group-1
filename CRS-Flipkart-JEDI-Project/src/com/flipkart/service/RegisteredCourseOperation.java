@@ -22,7 +22,7 @@ public class RegisteredCourseOperation implements RegisteredCourseInterface {
 	@Override
 	public boolean dropCourse(int studentId, int courseId) throws CourseNotFoundException {
 		try {
-			RegistrationDaoInterface semesterRegistration = new RegistrationDaoImpl();
+			RegistrationDaoInterface semesterRegistration =  RegistrationDaoImpl.getInstance();
 			if(semesterRegistration.dropCourse(studentId, courseId)) {
 				logger.info("Course dropped");
 				return true;
@@ -36,7 +36,7 @@ public class RegisteredCourseOperation implements RegisteredCourseInterface {
 	@Override
 	public String viewGrade(int studentId, int courseId) throws GradeNotAssignedException {
 		try {
-			RegistrationDaoInterface semesterRegistration = new RegistrationDaoImpl();
+			RegistrationDaoInterface semesterRegistration =  RegistrationDaoImpl.getInstance();
 			
 			String grade = semesterRegistration.getRegisteredCourse(studentId, courseId).getGrade();
 			

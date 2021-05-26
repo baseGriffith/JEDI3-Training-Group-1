@@ -31,7 +31,7 @@ public class AdminOperation implements AdminInterface{
 
 	@Override
 	public void addProfessor(Professor professor) throws ProfessorAlreadyExistException{
-		AdminDaoInterface admin = new AdminDaoImpl();
+		AdminDaoInterface admin = AdminDaoImpl.getInstance();
 		boolean ok = admin.addProfessor(professor);
 		if(ok)
 			logger.info("Professor added");
