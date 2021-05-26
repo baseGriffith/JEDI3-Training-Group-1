@@ -22,7 +22,7 @@ public class ReportCardOperation implements ReportCardInterface{
 		try {
 			RegistrationDaoInterface semesterRegistration = new RegistrationDaoImpl();
 			
-			ArrayList<RegisteredCourse> registeredCourses = semesterRegistration.viewRegisteredCourses(studentId);
+			ArrayList<RegisteredCourse> registeredCourses = semesterRegistration.viewRegisteredCourses(studentId, semester);
 			
 			for(RegisteredCourse registeredCourse : registeredCourses) {
 				if(registeredCourse.getGrade().equals("NA")) throw new ReportCardGenerationFailedException(studentId);
