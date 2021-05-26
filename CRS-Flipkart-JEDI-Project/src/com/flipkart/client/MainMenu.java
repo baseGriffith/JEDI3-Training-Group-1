@@ -5,7 +5,7 @@ import java.util.Scanner;
 import com.flipkart.bean.Professor;
 import com.flipkart.bean.Student;
 import com.flipkart.bean.User;
-
+import com.flipkart.exception.*;
 import com.flipkart.dao.StudentDaoImpl;
 import com.flipkart.dao.StudentDaoInterface;
 import com.flipkart.exception.CourseAlreadyFullException;
@@ -14,10 +14,13 @@ import com.flipkart.exception.PaymentFailedException;
 import com.flipkart.exception.ReportCardGenerationFailedException;
 import com.flipkart.service.StudentOperation;
 import com.flipkart.service.UserOperation;
+import org.apache.log4j.Logger;
 import sun.applet.Main;
 
 public class MainMenu {
 	public static int loggedInUser;
+	private static Logger logger = Logger.getLogger(MainMenu.class);
+
 	public static void topMenu() {
 		System.out.println("*****Welcome*******");
 		System.out.println("#Press 1 for login");
@@ -44,11 +47,11 @@ public class MainMenu {
 		return new User(userId, password);
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ProfessorAlreadyExistException {
 		// TODO Auto-generated method stub
 
 		Scanner in = new Scanner(System.in);
-
+		logger.info("star");
 		while (true) {
 			MainMenu.topMenu();
 			int actionChoice = in.nextInt();
@@ -93,7 +96,7 @@ public class MainMenu {
 						break;
 					case 3:
 						if(login(userChoice)==true) {
-							//MenuAdmin.adminFunctionalities(new Student(), new Professor());
+							MenuAdmin.adminFunctionalities();
 						}
 						else {
 							System.out.println("Invalid login\n");

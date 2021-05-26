@@ -31,7 +31,7 @@ public class AdminDaoImpl implements AdminDaoInterface{
             String sql = "insert into User values(" + professor.getUserId() + ",'" + professor.getName() +"','"
                     + professor.getAddress() + "','" + professor.getPassword() + "')";
             stmt.executeUpdate(sql);
-            sql = "insert into Professor values(" + professor.getUserId() + ",'" + professor.getName() +"')";
+            sql = "insert into Professor values(" + professor.getUserId() + ",'" + professor.getDepartment() +"')";
             stmt.executeUpdate(sql);
         }
         catch (Exception e) {
