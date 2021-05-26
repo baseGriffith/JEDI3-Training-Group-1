@@ -11,10 +11,25 @@ import com.flipkart.exception.ProfessorDoesNotExistException;
 
 public class CourseOperation implements CourseInterface {
 	
+	private static volatile CourseOperation instance = null;
+	 
+    // private constructor
+    private CourseOperation() {
+    }
+ 
+    public static CourseOperation getInstance() {
+        if (instance == null) {
+            synchronized (CourseOperation.class) {
+                instance = new CourseOperation();
+            }
+        }
+        return instance;
+    }
+	
 	private static Logger logger = Logger.getLogger(AdminOperation.class);
 	
     public void modifyDetails(Course modifiedCourse)  throws CourseNotFoundException{
-        AdminDaoInterface admin = new AdminDaoImpl();
+        AdminDaoInterface admin = AdminDaoImpl.getInstance();
         boolean ok = admin.modifyCourseDetails(modifiedCourse);
         if(ok)
             logger.info("Course details modified!");

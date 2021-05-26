@@ -35,12 +35,12 @@ public class MenuStudent {
 		while(true) {
 			studentMenu();
 			int choice  = MenuStudent.get_choice();
-			StudentOperation f = new StudentOperation();
-			ReportCardInterface reportCard = new ReportCardOperation();
+			StudentOperation f = StudentOperation.getInstance();
+			ReportCardInterface reportCard = ReportCardOperation.getInstance();
 			switch (choice) {
 
 				case 1:
-					UserInterface user = new UserOperation();
+					UserInterface user = UserOperation.getInstance();
 					ArrayList<Course> courseCatalog = user.getCourseCatalog(student.getSemester());
 					for(Course course:courseCatalog) {
 						System.out.println("Course Code: "+course.getCourseCode()+" Course Name: "+course.getCourseName());
@@ -178,9 +178,26 @@ public class MenuStudent {
 					System.out.println("Choose mode of payment: 1) Card 2)Net Banking");
 					int modeOfPaymentChoice = in.nextInt();
 					String modeOfPayment = modeOfPaymentChoice == 1 ? "Card" : "Net Banking";
+					if(modeOfPaymentChoice==1) {
+						System.out.print("Enter the card number: ");
+						in.nextLine();
+						System.out.print("Enter the expiry date: MM/YYYY");
+						in.nextLine();
+						System.out.print("Enter the CVV number: ");
+						in.nextLine();
+					}
+					else {
+						System.out.print("Enter the bank name: ");
+						in.nextLine();
+						System.out.print("Enter the userId: ");
+						in.nextLine();
+						System.out.print("Enter the password: ");
+						in.nextLine();
+					}
 					boolean status = f.payFees(student.getUserId(), amount, modeOfPayment);
 					if(status) {
-						SemesterRegistrationOperation sro = new SemesterRegistrationOperation();
+						System.out.println("Payment successfull!!");
+						SemesterRegistrationOperation sro = SemesterRegistrationOperation.getInstance();
 						for(Integer x: courseIdPrimary) {
 							sro.addCourse(student.getUserId(), x);
 						}

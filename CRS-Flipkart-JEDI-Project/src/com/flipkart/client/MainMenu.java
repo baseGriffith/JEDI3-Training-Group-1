@@ -7,7 +7,6 @@ import org.apache.log4j.Logger;
 import com.flipkart.bean.Professor;
 import com.flipkart.bean.Student;
 import com.flipkart.bean.User;
-import com.flipkart.exception.*;
 import com.flipkart.exception.CourseAlreadyExistsException;
 import com.flipkart.exception.CourseAlreadyFullException;
 import com.flipkart.exception.CourseAlreadyRegisteredException;
@@ -71,7 +70,7 @@ public class MainMenu {
 					case 1:
 						if(login(userChoice)==true) {
 							try {
-								StudentOperation stOp = new StudentOperation();
+								StudentOperation stOp = StudentOperation.getInstance();
 								Student st = stOp.getStudent(MainMenu.loggedInUser);
 								MenuStudent.studentFunctionalities(st);
 							} catch (ReportCardGenerationFailedException e) {
@@ -90,7 +89,7 @@ public class MainMenu {
 						break;
 					case 2:
 						if(login(userChoice)==true) {							
-							MenuProfessor.professorFunctionalities(new Professor());
+							MenuProfessor.professorFunctionalities(new Professor(MainMenu.loggedInUser));
 						}
 						else {
 							System.out.println("Invalid login\n");
@@ -124,7 +123,7 @@ public class MainMenu {
 				String branch = in.next();
 
 				Student student = new Student(userId, name, address, password, branch);
-				StudentOperation studentOperation = new StudentOperation();
+				StudentOperation studentOperation = StudentOperation.getInstance();
 				try {
 					if(studentOperation.register(student)){
 						System.out.println("\n********* STUDENT REGISTRATION SUCCESSFUL! *********\n\n");
@@ -142,7 +141,7 @@ public class MainMenu {
 
 	public static boolean login(int userChoice) {
 		User user = MainMenu.getUsernamePassword();
-		UserOperation userOperation = new UserOperation();
+		UserOperation userOperation = UserOperation.getInstance();
 		try {
 			userOperation.login(user.getUserId(), user.getPassword());
 			userOperation.getRole(user.getUserId(),userChoice);
@@ -157,7 +156,7 @@ public class MainMenu {
 
 	public static void userUpdatePassword() throws LoginException {
 		User user = MainMenu.getUsernamePassword();
-		UserOperation userOperation = new UserOperation();
+		UserOperation userOperation = UserOperation.getInstance();
 		userOperation.login(user.getUserId(), user.getPassword());
 		Scanner in=new Scanner(System.in);
 

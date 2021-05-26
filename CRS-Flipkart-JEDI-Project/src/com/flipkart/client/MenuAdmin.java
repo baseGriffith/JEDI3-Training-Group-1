@@ -1,15 +1,19 @@
 package com.flipkart.client;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Professor;
 import com.flipkart.bean.Student;
 import com.flipkart.exception.CourseAlreadyExistsException;
 import com.flipkart.exception.CourseNotFoundException;
 import com.flipkart.exception.ProfessorAlreadyExistException;
-import com.flipkart.service.*;
-
-import java.util.ArrayList;
-import java.util.Scanner;
+import com.flipkart.service.AdminInterface;
+import com.flipkart.service.AdminOperation;
+import com.flipkart.service.CourseCatalogueOperation;
+import com.flipkart.service.StudentOperation;
+import com.flipkart.service.UserOperation;
 
 public class MenuAdmin {
 	public static int get_choice() {
@@ -31,10 +35,10 @@ public class MenuAdmin {
 		while(true) {
 			MenuAdmin.adminMenu();
 			int choice  = MenuAdmin.get_choice();
-			AdminInterface a = new AdminOperation();
+			AdminInterface a = AdminOperation.getInstance();
 			switch (choice) {
 				case 1:
-					StudentOperation studentOperation = new StudentOperation();
+					StudentOperation studentOperation = StudentOperation.getInstance();
 					ArrayList<Student> students = studentOperation.fetchAllStudents();
 					System.out.println("Pending Requests: ");
 					for(Student st: students) {
@@ -69,7 +73,7 @@ public class MenuAdmin {
 					p.setName(name);
 					p.setDepartment(department);
 					p.setAddress(add);
-					AdminInterface adminOp = new AdminOperation();
+					AdminInterface adminOp = AdminOperation.getInstance();
 					adminOp.addProfessor(p);
 					break;
 				case 3:
@@ -90,12 +94,12 @@ public class MenuAdmin {
 					c.setDepartment(depart);
 					c.setCourseId(id);
 					c.setProfessorId(-1);
-					CourseCatalogueOperation cco = new CourseCatalogueOperation();
+					CourseCatalogueOperation cco = CourseCatalogueOperation.getInstance();
 					cco.addCourse(c);
 					break;
 				case 4:
-					CourseCatalogueOperation courseCatalogueOperation = new CourseCatalogueOperation();
-					UserOperation userOperation = new UserOperation();
+					CourseCatalogueOperation courseCatalogueOperation = CourseCatalogueOperation.getInstance();
+					UserOperation userOperation = UserOperation.getInstance();
 					System.out.print("Enter Semester From which you want to remove the course:");
 					int sem = in.nextInt();
 					ArrayList<Course> courses = userOperation.getCourseCatalog(sem);

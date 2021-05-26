@@ -10,10 +10,25 @@ import com.flipkart.dao.*;
 
 public class ProfessorOperation implements ProfessorInterface {
 
+	private static volatile ProfessorOperation instance = null;
+	 
+    // private constructor
+    private ProfessorOperation() {
+    }
+ 
+    public static ProfessorOperation getInstance() {
+        if (instance == null) {
+            synchronized (ProfessorOperation.class) {
+                instance = new ProfessorOperation();
+            }
+        }
+        return instance;
+    }
+	
 	@Override
 	public void gradeStudent(int courseId, int studentId, String gradeAlloted) {
 		
-		ProfessorDaoImpl p = new ProfessorDaoImpl();
+		ProfessorDaoImpl p = ProfessorDaoImpl.getInstance();
 		p.gradeCourse(studentId, courseId, gradeAlloted);
 		System.out.println("Student graded");
 
@@ -23,7 +38,7 @@ public class ProfessorOperation implements ProfessorInterface {
 	public boolean registerCourse(int professorId, int courseId) throws CourseAlreadyBeingTaughtException, CourseNotFoundException {
 		
 		try{
-			ProfessorDaoImpl p = new ProfessorDaoImpl();
+			ProfessorDaoImpl p =ProfessorDaoImpl.getInstance();
 			p.signupCourse(professorId, courseId);
 			return true;
 		}
@@ -36,7 +51,7 @@ public class ProfessorOperation implements ProfessorInterface {
 	@Override
 	public ArrayList<Student> getEnrolledStudents(int courseId) throws CourseNotFoundException {
 		try{
-			ProfessorDaoImpl p = new ProfessorDaoImpl();
+			ProfessorDaoImpl p = ProfessorDaoImpl.getInstance();
 			return p.getEnrolledStudents(courseId);
 		}
 		catch(Exception e) {
@@ -48,7 +63,7 @@ public class ProfessorOperation implements ProfessorInterface {
 	public ArrayList<Course> getProfessorRegisteredCourses(int professorId) {
 		// TODO Auto-generated method stub
 		try{
-			ProfessorDaoImpl p = new ProfessorDaoImpl();
+			ProfessorDaoImpl p = ProfessorDaoImpl.getInstance();
 			return p.getProfessorRegisteredCourses(professorId);
 		}
 		catch(Exception e) {

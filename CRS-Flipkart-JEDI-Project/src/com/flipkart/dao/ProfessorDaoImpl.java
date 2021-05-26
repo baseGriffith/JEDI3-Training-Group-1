@@ -21,6 +21,22 @@ public class ProfessorDaoImpl implements ProfessorDaoInterface{
 	
 	private static Logger logger = Logger.getLogger(ProfessorDaoImpl.class);
 	
+	private static volatile ProfessorDaoImpl instance = null;
+	 
+    // private constructor
+    private ProfessorDaoImpl() {
+    }
+ 
+    public static ProfessorDaoImpl getInstance() {
+        if (instance == null) {
+            synchronized (ProfessorDaoImpl.class) {
+                instance = new ProfessorDaoImpl();
+            }
+        }
+        return instance;
+    }
+	
+	
     @Override
     public void signupCourse(int professorId, int courseId) throws CourseAlreadyBeingTaughtException {
         try {

@@ -17,12 +17,28 @@ import com.flipkart.exception.GradeNotAssignedException;
 
 
 public class RegisteredCourseOperation implements RegisteredCourseInterface {
+	
+		private static volatile RegisteredCourseOperation instance = null;
+	 
+    // private constructor
+    private RegisteredCourseOperation() {
+    }
+ 
+    public static RegisteredCourseOperation getInstance() {
+        if (instance == null) {
+            synchronized (RegisteredCourseOperation.class) {
+                instance = new RegisteredCourseOperation();
+            }
+        }
+        return instance;
+    }
+	
 	private static Logger logger = Logger.getLogger(AdminOperation.class);
 	
 	@Override
 	public boolean dropCourse(int studentId, int courseId) throws CourseNotFoundException {
 		try {
-			RegistrationDaoInterface semesterRegistration = new RegistrationDaoImpl();
+			RegistrationDaoInterface semesterRegistration =RegistrationDaoImpl.getInstance();
 			if(semesterRegistration.dropCourse(studentId, courseId)) {
 				logger.info("Course dropped");
 				return true;
@@ -36,7 +52,7 @@ public class RegisteredCourseOperation implements RegisteredCourseInterface {
 	@Override
 	public String viewGrade(int studentId, int courseId) throws GradeNotAssignedException {
 		try {
-			RegistrationDaoInterface semesterRegistration = new RegistrationDaoImpl();
+			RegistrationDaoInterface semesterRegistration = RegistrationDaoImpl.getInstance();
 			
 			String grade = semesterRegistration.getRegisteredCourse(studentId, courseId).getGrade();
 			

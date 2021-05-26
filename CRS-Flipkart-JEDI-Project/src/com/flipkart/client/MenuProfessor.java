@@ -34,7 +34,7 @@ public class MenuProfessor {
 				case 1:
 					System.out.println("Enter the courseId!!");
 					int courseId=MenuProfessor.get_choice();					
-					registerCourse(courseId,3);					
+					registerCourse(courseId,professor.getUserId());					
 					break;
 				case 2:
 					System.out.println("Enter the courseId!!");
@@ -53,7 +53,7 @@ public class MenuProfessor {
 					break;
 				case 4:
 					
-					getRegisteredCourses(3); //enter profId
+					getRegisteredCourses(professor.getUserId()); 
 					break;
 				default:
 					System.out.println("Invalid Choice");
@@ -63,7 +63,7 @@ public class MenuProfessor {
 	
 	public static void registerCourse(int courseId,int userId) {
 		try {
-			ProfessorOperation professorImpl=new ProfessorOperation();
+			ProfessorOperation professorImpl=ProfessorOperation.getInstance();
 			professorImpl.registerCourse(userId,courseId);
 			System.out.println("Course registered!");
 		}
@@ -74,7 +74,7 @@ public class MenuProfessor {
 	
 	public static void getEnrolledStudents(int courseId) {
 		try {
-			ProfessorOperation professorImpl=new ProfessorOperation();
+			ProfessorOperation professorImpl=ProfessorOperation.getInstance();
 			ArrayList<Student> arr=professorImpl.getEnrolledStudents(courseId);
 			for(Student it:arr) {
 				System.out.println(it.getUserId()+" "+it.getName());
@@ -87,7 +87,7 @@ public class MenuProfessor {
 	
 	public static void gradeStudent(int courseId,int studentId,String grade) {
 		try {
-			ProfessorOperation professorImpl=new ProfessorOperation();
+			ProfessorOperation professorImpl=ProfessorOperation.getInstance();
 			professorImpl.gradeStudent(courseId,studentId,grade);
 			System.out.println("Course graded!");
 		}
@@ -98,7 +98,7 @@ public class MenuProfessor {
 	
 	public static void getRegisteredCourses(int professerId) {
 		try {
-			ProfessorOperation professorImpl=new ProfessorOperation();
+			ProfessorOperation professorImpl=ProfessorOperation.getInstance();
 			ArrayList <Course> courses=professorImpl.getProfessorRegisteredCourses(professerId);
 			System.out.println("Course registered are: ");
 			for(Course course:courses) {

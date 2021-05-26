@@ -19,12 +19,27 @@ import com.flipkart.exception.CourseAlreadyRegisteredException;
  */
 public class SemesterRegistrationOperation implements SemesterRegistrationInterface {
 
+	private static volatile SemesterRegistrationOperation instance = null;
+	 
+    // private constructor
+    private SemesterRegistrationOperation() {
+    }
+ 
+    public static SemesterRegistrationOperation getInstance() {
+        if (instance == null) {
+            synchronized (SemesterRegistrationOperation.class) {
+                instance = new SemesterRegistrationOperation();
+            }
+        }
+        return instance;
+    }
+	
 	private static Logger logger = Logger.getLogger(AdminOperation.class);
 	
 	@Override
 	public boolean addCourse(int studentId, int courseId) throws CourseAlreadyRegisteredException, CourseAlreadyFullException {
 		try {
-			RegistrationDaoInterface semesterRegistration = new RegistrationDaoImpl();
+			RegistrationDaoInterface semesterRegistration = RegistrationDaoImpl.getInstance();
 			
 			if(semesterRegistration.addCourse(courseId, studentId) == 2) {
 				return true;
@@ -43,7 +58,7 @@ public class SemesterRegistrationOperation implements SemesterRegistrationInterf
 	@Override
 	public boolean dropCourse(int studentId, int courseId) {
 
-		RegistrationDaoInterface semesterRegistration = new RegistrationDaoImpl();
+		RegistrationDaoInterface semesterRegistration = RegistrationDaoImpl.getInstance();
 		if(semesterRegistration.dropCourse(courseId, studentId)) {
 			return true;
 		};
@@ -54,7 +69,7 @@ public class SemesterRegistrationOperation implements SemesterRegistrationInterf
 	@Override
 	public boolean showRegisteredCourses(int studentId, int semester) {
 		
-		RegistrationDaoInterface semesterRegistration = new RegistrationDaoImpl();
+		RegistrationDaoInterface semesterRegistration = RegistrationDaoImpl.getInstance();
 		
 		ArrayList<RegisteredCourse> registeredCourses = semesterRegistration.viewRegisteredCourses(studentId, semester);
 		logger.info("Registered Courses in " + semester + " semester:-->");

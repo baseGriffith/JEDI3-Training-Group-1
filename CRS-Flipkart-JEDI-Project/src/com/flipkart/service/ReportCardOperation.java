@@ -18,12 +18,27 @@ import com.flipkart.bean.RegisteredCourse;
  */
 public class ReportCardOperation implements ReportCardInterface{
 	
+	private static volatile ReportCardOperation instance = null;
+	 
+    // private constructor
+    private ReportCardOperation() {
+    }
+ 
+    public static ReportCardOperation getInstance() {
+        if (instance == null) {
+            synchronized (ReportCardOperation.class) {
+                instance = new ReportCardOperation();
+            }
+        }
+        return instance;
+    }
+	
 	private static Logger logger = Logger.getLogger(AdminOperation.class);
 	@Override
 
 	public boolean printReportCard(int studentId, int semester) throws ReportCardGenerationFailedException {
 		try {
-			RegistrationDaoInterface semesterRegistration = new RegistrationDaoImpl();
+			RegistrationDaoInterface semesterRegistration = RegistrationDaoImpl.getInstance();
 			
 			ArrayList<RegisteredCourse> registeredCourses = semesterRegistration.viewRegisteredCourses(studentId, semester);
 			
