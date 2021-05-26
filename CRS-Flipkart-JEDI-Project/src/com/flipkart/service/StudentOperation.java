@@ -21,7 +21,6 @@ import com.flipkart.exception.StudentRegistrationFailedException;
 public class StudentOperation implements StudInterface{
     @Override
     public ReportCard viewReportCard(String rollNumber) throws ReportCardGenerationFailedException{
-    	//TODO
         return null;
     }
 
@@ -54,7 +53,6 @@ public class StudentOperation implements StudInterface{
 
             return true;
         }catch(Exception e){
-         System.out.println(e.getMessage());
             return false;
         }
     }

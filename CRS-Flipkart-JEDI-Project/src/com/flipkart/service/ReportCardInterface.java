@@ -14,7 +14,10 @@ public interface ReportCardInterface{
 	
 	
 	/**
-	 * Get the report card for the student
+	 * 
+	 * @param studentId
+	 * @param semester
+	 * @return whether the report card has been generated
 	 * @throws ReportCardGenerationFailedException
 	 */
 	public boolean printReportCard(int studentId, int semester) throws ReportCardGenerationFailedException;

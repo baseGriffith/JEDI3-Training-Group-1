@@ -26,7 +26,6 @@ public interface UserInterface {
 	 * @param userId
 	 * @param password
 	 * @return boolean indicating if successful or not
-	 * @throws LoginException
 	 */
 	boolean updatePassword(int userId, String password);
 	
@@ -34,7 +33,7 @@ public interface UserInterface {
 	/**
 	 * get the course catalog of a particular semester
 	 * @param semester
-	 * @return Course[]
+	 * @return list of courses
 	 */
 	ArrayList <Course> getCourseCatalog(int semester);
 	
@@ -42,7 +41,8 @@ public interface UserInterface {
 	 * 
 	 * @param userId
 	 * @param choice
-	 * @return
+	 * @return the role of user ( student, professor or admin)
+	 * @throws LoginException
 	 */
 	boolean getRole(int userId,int choice)  throws LoginException;
 }
