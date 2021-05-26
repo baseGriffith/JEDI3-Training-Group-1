@@ -33,7 +33,7 @@ public interface StudInterface {
     ArrayList<Course> viewRegisteredCourses(int studentId);
 
     /**
-     * Pay fees after the regsistration 
+     * Pay fees after the registration 
      * @param studentId
      * @throws PaymentFailedException
      * @return boolean indicating if payment was successful
@@ -42,9 +42,9 @@ public interface StudInterface {
 
     boolean register(Student student) throws StudentAlreadyExistsException, StudentRegistrationFailedException;
     /**
-     *
+     * 
      * @param studentId
-     * @return
+     * @return the student
      */
     Student getStudent(int studentId);
 }
