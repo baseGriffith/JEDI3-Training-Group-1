@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 import com.flipkart.bean.Professor;
 import com.flipkart.bean.Student;
 import com.flipkart.bean.User;
+import com.flipkart.exception.*;
 import com.flipkart.exception.CourseAlreadyExistsException;
 import com.flipkart.exception.CourseAlreadyFullException;
 import com.flipkart.exception.CourseAlreadyRegisteredException;
@@ -52,7 +53,7 @@ public class MainMenu {
 		// TODO Auto-generated method stub
 
 		Scanner in = new Scanner(System.in);
-		logger.info("star");
+		logger.info("start");
 		while (true) {
 			MainMenu.topMenu();
 			int actionChoice = in.nextInt();
