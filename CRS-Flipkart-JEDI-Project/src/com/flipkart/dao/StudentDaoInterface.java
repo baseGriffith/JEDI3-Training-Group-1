@@ -1,11 +1,9 @@
 package com.flipkart.dao;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Student;
-import com.flipkart.exception.PaymentFailedException;
 
 public interface StudentDaoInterface {	
 	
@@ -33,5 +31,17 @@ public interface StudentDaoInterface {
 	 * @return a list of registered courses for the semester
 	 */
 	ArrayList <Course> viewRegisteredCourses(int studentId);
-	
+
+	/**
+	 *
+	 * @return
+	 */
+	ArrayList<Student> fetchAllStudents();
+
+	/**
+	 *
+     * @param studentId
+     * @return
+     */
+	boolean removeStudent(int studentId);
 }

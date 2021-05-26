@@ -16,16 +16,27 @@ public class Student extends User{
 				"branch='" + branch + '\'' +
 				", joiningDate=" + joiningDate +
 				", semester=" + semester +
+				", isApproved=" + isApproved +
 				", userId=" + userId +
 				", name='" + name + '\'' +
 				", address='" + address + '\'' +
-				", password='" + password + '\'' +
 				'}';
 	}
+
+
 
 	private String branch;
 	private Date joiningDate;
 	private int semester;
+	private boolean isApproved;
+
+	public boolean getIsApproved() {
+		return isApproved;
+	}
+
+	public void setIsApproved(boolean isApproved) {
+		this.isApproved = isApproved;
+	}
 
 	public Student(){};
 

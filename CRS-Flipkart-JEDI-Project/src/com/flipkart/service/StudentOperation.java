@@ -1,5 +1,6 @@
 package com.flipkart.service;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import com.flipkart.bean.Course;
@@ -41,21 +42,32 @@ public class StudentOperation implements StudInterface{
     @Override
 
     public boolean register(Student student) throws StudentAlreadyExistsException, StudentRegistrationFailedException {
-     try{
+        try {
             StudentDaoInterface studentDao = new StudentDaoImpl();
             int flag = studentDao.register(student);
             if (flag == 0) throw new StudentAlreadyExistsException(student.getUserId());
             else if (flag == 2) throw new StudentRegistrationFailedException(student.getUserId());
 
             return true;
-        }catch(Exception e){
-         System.out.println(e.getMessage());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
             return false;
         }
+    }
 
     public Student getStudent(int studentId) {
         StudentDaoImpl s = new StudentDaoImpl();
         Student ret = s.getStudent(studentId);
         return ret;
+    }
+    public ArrayList<Student> fetchAllStudents() {
+        ArrayList<Student> st = new ArrayList<Student>();
+        StudentDaoImpl sdi = new StudentDaoImpl();
+        return sdi.fetchAllStudents();
+    }
+
+    public boolean removeStudent(int studentId) {
+        StudentDaoImpl sdi = new StudentDaoImpl();
+        return sdi.removeStudent(studentId);
     }
 }
