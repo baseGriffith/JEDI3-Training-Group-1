@@ -9,6 +9,8 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import org.apache.log4j.Logger;
+
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Student;
 import com.flipkart.constants.SQLQueriesConstants;
@@ -16,6 +18,9 @@ import com.flipkart.exception.CourseAlreadyBeingTaughtException;
 import com.flipkart.utils.DBUtil;
 
 public class ProfessorDaoImpl implements ProfessorDaoInterface{
+	
+	private static Logger logger = Logger.getLogger(ProfessorDaoImpl.class);
+	
     @Override
     public void signupCourse(int professorId, int courseId) throws CourseAlreadyBeingTaughtException {
         try {
@@ -95,7 +100,7 @@ public class ProfessorDaoImpl implements ProfessorDaoInterface{
 			}
 
 		} catch (Exception ex) {
-			System.out.println(ex);
+			logger.info(ex);
 		}
         return students;
     }
@@ -127,7 +132,7 @@ public class ProfessorDaoImpl implements ProfessorDaoInterface{
 			}		
 
 		} catch (Exception ex) {
-			System.out.println(ex);
+			logger.info(ex);
 		}
 		
 		return courses;

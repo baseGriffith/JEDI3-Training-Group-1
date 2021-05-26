@@ -1,15 +1,5 @@
 package com.flipkart.dao;
 
-/**
- * @author JEDI-Group-1
- */
-import com.flipkart.bean.Course;
-import com.flipkart.bean.Grade;
-import com.flipkart.bean.Professor;
-import com.flipkart.client.MainMenu;
-import com.flipkart.constant.SQLQueriesConstants;
-import com.flipkart.utils.DBUtil;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,6 +7,15 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import org.apache.log4j.Logger;
+
+/**
+ * @author JEDI-Group-1
+ */
+import com.flipkart.bean.Course;
+import com.flipkart.bean.Grade;
+import com.flipkart.bean.Professor;
+import com.flipkart.constants.SQLQueriesConstants;
+import com.flipkart.utils.DBUtil;
 
 public class AdminDaoImpl implements AdminDaoInterface{
 	

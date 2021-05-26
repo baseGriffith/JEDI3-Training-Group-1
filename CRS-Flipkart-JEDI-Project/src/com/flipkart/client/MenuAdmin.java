@@ -42,6 +42,7 @@ public class MenuAdmin {
 						System.out.print("Action --> 1(Accept), 0(Reject):");
 						int action = in.nextInt();
 						if(action > 0) {
+							studentOperation.approveStudent(st.getUserId());
 							System.out.println("Approved");
 						}
 						else {
