@@ -7,7 +7,7 @@ import com.flipkart.exception.ReportCardGenerationFailedException;
 import com.flipkart.exception.StudentNotApprovedException;
 
 /**
- * @author dhruv
+ * @author JEDI-Group1
  *
  */
 
@@ -16,7 +16,7 @@ public interface AdminInterface{
 	/**
 	 * Approve a student based on the details provided
 	 * @param student
-	 * @return
+	 * @return boolean indicating if the student is approved or not 
 	 * @throws StudentNotApprovedException
 	 */
 	public boolean approveStudent(Student student) throws StudentNotApprovedException;
@@ -31,10 +31,10 @@ public interface AdminInterface{
 	/**
 	 * Generate report card based on the student roll number
 	 * @param rollNumber
-	 * @return
+	 * @return 
 	 * @throws ReportCardGenerationFailedException
 	 */
-	public String generateReportCard(String rollNumber) throws ReportCardGenerationFailedException;
+	public void generateReportCard(String rollNumber) throws ReportCardGenerationFailedException;
 
 }
 

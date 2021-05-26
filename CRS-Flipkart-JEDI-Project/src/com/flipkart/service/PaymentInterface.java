@@ -3,7 +3,7 @@ package com.flipkart.service;
 import com.flipkart.exception.PaymentFailedException;
 
 /**
- * @author dhruv
+ * @author JEDI-Group1
  *
  */
 public interface PaymentInterface {	

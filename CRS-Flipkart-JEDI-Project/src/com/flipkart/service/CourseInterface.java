@@ -20,8 +20,8 @@ public interface CourseInterface {
     public void allotProfessor(String professorId) throws ProfessorDoesNotExistException;
 
     /**
-     * Get sprcific course details
-     * @return
+     * Get specific course details
+     * @return String containing the course details
      * @throws CourseNotFoundException
      */
     public String getCourseDetails() throws CourseNotFoundException;

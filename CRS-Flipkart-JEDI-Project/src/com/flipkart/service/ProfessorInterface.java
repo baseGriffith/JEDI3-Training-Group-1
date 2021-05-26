@@ -6,6 +6,11 @@ import com.flipkart.bean.Course;
 import com.flipkart.bean.Student;
 import com.flipkart.exception.*;
 
+/**
+ * 
+ * @author JEDI-Group1
+ *
+ */
 public interface ProfessorInterface {
 	
 	
@@ -30,10 +35,15 @@ public interface ProfessorInterface {
 	/**
 	 * Professor enters the course Id and the enrolled students are returned
 	 * @param courseId
-	 * @return list of students enrolled in a course
+	 * @return arrayList of the enrolled students
+	 * @throws CourseNotFoundException
 	 */
 	public ArrayList<Student> getEnrolledStudents(int courseId) throws CourseNotFoundException;
 	
-	
+	/**
+	 * Professor gets the list of courses teaching using the professorId
+	 * @param professorId
+	 * @return a list of courses 
+	 */
 	public ArrayList<Course> getProfessorRegisteredCourses(int professorId);
 }

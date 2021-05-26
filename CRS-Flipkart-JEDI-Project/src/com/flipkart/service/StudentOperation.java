@@ -52,7 +52,7 @@ public class StudentOperation implements StudInterface{
          System.out.println(e.getMessage());
             return false;
         }
-
+    }
     public Student getStudent(int studentId) {
         StudentDaoImpl s = new StudentDaoImpl();
         Student ret = s.getStudent(studentId);
