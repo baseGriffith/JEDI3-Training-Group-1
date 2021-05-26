@@ -4,7 +4,8 @@
 package com.flipkart.bean;
 
 /**
- * @author Nayan
+ * Registered Course reprseents the courses registered by the student and grade
+ * @author JEDI-Group1
  *
  */
 public class RegisteredCourse {

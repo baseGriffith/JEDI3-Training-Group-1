@@ -6,7 +6,8 @@ package com.flipkart.bean;
 import java.util.Arrays;
 
 /**
- * @author Kaustubh
+ * Class used to do report card manipulations
+ * @author JEDI-Group1
  *
  */
 public class ReportCard {
