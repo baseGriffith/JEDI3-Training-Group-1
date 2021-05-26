@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.flipkart.bean.Course;
 import com.flipkart.bean.ReportCard;
+import com.flipkart.bean.Student;
 import com.flipkart.exception.PaymentFailedException;
 import com.flipkart.exception.ReportCardGenerationFailedException;
 import com.flipkart.bean.Student;
@@ -22,7 +23,7 @@ public interface StudInterface {
 
     /**
      *View the courses registered during this semester
-     * @param rollNumber
+     * @param studentId
      * @return Course[]
      */
     ArrayList<Course> viewRegisteredCourses(int studentId);
@@ -36,4 +37,10 @@ public interface StudInterface {
     boolean payFees(int studentId,int amount,String mode) throws PaymentFailedException;
 
     boolean register(Student student) throws StudentAlreadyExistsException, StudentRegistrationFailedException;
+    /**
+     *
+     * @param studentId
+     * @return
+     */
+    Student getStudent(int studentId);
 }

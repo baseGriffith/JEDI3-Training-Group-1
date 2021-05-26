@@ -24,7 +24,7 @@ public class DBUtil {
                 String driver = prop.getProperty("driver");
                 String url = prop.getProperty("url");
                 String user = prop.getProperty("user");
-                String password = prop.getProperty("password");
+                String password = "root";
                 Class.forName(driver);
                 connection = DriverManager.getConnection(url, user, password);
             } catch (ClassNotFoundException e) {

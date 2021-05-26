@@ -26,7 +26,8 @@ public class StudentDaoImpl implements StudentDaoInterface {
 			ResultSet rs = statement.executeQuery();
 
 			while (rs.next()) {
-				System.out.println(rs.getInt(1) + " " + rs.getString(2) + " " + rs.getString(3));
+				System.out.println(rs.getInt(1) + " " + rs.getString(2) + " " + rs.getString(3) + rs.getInt(4));
+				student.setSemester(rs.getInt("semester"));
 			}
 
 			sql = "SELECT * FROM `crs-flipkart`.user where userId=(?)";
@@ -37,8 +38,9 @@ public class StudentDaoImpl implements StudentDaoInterface {
 
 			while (rs.next()) {
 				student.setUserId(studentId);
-				student.setName(rs.getString(2));
-				student.setAddress(rs.getString(3));
+				student.setName(rs.getString("name"));
+				student.setAddress(rs.getString("address"));
+				student.setPassword(rs.getString("password"));
 			}
 
 			//conn.close();
@@ -110,7 +112,8 @@ public class StudentDaoImpl implements StudentDaoInterface {
 			statement.close();
 			//conn.close();
 		} catch (SQLException se) {
-//			paymentSuccess = false;
+			se.printStackTrace();
+			paymentSuccess = false;
 		}
 		return paymentSuccess;
 	}

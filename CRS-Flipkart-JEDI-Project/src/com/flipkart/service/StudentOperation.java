@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.flipkart.bean.Course;
 import com.flipkart.bean.ReportCard;
+import com.flipkart.bean.Student;
 import com.flipkart.dao.StudentDaoImpl;
 import com.flipkart.dao.StudentDaoInterface;
 import com.flipkart.exception.PaymentFailedException;
@@ -38,6 +39,7 @@ public class StudentOperation implements StudInterface{
     }
 
     @Override
+
     public boolean register(Student student) throws StudentAlreadyExistsException, StudentRegistrationFailedException {
      try{
             StudentDaoInterface studentDao = new StudentDaoImpl();
@@ -50,5 +52,10 @@ public class StudentOperation implements StudInterface{
          System.out.println(e.getMessage());
             return false;
         }
+
+    public Student getStudent(int studentId) {
+        StudentDaoImpl s = new StudentDaoImpl();
+        Student ret = s.getStudent(studentId);
+        return ret;
     }
 }
