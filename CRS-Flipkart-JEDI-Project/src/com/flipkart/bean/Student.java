@@ -13,6 +13,7 @@ public class Student extends User{
 
 	private String branch;	
 	private Date joiningDate;
+	private int semester;
 	
 	public String getBranch() {
 		return branch;
@@ -30,5 +31,11 @@ public class Student extends User{
 		this.joiningDate = joiningDate;
 	}
 	
-
+	public int getSemester() {
+		return semester;
+	}
+	
+	public void setSemester(int semester) {
+		this.semester = semester;
+	}
 }

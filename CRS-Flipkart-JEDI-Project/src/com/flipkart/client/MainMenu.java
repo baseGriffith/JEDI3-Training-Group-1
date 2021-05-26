@@ -3,6 +3,8 @@ package com.flipkart.client;
 import com.flipkart.bean.Professor;
 import com.flipkart.bean.Student;
 import com.flipkart.bean.User;
+import com.flipkart.exception.PaymentFailedException;
+import com.flipkart.exception.ReportCardGenerationFailedException;
 import com.flipkart.service.AdminOperation;
 import com.flipkart.service.AdminInterface;
 
@@ -33,7 +35,7 @@ public class MainMenu {
 		return new User(userId, password);
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws PaymentFailedException, ReportCardGenerationFailedException {
 		// TODO Auto-generated method stub
 
 		while(true) {
@@ -46,7 +48,7 @@ public class MainMenu {
 				case 1:
 					//authorize - make student function call
 					// make student using user we fetched
-					new MenuStudent().studentFunctionalities(new Student());
+					MenuStudent.studentFunctionalities(new Student());
 					break;
 				case 2:
 					//authorize - similar to  student
