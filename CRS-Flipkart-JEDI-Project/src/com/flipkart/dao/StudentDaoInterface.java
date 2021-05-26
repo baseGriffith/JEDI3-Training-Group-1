@@ -15,6 +15,8 @@ public interface StudentDaoInterface {
 	 * @return Student object
 	 */
 	Student getStudent(int studentId);
+
+	int register(Student student);
 	
 	/**
 	 * pay fees as part of registration of courses	

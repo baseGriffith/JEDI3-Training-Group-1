@@ -7,6 +7,9 @@ import com.flipkart.bean.ReportCard;
 import com.flipkart.bean.Student;
 import com.flipkart.exception.PaymentFailedException;
 import com.flipkart.exception.ReportCardGenerationFailedException;
+import com.flipkart.bean.Student;
+import com.flipkart.exception.StudentAlreadyExistsException;
+import com.flipkart.exception.StudentRegistrationFailedException;
 
 public interface StudInterface {
     /**
@@ -33,6 +36,7 @@ public interface StudInterface {
      */
     boolean payFees(int studentId,int amount,String mode) throws PaymentFailedException;
 
+    boolean register(Student student) throws StudentAlreadyExistsException, StudentRegistrationFailedException;
     /**
      *
      * @param studentId
