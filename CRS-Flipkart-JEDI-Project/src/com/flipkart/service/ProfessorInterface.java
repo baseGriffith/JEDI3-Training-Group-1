@@ -2,6 +2,7 @@ package com.flipkart.service;
 
 import java.util.ArrayList;
 
+import com.flipkart.bean.Course;
 import com.flipkart.bean.Student;
 import com.flipkart.exception.*;
 
@@ -31,6 +32,8 @@ public interface ProfessorInterface {
 	 * @param courseId
 	 * @return list of students enrolled in a course
 	 */
-	public ArrayList<Integer> getEnrolledStudents(int courseId) throws CourseNotFoundException;
+	public ArrayList<Student> getEnrolledStudents(int courseId) throws CourseNotFoundException;
 	
+	
+	public ArrayList<Course> getProfessorRegisteredCourses(int professorId);
 }

@@ -2,6 +2,8 @@ package com.flipkart.dao;
 
 import java.util.ArrayList;
 
+import com.flipkart.bean.Course;
+import com.flipkart.bean.Student;
 import com.flipkart.exception.CourseAlreadyBeingTaughtException;
 
 public interface ProfessorDaoInterface {
@@ -14,13 +16,13 @@ public interface ProfessorDaoInterface {
 
     void gradeCourse(int studentId, int courseId, String grade);
 
-
+    ArrayList <Course> getProfessorRegisteredCourses(int professorId);
 
     /**
      *
      * @param courseId
      * @return
      */
-    ArrayList<Integer> getEnrolledStudents(int courseId);
+    ArrayList<Student> getEnrolledStudents(int courseId);
 
 }
