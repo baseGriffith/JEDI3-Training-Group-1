@@ -14,7 +14,13 @@ public class Course {
         return courseName;
     }
 
-    public void setCourseName(String courseName){
+    @Override
+	public String toString() {
+		return "Course [courseName=" + courseName + ", courseId=" + courseId + ", department=" + department
+				+ ", professorId=" + professorId + ", semester=" + semester + ", courseCode=" + courseCode + "]";
+	}
+
+	public void setCourseName(String courseName){
         this.courseName = courseName;
     }
 

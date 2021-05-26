@@ -80,8 +80,8 @@ public class MainMenu {
 						}
 						break;
 					case 2:
-						if(login(userChoice)==true) {
-//							MenuProfessor.professorFunctionalities(new Professor());
+						if(login(userChoice)==true) {							
+							MenuProfessor.professorFunctionalities(new Professor());
 						}
 						else {
 							System.out.println("Invalid login\n");
