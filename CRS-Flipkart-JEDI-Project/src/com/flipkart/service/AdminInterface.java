@@ -35,5 +35,6 @@ public interface AdminInterface{
 	 * @throws ReportCardGenerationFailedException
 	 */
 	public String generateReportCard(String rollNumber) throws ReportCardGenerationFailedException;
+
 }
 

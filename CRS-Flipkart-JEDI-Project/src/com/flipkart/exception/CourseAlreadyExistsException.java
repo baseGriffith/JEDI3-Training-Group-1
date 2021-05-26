@@ -1,9 +1,9 @@
 package com.flipkart.exception;
 
 public class CourseAlreadyExistsException extends Exception{
-    private String courseId;
+    private int courseId;
 
-    public CourseAlreadyExistsException(String courseId) {
+    public CourseAlreadyExistsException(int courseId) {
         this.courseId = courseId;
     }
 

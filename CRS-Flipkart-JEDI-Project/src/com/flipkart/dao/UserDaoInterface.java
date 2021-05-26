@@ -32,4 +32,12 @@ public interface UserDaoInterface {
 	 * @return list of courses part of this semester
 	 */
 	public ArrayList<Course> getCourseCatalog(int semester);
+	
+	/**
+	 * 
+	 * @param userId
+	 * @param choice
+	 * @return
+	 */
+	public boolean getRole(int userId,int choice);
 }

@@ -14,8 +14,7 @@ public class UserDaoImpl implements UserDaoInterface {
 	@Override
 	public boolean login(int userId, String password) {
 		// TODO Auto-generated method stub		
-		Connection conn = DBUtil.getConnection();
-		System.out.println("connection created");
+		Connection conn = DBUtil.getConnection();		
 		String validPassword="";
 		try {
 			String sql = "SELECT * FROM `crs-flipkart`.user where userId=(?)";
@@ -87,5 +86,50 @@ public class UserDaoImpl implements UserDaoInterface {
 		}
 		return courses;
 	}
+
+	@Override
+	public boolean getRole(int userId, int choice) {
+		// TODO Auto-generated method stub
+		Connection conn = DBUtil.getConnection();
+		if(choice==1) {
+			String sql = "SELECT * FROM `crs-flipkart`.student where studentId=(?)";			
+			try {
+				PreparedStatement statement = conn.prepareStatement(sql);
+				statement.setInt(1, userId);
+				
+				ResultSet rs=statement.executeQuery();
+				return rs.next();
+			}
+			catch(Exception e) {
+				return false;
+			}			
+		}else if(choice==2) {
+			String sql = "SELECT * FROM `crs-flipkart`.professor where professorId=(?)";			
+			try {
+				PreparedStatement statement = conn.prepareStatement(sql);
+				statement.setInt(1, userId);
+				
+				ResultSet rs=statement.executeQuery();
+				return rs.next();
+			}
+			catch(Exception e) {
+				return false;
+			}	
+		}else if(choice==3) {
+			String sql = "SELECT * FROM `crs-flipkart`.admin where adminId=(?)";			
+			try {
+				PreparedStatement statement = conn.prepareStatement(sql);
+				statement.setInt(1, userId);
+				
+				ResultSet rs=statement.executeQuery();
+				return rs.next();
+			}
+			catch(Exception e) {
+				return false;
+			}	
+		}	
+		return false;
+	}
+
 
 }

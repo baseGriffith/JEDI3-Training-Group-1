@@ -38,4 +38,11 @@ public interface UserInterface {
 	 */
 	ArrayList <Course> getCourseCatalog(int semester);
 	
+	/**
+	 * 
+	 * @param userId
+	 * @param choice
+	 * @return
+	 */
+	boolean getRole(int userId,int choice)  throws LoginException;
 }

@@ -16,20 +16,23 @@ public interface AdminDaoInterface {
     /**
      *
      * @param professor
+     * @return
      */
-    void addProfessor(Professor professor);
+    boolean addProfessor(Professor professor);
 
     /**
      *
      * @param course
+     * @return
      */
-    void addCourse(Course course);
+    boolean addCourse(Course course);
 
     /**
      *
      * @param courseId
+     * @return
      */
-    void removeCourse(int courseId);
+    boolean removeCourse(int courseId);
 
     /**
      *
@@ -37,5 +40,12 @@ public interface AdminDaoInterface {
      * @return
      */
     ArrayList<Grade> fetchGrade(int studentId);
+
+    /**
+     *
+     * @param course
+     * @return
+     */
+    boolean modifyCourseDetails(Course course);
 
 }
