@@ -7,11 +7,12 @@ import org.apache.log4j.Logger;
 import com.flipkart.bean.Professor;
 import com.flipkart.bean.Student;
 import com.flipkart.bean.User;
-
 import com.flipkart.exception.*;
-
+import com.flipkart.exception.CourseAlreadyExistsException;
 import com.flipkart.exception.CourseAlreadyFullException;
 import com.flipkart.exception.CourseAlreadyRegisteredException;
+import com.flipkart.exception.CourseNotFoundException;
+import com.flipkart.exception.LoginException;
 import com.flipkart.exception.PaymentFailedException;
 import com.flipkart.exception.ProfessorAlreadyExistException;
 import com.flipkart.exception.ReportCardGenerationFailedException;

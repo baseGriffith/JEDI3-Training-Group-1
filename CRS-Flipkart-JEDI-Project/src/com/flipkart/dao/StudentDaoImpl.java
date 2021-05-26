@@ -1,14 +1,24 @@
 package com.flipkart.dao;
 
-import java.sql.*;
+/**
+ * @author JEDI-Group-1
+ */
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+
+import org.apache.log4j.Logger;
 
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Student;
+import com.flipkart.constants.SQLQueriesConstants;
 import com.flipkart.utils.DBUtil;
 
 public class StudentDaoImpl implements StudentDaoInterface {
-
+	
+	private static Logger logger = Logger.getLogger(StudentDaoImpl.class);
 	@Override
 	public Student getStudent(int studentId) {
 		// TODO Auto-generated method stub
@@ -16,18 +26,18 @@ public class StudentDaoImpl implements StudentDaoInterface {
 		Connection conn = DBUtil.getConnection();
 		try {
 
-			String sql = "SELECT * FROM `crs-flipkart`.student where studentId=(?)";
+			String sql = SQLQueriesConstants.VIEW_STUDENT_QUERY;
 			PreparedStatement statement = conn.prepareStatement(sql);
 
 			statement.setInt(1, studentId);
 			ResultSet rs = statement.executeQuery();
 
 			while (rs.next()) {
-				System.out.println(rs.getInt(1) + " " + rs.getString(2) + " " + rs.getString(3) + rs.getInt(4));
+				logger.info(rs.getInt(1) + " " + rs.getString(2) + " " + rs.getString(3) + rs.getInt(4));
 				student.setSemester(rs.getInt("semester"));
 			}
 
-			sql = "SELECT * FROM `crs-flipkart`.user where userId=(?)";
+			sql = SQLQueriesConstants.VIEW_USER_QUERY;
 			statement = conn.prepareStatement(sql);
 			statement.setInt(1, studentId);
 
@@ -38,13 +48,12 @@ public class StudentDaoImpl implements StudentDaoInterface {
 				student.setName(rs.getString("name"));
 				student.setAddress(rs.getString("address"));
 				student.setPassword(rs.getString("password"));
-				student.setIsApproved(rs.getBoolean("isApproved"));
 			}
 
 			//conn.close();
 
 		} catch (Exception ex) {
-			System.out.println("Exception occured");
+			logger.info("Exception occured");
 		}
 
 		return student;
@@ -54,7 +63,7 @@ public class StudentDaoImpl implements StudentDaoInterface {
 	public int register(Student student) {
 		try {
 			Connection conn = DBUtil.getConnection();
-			String sql = "select count(*) from User where userId = ?";
+			String sql = SQLQueriesConstants.COUNT_USER_WITH_ID_QUERY;
 			PreparedStatement statement = conn.prepareStatement(sql);
 
 			statement.setInt(1, student.getUserId());
@@ -62,10 +71,11 @@ public class StudentDaoImpl implements StudentDaoInterface {
 			ResultSet rs = statement.executeQuery();
 			rs.next();
 			if(rs.getInt(1) > 0){
+				logger.info(rs.getInt(1));
 				return 0;
 			}
 
-			sql = "insert into User values (?, ?, ?, ?)";
+			sql = SQLQueriesConstants.ADD_USER_QUERY;
 			statement = conn.prepareStatement(sql);
 
 
@@ -76,7 +86,7 @@ public class StudentDaoImpl implements StudentDaoInterface {
 
 			statement.executeUpdate();
 
-			sql = "insert into Student(studentId, branch, joiningDate, semester) values(?, ?, CURDATE(), ?)";
+			sql = SQLQueriesConstants.ADD_STUDENT_QUERY;
 			statement = conn.prepareStatement(sql);
 
 			statement.setInt(1, student.getUserId());
@@ -87,6 +97,7 @@ public class StudentDaoImpl implements StudentDaoInterface {
 
 			return 1;
 		} catch(Exception e){
+			logger.info(e.getMessage());
 			return 2;
 		}
 	}
@@ -97,7 +108,7 @@ public class StudentDaoImpl implements StudentDaoInterface {
 		Connection conn = DBUtil.getConnection();
 		boolean paymentSuccess = true;
 		try {
-			String sql = "INSERT INTO `crs-flipkart`.`payment` (`amount`, `studentId`, `paymentMode`) VALUES (?, ?, ?)";
+			String sql = SQLQueriesConstants.PAY_FEES_QUERY;
 			PreparedStatement statement = conn.prepareStatement(sql);
 
 			statement.setInt(1, amount);
@@ -122,7 +133,7 @@ public class StudentDaoImpl implements StudentDaoInterface {
 
 		try {
 			Connection conn = DBUtil.getConnection();
-			String sql = "SELECT * FROM `crs-flipkart`.registeredcourses where studentId=(?)";
+			String sql = SQLQueriesConstants.VIEW_STUDENT_REGISRETED_COURSE_QUERY;
 			PreparedStatement statement = conn.prepareStatement(sql);
 
 			statement.setInt(1, studentId);
@@ -134,7 +145,7 @@ public class StudentDaoImpl implements StudentDaoInterface {
 			
 
 			for (int i = 0; i < courseIds.size(); ++i) {
-				sql = "SELECT * FROM `crs-flipkart`.course where courseId=(?)";
+				sql = SQLQueriesConstants.VIEW_COURSE_QUERY;
 				statement = conn.prepareStatement(sql);
 				statement.setInt(1, courseIds.get(i));
 
@@ -153,46 +164,12 @@ public class StudentDaoImpl implements StudentDaoInterface {
 			}
 
 		} catch (Exception ex) {
-			System.out.println(ex);
+			logger.info(ex);
 		}
 
 		return courses;
 	}
 
-	public ArrayList<Student> fetchAllStudents() {
-		ArrayList<Student> st = new ArrayList<Student>();
-		try {
-			Connection conn = DBUtil.getConnection();
-			String sql = "SELECT * FROM `crs-flipkart`.student where isApproved is false";
-			PreparedStatement statement = conn.prepareStatement(sql);
-			ResultSet rs = statement.executeQuery();
-			while(rs.next()) {
-				Student student = new Student();
-				student.setUserId(rs.getInt("studentId"));
-				student.setIsApproved(rs.getBoolean("isApproved"));
-				student.setSemester(rs.getInt("semester"));
-				student.setBranch(rs.getString("branch"));
-				st.add(student);
-			}
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-		}
-		return st;
-	}
-
-	public boolean removeStudent(int studentId) {
-		boolean ok = true;
-		try {
-			Connection con = DBUtil.getConnection();
-			Statement stmt = con.createStatement();
-			String sql = "delete from student where studentId = " + studentId;
-			stmt.executeUpdate(sql);
-		}
-		catch (Exception e) {
-			ok = false;
-			System.out.println(e.getMessage());
-		}
-		return ok;
-	}
+	
+	
 }
