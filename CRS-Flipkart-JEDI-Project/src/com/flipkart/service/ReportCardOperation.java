@@ -11,8 +11,8 @@ import com.flipkart.exception.ReportCardGenerationFailedException;
 import com.flipkart.bean.RegisteredCourse;
 
 /**
- * @author Kaustubh
- *
+ * @author JEDI-Group-1
+ * 
  */
 public class ReportCardOperation implements ReportCardInterface{
 	

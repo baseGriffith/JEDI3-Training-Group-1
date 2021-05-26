@@ -6,8 +6,8 @@ import com.flipkart.bean.Course;
 import com.flipkart.exception.LoginException;
 
 /**
- * @author dhruv
- *
+ * @author JEDI-Group-1
+ * 
  */
 public interface UserInterface {		
 	

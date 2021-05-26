@@ -4,7 +4,7 @@
 package com.flipkart.bean;
 
 /**
- * @author lenovo
+ * @author JEDI-Group-1
  *
  */
 public class NetBanking extends Payment{

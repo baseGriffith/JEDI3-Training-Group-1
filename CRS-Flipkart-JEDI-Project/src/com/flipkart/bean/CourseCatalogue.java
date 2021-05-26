@@ -1,5 +1,9 @@
 package com.flipkart.bean;
-
+/**
+ * 
+ * @author JEDI-Group-1
+ *
+ */
 public class CourseCatalogue {
     private int semester;
     private Course[] courses;

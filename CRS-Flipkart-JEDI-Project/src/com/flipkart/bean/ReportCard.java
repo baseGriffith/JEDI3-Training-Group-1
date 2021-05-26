@@ -6,7 +6,7 @@ package com.flipkart.bean;
 import java.util.Arrays;
 
 /**
- * @author Kaustubh
+ * @author JEDI-Group-1
  *
  */
 public class ReportCard {

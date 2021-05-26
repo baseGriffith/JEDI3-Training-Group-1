@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import com.flipkart.bean.Course;
 /**
  * 
- * @author JEDI-group1
+ * @author JEDI-Group-1
  *
  */
 public interface UserDaoInterface {

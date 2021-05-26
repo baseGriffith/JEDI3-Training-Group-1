@@ -12,7 +12,7 @@ import com.flipkart.exception.ReportCardGenerationFailedException;
 import com.flipkart.exception.StudentNotApprovedException;
 
 /**
- * @author dhruv
+ * @author JEDI-Group-1
  *
  */
 
@@ -21,7 +21,7 @@ public class AdminOperation implements AdminInterface{
 	@Override	
 	public boolean approveStudent(Student student) throws StudentNotApprovedException{
 		// TODO Auto-generated method stub
-
+		
 		return false;
 	}
 

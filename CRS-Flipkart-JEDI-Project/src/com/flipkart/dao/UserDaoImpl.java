@@ -1,23 +1,31 @@
 package com.flipkart.dao;
 
+/**
+ * @author JEDI-Group-1
+ */
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import org.apache.log4j.Logger;
+
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Student;
+import com.flipkart.client.MainMenu;
+import com.flipkart.constant.SQLQueriesConstants;
 import com.flipkart.utils.DBUtil;
 
 public class UserDaoImpl implements UserDaoInterface {
 
+	private static Logger logger = Logger.getLogger(UserDaoImpl.class);
 	@Override
 	public boolean login(int userId, String password) {
 		// TODO Auto-generated method stub		
 		Connection conn = DBUtil.getConnection();		
 		String validPassword="";
 		try {
-			String sql = "SELECT * FROM `crs-flipkart`.user where userId=(?)";
+			String sql = SQLQueriesConstants.VIEW_USER_QUERY;
 			PreparedStatement statement = conn.prepareStatement(sql);
 
 			statement.setInt(1, userId);
@@ -26,10 +34,10 @@ public class UserDaoImpl implements UserDaoInterface {
 			rs.next();
 			
 			validPassword=rs.getString(4);
-			System.out.println(validPassword);
+			logger.info(validPassword);
 			
 		} catch (Exception e) {
-			System.out.println(e);
+			logger.info(e);
 		}
 		return password.equals(validPassword);
 	}
@@ -40,7 +48,7 @@ public class UserDaoImpl implements UserDaoInterface {
 		Connection conn = DBUtil.getConnection();
 		boolean passwordUpdated=true;
 		try {
-			String sql="UPDATE `crs-flipkart`.`user` SET `password` = ? WHERE (`userId` = ?);";
+			String sql=SQLQueriesConstants.UPDATE_PASSWORD_QUERY;
 			
 			PreparedStatement statement = conn.prepareStatement(sql);
 
@@ -50,7 +58,7 @@ public class UserDaoImpl implements UserDaoInterface {
 			statement.executeUpdate();			
 			
 		} catch (Exception e) {
-			System.out.println(e);
+			logger.info(e);
 			passwordUpdated=false;
 		}
 		return passwordUpdated;
@@ -63,7 +71,7 @@ public class UserDaoImpl implements UserDaoInterface {
 		ArrayList <Course> courses=new ArrayList<Course>();
 		
 		try {
-			String sql = "SELECT * FROM course where semester=(?)";
+			String sql = SQLQueriesConstants.VIEW_COURSE_CATALOG_QUERY;
 			PreparedStatement statement = conn.prepareStatement(sql);
 			statement.setInt(1, semester);
 			
@@ -82,7 +90,7 @@ public class UserDaoImpl implements UserDaoInterface {
 			}
 			
 		} catch (Exception e) {
-			System.out.println(e);
+			logger.info(e);
 		}
 		return courses;
 	}
@@ -92,7 +100,7 @@ public class UserDaoImpl implements UserDaoInterface {
 		// TODO Auto-generated method stub
 		Connection conn = DBUtil.getConnection();
 		if(choice==1) {
-			String sql = "SELECT * FROM `crs-flipkart`.student where studentId=(?)";			
+			String sql = SQLQueriesConstants.VIEW_STUDENT_QUERY;			
 			try {
 				PreparedStatement statement = conn.prepareStatement(sql);
 				statement.setInt(1, userId);
@@ -104,7 +112,7 @@ public class UserDaoImpl implements UserDaoInterface {
 				return false;
 			}			
 		}else if(choice==2) {
-			String sql = "SELECT * FROM `crs-flipkart`.professor where professorId=(?)";			
+			String sql = SQLQueriesConstants.VIEW_PROFESSOR_QUERY;			
 			try {
 				PreparedStatement statement = conn.prepareStatement(sql);
 				statement.setInt(1, userId);
@@ -116,7 +124,7 @@ public class UserDaoImpl implements UserDaoInterface {
 				return false;
 			}	
 		}else if(choice==3) {
-			String sql = "SELECT * FROM `crs-flipkart`.admin where adminId=(?)";			
+			String sql = SQLQueriesConstants.VIEW_ADMIN_QUERY;		
 			try {
 				PreparedStatement statement = conn.prepareStatement(sql);
 				statement.setInt(1, userId);

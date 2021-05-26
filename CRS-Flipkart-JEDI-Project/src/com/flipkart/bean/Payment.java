@@ -6,7 +6,7 @@ package com.flipkart.bean;
 import java.util.Date;
 
 /**
- * @author lenovo
+ * @author JEDI-Group-1
  *
  */
 public class Payment {

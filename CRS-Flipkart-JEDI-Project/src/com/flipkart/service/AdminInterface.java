@@ -7,7 +7,7 @@ import com.flipkart.exception.ReportCardGenerationFailedException;
 import com.flipkart.exception.StudentNotApprovedException;
 
 /**
- * @author dhruv
+ * @author JEDI-Group-1
  *
  */
 

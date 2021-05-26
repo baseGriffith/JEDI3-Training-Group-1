@@ -1,5 +1,9 @@
 package com.flipkart.bean;
-
+/**
+ * 
+ * @author JEDI-Group-1
+ *
+ */
 public class Course {
     private String courseName;
     private int courseId;

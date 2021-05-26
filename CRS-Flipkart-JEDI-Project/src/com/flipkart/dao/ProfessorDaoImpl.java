@@ -1,6 +1,10 @@
 package com.flipkart.dao;
 
+/**
+ * @author JEDI-Group-1
+ */
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -8,6 +12,7 @@ import java.util.ArrayList;
 
 import com.flipkart.bean.Course;
 import com.flipkart.bean.Student;
+import com.flipkart.constant.SQLQueriesConstants;
 import com.flipkart.exception.CourseAlreadyBeingTaughtException;
 import com.flipkart.utils.DBUtil;
 
@@ -17,8 +22,7 @@ public class ProfessorDaoImpl implements ProfessorDaoInterface{
         try {
             Connection conn = DBUtil.getConnection();
             
-            
-            String sql ="SELECT * FROM `crs-flipkart`.course where courseId=(?)";
+            String sql = SQLQueriesConstants.VIEW_COURSE_QUERY;
             PreparedStatement statement = conn.prepareStatement(sql);
             
 			statement = conn.prepareStatement(sql);
@@ -28,7 +32,7 @@ public class ProfessorDaoImpl implements ProfessorDaoInterface{
             rs.next();
             if(rs.getInt("professorId") == -1) {
             
-                sql = "UPDATE `crs-flipkart`.`course` SET `professorId` = ? WHERE (`courseId` = ?)";
+                sql = SQLQueriesConstants.ADD_COURSE_TO_PROFESSOR_QUERY;
                 statement = conn.prepareStatement(sql);
                 statement.setInt(1, professorId);
                 statement.setInt(2, courseId);
@@ -65,7 +69,7 @@ public class ProfessorDaoImpl implements ProfessorDaoInterface{
         ArrayList<Integer> studentIds=new ArrayList<Integer>();
         try {
 			Connection conn = DBUtil.getConnection();
-			String sql = "SELECT * FROM `crs-flipkart`.registeredcourses where courseId=(?)";
+			String sql = SQLQueriesConstants.VIEW_REGISTERED_COURSE_QUERY;
 			PreparedStatement statement = conn.prepareStatement(sql);
 
 			statement.setInt(1, courseId);
@@ -77,7 +81,7 @@ public class ProfessorDaoImpl implements ProfessorDaoInterface{
 			
 
 			for (int i = 0; i < studentIds.size(); ++i) {
-				sql = "SELECT * FROM `crs-flipkart`.user where userId=(?)";
+				sql = SQLQueriesConstants.VIEW_USER_QUERY;
 				statement = conn.prepareStatement(sql);
 				statement.setInt(1, studentIds.get(i));
 
@@ -105,7 +109,7 @@ public class ProfessorDaoImpl implements ProfessorDaoInterface{
 
 		try {
 			Connection conn = DBUtil.getConnection();
-			String sql = "SELECT * FROM `crs-flipkart`.course where professorId=(?)";
+			String sql = SQLQueriesConstants.VIEW_PROFESSOR_COURSES_QUERY;
 			PreparedStatement statement = conn.prepareStatement(sql);
 
 			statement.setInt(1, professorId);
@@ -121,7 +125,6 @@ public class ProfessorDaoImpl implements ProfessorDaoInterface{
 				course.setCourseCode(rs.getString(6));
 
 				courses.add(course);
-				//System.out.println("dibe");
 			}		
 
 		} catch (Exception ex) {
