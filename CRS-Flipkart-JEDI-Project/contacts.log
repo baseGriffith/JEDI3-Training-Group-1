@@ -64,3 +64,7 @@
 12:23:47,388  INFO NotificationDaoImpl,main:92 - Exception occured
 12:23:58,329  INFO NotificationDaoImpl,main:92 - Exception occured
 12:24:51,621  INFO NotificationDaoImpl,main:92 - java.sql.SQLException: No value specified for parameter 3
+13:42:04,950  INFO AdminOperation,main:54 - Report card could not be generated, all courses are not graded
+
+17:38:07,335  INFO AdminOperation,main:54 - Report card could not be generated, all courses are not graded
+
