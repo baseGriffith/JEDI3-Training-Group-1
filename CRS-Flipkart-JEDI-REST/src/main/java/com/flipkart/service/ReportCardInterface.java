@@ -3,6 +3,8 @@
  */
 package com.flipkart.service;
 
+import java.util.ArrayList;
+
 import com.flipkart.exception.ReportCardGenerationFailedException;
 
 /**
@@ -20,7 +22,7 @@ public interface ReportCardInterface{
 	 * @return whether the report card has been generated
 	 * @throws ReportCardGenerationFailedException
 	 */
-	public boolean printReportCard(int studentId, int semester) throws ReportCardGenerationFailedException;
+	public ArrayList<String> printReportCard(int studentId, int semester) throws ReportCardGenerationFailedException;
 
 	
 }

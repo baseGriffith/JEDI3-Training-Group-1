@@ -36,7 +36,7 @@ public class ReportCardOperation implements ReportCardInterface{
 	private static Logger logger = Logger.getLogger(AdminOperation.class);
 	@Override
 
-	public boolean printReportCard(int studentId, int semester) throws ReportCardGenerationFailedException {
+	public ArrayList<String> printReportCard(int studentId, int semester) throws ReportCardGenerationFailedException {
 		try {
 			RegistrationDaoInterface semesterRegistration = RegistrationDaoImpl.getInstance();
 			
@@ -46,13 +46,17 @@ public class ReportCardOperation implements ReportCardInterface{
 				if(registeredCourse.getGrade().equals("NA")) throw new ReportCardGenerationFailedException(studentId);
 			}
 			
+			ArrayList<String> reportCard = new ArrayList<String>();
 			for(RegisteredCourse registeredCourse : registeredCourses) {
-				System.out.println("Student "+studentId+" has got "+registeredCourse.getGrade()+" grade in "+registeredCourse.getCourseName()+ " course");
+				String gradeReport = String.format("Student "+studentId+" has got "+registeredCourse.getGrade()+" grade in "+registeredCourse.getCourseName()+ " course");
+				reportCard.add(gradeReport);
 			}
-			return true;
+			return reportCard;
 		} catch(ReportCardGenerationFailedException e) {
 			logger.info("Report card could not be generated, all courses are not graded\n");
-			return false;
+			ArrayList<String> failed = new ArrayList<String>();
+			failed.add("Report card could not be generated, all courses are not graded!");
+			return failed;
 		}
 	}
 }
