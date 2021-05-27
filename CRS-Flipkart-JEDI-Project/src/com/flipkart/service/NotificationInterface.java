@@ -3,6 +3,8 @@
  */
 package com.flipkart.service;
 
+import java.util.ArrayList;
+
 /**
  * Notifications services used for payment and registration notifications
  * @author JEDI-Group1
@@ -10,6 +12,12 @@ package com.flipkart.service;
  */
 public interface NotificationInterface {
 	
-	//public ArrayList <String> fetchMessages(int studentId);
-
+	/**
+	 * fetch messages for the student
+	 * @param studentId
+	 * @return
+	 */
+	public ArrayList <String> fetchMessages(int studentId);
+	
+	
 }

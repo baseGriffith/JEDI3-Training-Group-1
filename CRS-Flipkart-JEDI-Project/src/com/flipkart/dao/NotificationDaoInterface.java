@@ -28,6 +28,7 @@ public interface NotificationDaoInterface {
 	 * @param studentId
 	 * @return
 	 */
-	public boolean insertNotification(String message,int studentId);
+	public boolean insertNotification(String message,int studentId);	
+	
 }
 

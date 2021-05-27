@@ -300,7 +300,14 @@ public class CRSStudentMenu {
 						break;
 					case 8:
 						try {
-							System.out.println("---");
+							NotificationOperation notificationOperation=NotificationOperation.getInstance();
+							ArrayList <String> messages=notificationOperation.fetchMessages(student.getUserId());
+							
+							System.out.println("**************NOTIFICATIONS*************");
+							for(String message:messages) {
+								System.out.println(message);
+							}
+							System.out.println("****************************************\n");
 						}
 						catch(Exception e) {
 							System.out.println("SYSTEM ERROR,TRY AGAIN!!");
