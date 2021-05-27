@@ -32,14 +32,14 @@ public class CRSStudentMenu {
 	 */
 	public static void studentMenu() {
 		System.out.println("*************Student**************");
-		System.out.println("(1).View Course Catalog");
+		System.out.println("(1).View Course Catalog");   //Done
 		System.out.println("(2).Semester Registration");
 		System.out.println("(3).Add Course");
 		System.out.println("(4).Drop Course");
 		System.out.println("(5).Pay Fees");
-		System.out.println("(6).View registered Course");
-		System.out.println("(7).View report card.");
-		System.out.println("(8).View notifications");
+		System.out.println("(6).View registered Course");  //Done
+		System.out.println("(7).View report card.");   //Done
+		System.out.println("(8).View notifications"); //Done
 		System.out.println("(9).Logout");
 		System.out.println("***********************************\n");
 	}
