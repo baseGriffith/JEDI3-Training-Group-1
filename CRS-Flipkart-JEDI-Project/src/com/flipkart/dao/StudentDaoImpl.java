@@ -48,7 +48,7 @@ public class StudentDaoImpl implements StudentDaoInterface {
 			ResultSet rs = statement.executeQuery();
 
 			while (rs.next()) {
-				logger.info(rs.getInt(1) + " " + rs.getString(2) + " " + rs.getString(3) + rs.getInt(4));
+				//logger.info(rs.getInt(1) + " " + rs.getString(2) + " " + rs.getString(3) + rs.getInt(4));
 				student.setSemester(rs.getInt("semester"));
 			}
 
@@ -134,7 +134,7 @@ public class StudentDaoImpl implements StudentDaoInterface {
 			statement.close();
 			//conn.close();
 		} catch (SQLException se) {
-			se.printStackTrace();
+			logger.warn(se.getMessage());
 			paymentSuccess = false;
 		}
 		return paymentSuccess;
@@ -202,7 +202,7 @@ public class StudentDaoImpl implements StudentDaoInterface {
 			}
 		}
 		catch (Exception e) {
-			e.printStackTrace();
+			logger.info(e.getMessage());
 		}
 		return st;
 	}

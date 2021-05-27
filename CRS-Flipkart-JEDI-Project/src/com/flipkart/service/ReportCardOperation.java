@@ -47,10 +47,11 @@ public class ReportCardOperation implements ReportCardInterface{
 			}
 			
 			for(RegisteredCourse registeredCourse : registeredCourses) {
-				logger.info("Student "+studentId+" has got "+registeredCourse.getGrade()+" grade in "+registeredCourse.getCourseName()+ " course");
+				System.out.println("Student "+studentId+" has got "+registeredCourse.getGrade()+" grade in "+registeredCourse.getCourseName()+ " course");
 			}
 			return true;
 		} catch(ReportCardGenerationFailedException e) {
+			logger.info("Report card could not be generated, all courses are not graded\n");
 			return false;
 		}
 	}

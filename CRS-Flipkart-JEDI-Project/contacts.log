@@ -5,3 +5,55 @@
 01:24:56,515  INFO AdminOperation,main:29 - Course successfully added!
 01:40:19,009  INFO StudentDaoImpl,main:75 - 1
 01:40:19,011  INFO StudentOperation,main:63 - Student with id 1 already exists
+02:32:05,256  INFO UserDaoImpl,main:52 - java.lang.NullPointerException: Cannot invoke "java.sql.Connection.prepareStatement(String)" because "conn" is null
+02:32:47,484  INFO UserDaoImpl,main:52 - java.lang.NullPointerException: Cannot invoke "java.sql.Connection.prepareStatement(String)" because "conn" is null
+02:33:34,652  INFO UserDaoImpl,main:49 - pop
+02:33:34,662  INFO StudentDaoImpl,main:51 - 1 cs 2011-11-111
+02:46:02,355  INFO UserDaoImpl,main:49 - pop
+02:49:40,810  INFO StudentDaoImpl,main:89 - 1
+02:49:40,813  INFO StudentOperation,main:83 - Student with id 1 already exists
+02:50:48,407  INFO StudentDaoImpl,main:89 - 1
+02:50:48,409  INFO StudentOperation,main:83 - Student with id 1 already exists
+02:53:42,603  INFO StudentDaoImpl,main:89 - 1
+02:53:42,606  INFO StudentOperation,main:83 - Student with id 1 already exists
+02:55:29,095  INFO StudentDaoImpl,main:89 - 1
+02:55:29,097  WARN StudentOperation,main:83 - Student with id 1 already exists
+02:55:57,018  INFO StudentDaoImpl,main:89 - 1
+02:55:57,021  WARN StudentOperation,main:83 - Student with id 1 already exists
+
+03:03:37,308  INFO UserDaoImpl,main:49 - 99
+03:05:19,581  INFO UserDaoImpl,main:49 - 99
+03:07:30,153  INFO UserDaoImpl,main:49 - 99
+03:09:03,662  INFO UserDaoImpl,main:49 - 99
+03:09:58,490  INFO UserDaoImpl,main:49 - 99
+03:10:29,282 DEBUG AdminDaoImpl,main:52 - Duplicate entry '1' for key 'user.PRIMARY'
+03:16:35,368  INFO UserDaoImpl,main:49 - 99
+03:16:49,429 DEBUG AdminDaoImpl,main:52 - Duplicate entry '1' for key 'user.PRIMARY'
+03:18:34,117  INFO UserDaoImpl,main:49 - 99
+03:18:41,665 DEBUG AdminDaoImpl,main:52 - Duplicate entry '1' for key 'user.PRIMARY'
+03:19:55,614  INFO UserDaoImpl,main:49 - 99
+03:20:05,042 DEBUG AdminDaoImpl,main:52 - Duplicate entry '1' for key 'user.PRIMARY'
+03:22:15,143  INFO UserDaoImpl,main:49 - 25
+03:22:41,208  INFO UserDaoImpl,main:49 - 25
+03:22:41,216  INFO StudentDaoImpl,main:51 - 25 cs 2021-05-271
+03:25:10,898  INFO UserDaoImpl,main:49 - 25
+03:27:48,713  INFO UserDaoImpl,main:49 - 25
+03:28:04,514  INFO UserDaoImpl,main:49 - pop
+03:28:04,527  INFO StudentDaoImpl,main:51 - 1 cs 2011-11-111
+03:32:53,689  INFO UserDaoImpl,main:49 - pop
+03:32:53,698  INFO StudentDaoImpl,main:51 - 1 cs 2011-11-111
+03:37:02,549  INFO UserDaoImpl,main:49 - dsf
+03:37:17,350  INFO UserDaoImpl,main:49 - pop
+08:07:31,854  INFO UserDaoImpl,main:49 - pop
+08:07:31,862  INFO StudentDaoImpl,main:51 - 1 cs 2011-11-111
+08:09:23,379  INFO StudentDaoImpl,main:51 - 1 cs 2011-11-111
+08:44:45,271  INFO AdminOperation,main:54 - Report card could not be generated, all courses are not graded
+
+08:45:29,253  INFO AdminOperation,main:54 - Report card could not be generated, all courses are not graded
+
+08:45:51,836  INFO AdminOperation,main:50 - Student 1 has got R grade in sdfds course
+08:45:51,837  INFO AdminOperation,main:50 - Student 1 has got C grade in dfrsdf course
+08:57:08,848 DEBUG AdminDaoImpl,main:52 - Duplicate entry '4' for key 'user.PRIMARY'
+08:57:19,150  INFO AdminOperation,main:52 - Professor added
+08:57:35,037  INFO AdminOperation,main:34 - Course successfully added!
+08:57:53,032  INFO AdminOperation,main:44 - Course successfully added!

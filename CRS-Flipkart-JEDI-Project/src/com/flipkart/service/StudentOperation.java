@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import com.flipkart.bean.Course;
 import com.flipkart.bean.ReportCard;
 import com.flipkart.bean.Student;
-import com.flipkart.client.MainMenu;
+import com.flipkart.client.CRSApplicationMenu;
 import com.flipkart.dao.StudentDaoImpl;
 import com.flipkart.dao.StudentDaoInterface;
 import com.flipkart.exception.PaymentFailedException;
@@ -80,8 +80,7 @@ public class StudentOperation implements StudInterface{
 
         } 
          catch (Exception e) {
-            logger.info(e.getMessage());
-
+            logger.warn(e.getMessage()+"\n");
             return false;
         }
     }

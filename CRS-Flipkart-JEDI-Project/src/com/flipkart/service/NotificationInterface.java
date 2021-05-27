@@ -4,7 +4,7 @@
 package com.flipkart.service;
 
 /**
- * Notifications services used for payment & registration notifications
+ * Notifications services used for payment and registration notifications
  * @author JEDI-Group1
  *
  */

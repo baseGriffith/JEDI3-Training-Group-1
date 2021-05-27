@@ -32,7 +32,6 @@ public interface AdminInterface{
 	/**
 	 * Generate report card based on the student roll number
 	 * @param rollNumber
-	 * @return 
 	 * @throws ReportCardGenerationFailedException
 	 */
 	public void generateReportCard(String rollNumber) throws ReportCardGenerationFailedException;

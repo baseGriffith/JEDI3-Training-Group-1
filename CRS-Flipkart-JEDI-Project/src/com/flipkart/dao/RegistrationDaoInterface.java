@@ -8,8 +8,7 @@ public interface RegistrationDaoInterface {
 	/**
 	 * 
 	 * @param courseId
-	 * @param studentId
-	 * @param courseName
+	 * @param studentId	
 	 * @return
 	 */
 	int addCourse(int courseId, int studentId);

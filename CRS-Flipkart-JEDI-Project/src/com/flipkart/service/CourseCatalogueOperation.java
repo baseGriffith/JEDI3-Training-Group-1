@@ -45,6 +45,6 @@ public class CourseCatalogueOperation implements CourseCatalogueInterface {
         else {
             throw new CourseNotFoundException(courseId);
         }
-        System.out.println("Course successfully deleted!");
+        //System.out.println("Course successfully deleted!");
     }
 }

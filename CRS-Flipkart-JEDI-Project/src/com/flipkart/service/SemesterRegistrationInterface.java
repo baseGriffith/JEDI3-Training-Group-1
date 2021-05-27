@@ -26,9 +26,8 @@ public interface SemesterRegistrationInterface {
 	public boolean addCourse(int studentId, int courseId) throws CourseAlreadyRegisteredException, CourseAlreadyFullException;
 	
 	/** To drop a course 
-	 * @param rollNumber
-	 * @param courseId
-	 * @param semester
+	 * @param studentId
+	 * @param courseId	 
 	 * @return whether the course has been dropped or not
 	 */
 	public boolean dropCourse(int studentId, int courseId);

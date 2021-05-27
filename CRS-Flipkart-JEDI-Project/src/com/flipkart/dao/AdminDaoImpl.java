@@ -33,17 +33,7 @@ public class AdminDaoImpl implements AdminDaoInterface{
             }
         }
         return instance;
-    }
-	
-    @Override
-    public void approveStudent(int studentId) {
-        try {
-
-        }
-        catch (Exception e) {
-
-        }
-    }
+    }    
 
     @Override
     public boolean addProfessor(Professor professor) {

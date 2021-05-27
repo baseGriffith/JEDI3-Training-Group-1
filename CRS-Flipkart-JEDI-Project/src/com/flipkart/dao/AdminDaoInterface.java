@@ -10,12 +10,7 @@ import java.util.ArrayList;
  *Interfaces with the database to execute Admin operations.
  */
 public interface AdminDaoInterface {
-    /**
-     *Approves a new student account registration and writes it to the database
-     * @param studentId
-     */
-    void approveStudent(int studentId); // verify whether
-
+    
     /**
      *Adds a new professor into the database
      * @param professor
@@ -40,7 +35,7 @@ public interface AdminDaoInterface {
     /**
      *Fetches a students grade's for their registered courses from the database
      * @param studentId
-     * @return ArrayList<Grade>
+     * @return ArrayList
      */
     ArrayList<Grade> fetchGrade(int studentId);
 
