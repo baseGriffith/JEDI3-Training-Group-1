@@ -74,7 +74,7 @@ public class RegistrationDaoImpl implements RegistrationDaoInterface {
 		    
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 
 	    
@@ -97,7 +97,7 @@ public class RegistrationDaoImpl implements RegistrationDaoInterface {
 //		    conn.close();
 		    
 		} catch (SQLException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		
 		return true;
@@ -128,7 +128,7 @@ public class RegistrationDaoImpl implements RegistrationDaoInterface {
 			}
 			return registeredCourses;
 		} catch (SQLException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		return null;
 	}
@@ -157,7 +157,7 @@ public class RegistrationDaoImpl implements RegistrationDaoInterface {
 		    
 		    return registeredCourse;
 		} catch (SQLException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 		return null;
 	}
