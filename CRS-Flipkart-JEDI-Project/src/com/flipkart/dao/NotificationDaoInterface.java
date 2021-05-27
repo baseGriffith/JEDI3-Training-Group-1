@@ -30,3 +30,4 @@ public interface NotificationDaoInterface {
 	 */
 	public boolean insertNotification(String message,int studentId);
 }
+
