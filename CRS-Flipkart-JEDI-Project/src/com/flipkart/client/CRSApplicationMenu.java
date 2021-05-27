@@ -53,7 +53,7 @@ public class CRSApplicationMenu {
 	 * fetch userid and password from the console
 	 * @return
 	 */
-	public static User getUsernamePassword() {
+	public static User getUsernamePassword() throws Exception{
 		System.out.print("User ID: ");
 		Scanner in = new Scanner(System.in);
 		int userId = in.nextInt();
@@ -76,105 +76,109 @@ public class CRSApplicationMenu {
 	 * @throws LoginException
 	 */
 	public static void main(String[] args) throws ProfessorAlreadyExistException, CourseNotFoundException, CourseAlreadyExistsException, LoginException {
-		// TODO Auto-generated method stub
-
-		Scanner in = new Scanner(System.in);
 		
-		
-		while (true) {
-			CRSApplicationMenu.topMenu();
-			System.out.print("Enter your choice: ");
-			int actionChoice = in.nextInt();
+		try {
+			Scanner in = new Scanner(System.in);		
 			
-			System.out.println();
-			
-			if (actionChoice == 1) {
-
-				CRSApplicationMenu.userMenu();
+			while (true) {
+				CRSApplicationMenu.topMenu();
 				System.out.print("Enter your choice: ");
-				int userChoice = in.nextInt();			
+				int actionChoice = in.nextInt();
 				
 				System.out.println();
-				// to exit the user menu area
-				if (userChoice == 4)
-					break;
+				
+				if (actionChoice == 1) {
 
-				switch (userChoice) {
-					case 1:
-						if(login(userChoice)==true) {
-							try {
-								StudentOperation stOp = StudentOperation.getInstance();
-								Student st = stOp.getStudent(CRSApplicationMenu.loggedInUser);
-								CRSStudentMenu.studentFunctionalities(st);
-							} catch (ReportCardGenerationFailedException e) {
-								System.out.println("Report card generation failed!!!");
-							} catch (PaymentFailedException e) {
-								System.out.println("Payment could not be done,try again!!!");
-							} catch (CourseAlreadyRegisteredException e) {
-								System.out.println("Course is already registered!!!");
-							} catch (CourseAlreadyFullException e) {
-								System.out.println("Course is already full!!!");
+					CRSApplicationMenu.userMenu();
+					System.out.print("Enter your choice: ");
+					int userChoice = in.nextInt();			
+					
+					System.out.println();
+					// to exit the user menu area
+					if (userChoice == 4)
+						break;
+
+					switch (userChoice) {
+						case 1:
+							if(login(userChoice)==true) {
+								try {
+									StudentOperation stOp = StudentOperation.getInstance();
+									Student st = stOp.getStudent(CRSApplicationMenu.loggedInUser);
+									CRSStudentMenu.studentFunctionalities(st);
+								} catch (ReportCardGenerationFailedException e) {
+									System.out.println("Report card generation failed!!!");
+								} catch (PaymentFailedException e) {
+									System.out.println("Payment could not be done,try again!!!");
+								} catch (CourseAlreadyRegisteredException e) {
+									System.out.println("Course is already registered!!!");
+								} catch (CourseAlreadyFullException e) {
+									System.out.println("Course is already full!!!");
+								}
 							}
-						}
-						else {
-							System.out.println("NOT ALLOWED!!\n");
-						}
-						break;
-					case 2:
-						if(login(userChoice)==true) {							
-							CRSProfessorMenu.professorFunctionalities(new Professor(CRSApplicationMenu.loggedInUser));
-						}
-						else {
-							System.out.println("INVALID LOGIN CREDENTIALS!!\n");
-						}
-						break;
-					case 3:
-						if(login(userChoice)==true) {
-							CRSAdminMenu.adminFunctionalities();
-						}
-						else {
-							System.out.println("INVALID LOGIN CREDENTIALS!!\n");
-						}
-						break;
-					case 4:
-						break;
-					default:
-						System.out.println("INVALID CHOICE!!\n");
-				}
-
-			} else if(actionChoice==2){
-				userUpdatePassword();
-			} else if(actionChoice==3){
-				
-				in = new Scanner(System.in);
-				System.out.print("StudentId: ");
-				int userId = in.nextInt();
-				System.out.print("Name: ");
-				String name = in.next();
-				System.out.print("Address: ");
-				String address = in.next();
-				System.out.print("Password: ");
-				String password = in.next();
-				System.out.print("Branch: ");
-				String branch = in.next();
-
-				System.out.println("\n*************************************\n");
-				
-				Student student = new Student(userId, name, address, password, branch);
-				StudentOperation studentOperation = StudentOperation.getInstance();
-				try {
-					if(studentOperation.register(student)){
-						System.out.println("\n********* STUDENT REGISTRATION SUCCESSFUL!!*********\n\n");
+							else {
+								System.out.println("NOT ALLOWED!!\n");
+							}
+							break;
+						case 2:
+							if(login(userChoice)==true) {							
+								CRSProfessorMenu.professorFunctionalities(new Professor(CRSApplicationMenu.loggedInUser));
+							}
+							else {
+								System.out.println("INVALID LOGIN CREDENTIALS!!\n");
+							}
+							break;
+						case 3:
+							if(login(userChoice)==true) {
+								CRSAdminMenu.adminFunctionalities();
+							}
+							else {
+								System.out.println("INVALID LOGIN CREDENTIALS!!\n");
+							}
+							break;
+						case 4:
+							break;
+						default:
+							System.out.println("INVALID CHOICE!!\n");
 					}
-				} catch(Exception e) {
-					e.getMessage();
+
+				} else if(actionChoice==2){
+					userUpdatePassword();
+				} else if(actionChoice==3){
+					
+					in = new Scanner(System.in);
+					System.out.print("StudentId: ");
+					int userId = in.nextInt();
+					System.out.print("Name: ");
+					String name = in.next();
+					System.out.print("Address: ");
+					String address = in.next();
+					System.out.print("Password: ");
+					String password = in.next();
+					System.out.print("Branch: ");
+					String branch = in.next();
+
+					System.out.println("\n*************************************\n");
+					
+					Student student = new Student(userId, name, address, password, branch);
+					StudentOperation studentOperation = StudentOperation.getInstance();
+					try {
+						if(studentOperation.register(student)){
+							System.out.println("\n********* STUDENT REGISTRATION SUCCESSFUL!!*********\n\n");
+						}
+					} catch(Exception e) {
+						e.getMessage();
+					}
+				} else {
+					System.out.println("Exiting\n");
+					break;
 				}
-			} else {
-				System.out.println("Exiting\n");
-				break;
 			}
+			in.close();
 		}
-		in.close();
+		catch(Exception e) {
+			System.out.println("INVALID OPERATION,LOGIN AGAIN!!");
+		}
+		
 	}
 
 	/**
@@ -182,7 +186,7 @@ public class CRSApplicationMenu {
 	 * @param userChoice
 	 * @return
 	 */
-	public static boolean login(int userChoice) {
+	public static boolean login(int userChoice) throws Exception{		
 		User user = CRSApplicationMenu.getUsernamePassword();
 		UserOperation userOperation = UserOperation.getInstance();
 		try {
@@ -201,7 +205,7 @@ public class CRSApplicationMenu {
 	 * update password after verifying the old credentials
 	 * @throws LoginException
 	 */
-	public static void userUpdatePassword() throws LoginException {
+	public static void userUpdatePassword() throws Exception {		
 		User user = CRSApplicationMenu.getUsernamePassword();
 		UserOperation userOperation = UserOperation.getInstance();
 		userOperation.login(user.getUserId(), user.getPassword());

@@ -42,41 +42,47 @@ public class CRSProfessorMenu {
 	 * @param professor
 	 */
 	public static void professorFunctionalities(Professor professor) {
-		while(true) {
-			CRSProfessorMenu.professorMenu();			
-			
-			int choice  = CRSProfessorMenu.get_choice();
-			
-			if(choice == 5) break;
-			switch (choice) {
-				case 1:
-					System.out.print("Enter the courseId: ");
-					int courseId=CRSProfessorMenu.get_choice();					
-					registerCourse(courseId,professor.getUserId());					
-					break;
-				case 2:
-					System.out.print("Enter the courseId: ");
-					courseId=CRSProfessorMenu.get_choice();					
-					getEnrolledStudents(courseId);
-					break;
-				case 3:
-					System.out.print("Enter the courseId: ");
-					courseId=CRSProfessorMenu.get_choice();
-					System.out.print("Enter the studentId: ");
-					int studentId=CRSProfessorMenu.get_choice();
-					System.out.print("Enter the stduent's grade: ");
-					Scanner in = new Scanner(System.in);
-					String grade=in.nextLine();
-					gradeStudent(courseId,studentId,grade);					
-					break;
-				case 4:
-					
-					getRegisteredCourses(professor.getUserId()); 
-					break;
-				default:
-					System.out.println("Invalid Choice");
+		try {
+			while(true) {
+				CRSProfessorMenu.professorMenu();			
+				
+				int choice  = CRSProfessorMenu.get_choice();
+				
+				if(choice == 5) break;
+				switch (choice) {
+					case 1:
+						System.out.print("Enter the courseId: ");
+						int courseId=CRSProfessorMenu.get_choice();					
+						registerCourse(courseId,professor.getUserId());					
+						break;
+					case 2:
+						System.out.print("Enter the courseId: ");
+						courseId=CRSProfessorMenu.get_choice();					
+						getEnrolledStudents(courseId);
+						break;
+					case 3:
+						System.out.print("Enter the courseId: ");
+						courseId=CRSProfessorMenu.get_choice();
+						System.out.print("Enter the studentId: ");
+						int studentId=CRSProfessorMenu.get_choice();
+						System.out.print("Enter the stduent's grade: ");
+						Scanner in = new Scanner(System.in);
+						String grade=in.nextLine();
+						gradeStudent(courseId,studentId,grade);					
+						break;
+					case 4:
+						
+						getRegisteredCourses(professor.getUserId()); 
+						break;
+					default:
+						System.out.println("Invalid Choice");
+				}
 			}
 		}
+		catch(Exception e) {
+			
+		}
+		
 	}
 	
 	/**
@@ -84,7 +90,7 @@ public class CRSProfessorMenu {
 	 * @param courseId
 	 * @param userId
 	 */
-	public static void registerCourse(int courseId,int userId) {
+	public static void registerCourse(int courseId,int userId) throws Exception{
 		try {
 			ProfessorOperation professorImpl=ProfessorOperation.getInstance();
 			professorImpl.registerCourse(userId,courseId);
@@ -99,12 +105,13 @@ public class CRSProfessorMenu {
 	 * get the enrolled students in a particular course
 	 * @param courseId
 	 */
-	public static void getEnrolledStudents(int courseId) {
+	public static void getEnrolledStudents(int courseId) throws Exception{
 		try {
 			ProfessorOperation professorImpl=ProfessorOperation.getInstance();
 			System.out.println();
 			System.out.println("Registered students in this course are: (studentId,name)");
-			ArrayList<Student> arr=professorImpl.getEnrolledStudents(courseId);
+			ArrayList<Student> arr=professorImpl.getEnrolledStudents(courseId);			
+			
 			for(Student it:arr) {
 				System.out.printf("%-3s. %-20s\n",  it.getUserId(),it.getName());
 				
@@ -122,7 +129,7 @@ public class CRSProfessorMenu {
 	 * @param studentId
 	 * @param grade
 	 */
-	public static void gradeStudent(int courseId,int studentId,String grade) {
+	public static void gradeStudent(int courseId,int studentId,String grade) throws Exception{
 		try {
 			ProfessorOperation professorImpl=ProfessorOperation.getInstance();
 			professorImpl.gradeStudent(courseId,studentId,grade);
