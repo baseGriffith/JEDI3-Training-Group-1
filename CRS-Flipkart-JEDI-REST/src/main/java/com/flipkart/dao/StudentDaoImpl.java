@@ -189,15 +189,19 @@ public class StudentDaoImpl implements StudentDaoInterface {
 		ArrayList<Student> st = new ArrayList<Student>();
 		try {
 			Connection conn = DBUtil.getConnection();
-			String sql = "SELECT * FROM `crs-flipkart`.student where isApproved is false";
+			String sql = "SELECT * FROM `crs-flipkart`.student join `crs-flipkart`.user on student.studentId=user.userId where student.isApproved is false ";
 			PreparedStatement statement = conn.prepareStatement(sql);
 			ResultSet rs = statement.executeQuery();
-			while(rs.next()) {
+			while(rs.next()) {				
 				Student student = new Student();
 				student.setUserId(rs.getInt("studentId"));
 				student.setIsApproved(rs.getBoolean("isApproved"));
 				student.setSemester(rs.getInt("semester"));
+				student.setAddress(rs.getString("address"));
+				student.setName(rs.getString("name"));
 				student.setBranch(rs.getString("branch"));
+				student.setJoiningDate(rs.getDate("joiningDate"));
+				
 				st.add(student);
 			}
 		}

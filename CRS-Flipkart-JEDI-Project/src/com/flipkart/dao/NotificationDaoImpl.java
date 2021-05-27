@@ -93,5 +93,7 @@ public class NotificationDaoImpl implements NotificationDaoInterface {
 			logger.info(ex);
 			return false;
 		}
-	}	
+	}		
+	
+	
 }
