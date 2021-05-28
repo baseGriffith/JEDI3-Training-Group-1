@@ -36,8 +36,9 @@ import com.flipkart.service.UserOperation;
 public class StudentRestAPI {
 	
 	private static Logger logger = Logger.getLogger(StudentRestAPI.class);
-	static ArrayList<Integer> courseIdPrimary = new ArrayList<Integer>(), courseIdAlternate = new ArrayList<Integer>();
-	
+	static ArrayList<Integer> courseIdPrimary = new ArrayList<Integer>();
+	static ArrayList<Integer> courseIdAlternate = new ArrayList<Integer>();
+	 
 	
 	/**
 	 * API to view course catalog
@@ -45,11 +46,11 @@ public class StudentRestAPI {
 	 * @return
 	 */
 	@GET
-	@Path("/viewCourseCatalog")
+	@Path("/viewCourseCatalog/{userChoice}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response viewCourseCatalog(Student student) {
+	public Response viewCourseCatalog(@PathParam("userChoice")int userChoice) {
 		UserInterface user = UserOperation.getInstance();
-		ArrayList<Course> courseCatalog = user.getCourseCatalog(student.getSemester());
+		ArrayList<Course> courseCatalog = user.getCourseCatalog(userChoice);
 		
 		ArrayList<String> courseCatalogDisplay = new ArrayList<String>();
 		for(Course course:courseCatalog) {
@@ -59,7 +60,7 @@ public class StudentRestAPI {
 			String formattedString = String.format("%-20s %s",  courseCode, courseName);
 			courseCatalogDisplay.add(formattedString);
 		}
-		return Response.status(201).entity(courseCatalogDisplay).build();
+		return Response.status(201).entity(courseCatalog).build();
 	}
 
 	
@@ -69,13 +70,13 @@ public class StudentRestAPI {
 	 * @return
 	 */
 	@GET
-	@Path("/viewRegisteredCourses")
+	@Path("/viewRegisteredCourses/{studentId}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response viewRegisteredCourses(Student student){
+	public Response viewRegisteredCourses(@PathParam("studentId")int studentId){
 		
 		StudentOperation f = StudentOperation.getInstance();
 		
-		ArrayList<Course> registeredCourse = f.viewRegisteredCourses(student.getUserId());
+		ArrayList<Course> registeredCourse = f.viewRegisteredCourses(studentId);
 		ArrayList<String> registeredCourseDisplay = new ArrayList<String>();
 		for(Course course:registeredCourse) {
 			String courseCode="Course Code: "+course.getCourseCode();
@@ -83,7 +84,7 @@ public class StudentRestAPI {
 			String formattedString = String.format("%-25s %s",  courseCode, courseName);
 			registeredCourseDisplay.add(formattedString);
 		}
-		return Response.status(201).entity(registeredCourseDisplay).build(); 
+		return Response.status(201).entity(registeredCourse).build(); 
 	}
 
 	/**
@@ -95,13 +96,13 @@ public class StudentRestAPI {
 	 * @throws ReportCardGenerationFailedException
 	 */
 	@GET
-	@Path("/viewReportCard/{semester}")
+	@Path("/viewReportCard")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response viewReportCard(Student student, @PathParam("semester")int semester) 
+	public Response viewReportCard(@QueryParam("semester") int semester,@QueryParam("studentId") int studentId) 
 		throws ReportCardGenerationFailedException{
 		try {
 			ReportCardInterface reportCard = ReportCardOperation.getInstance();
-			ArrayList<String> reportCardDisplay = reportCard.printReportCard(student.getUserId(), semester);
+			ArrayList<String> reportCardDisplay = reportCard.printReportCard(studentId, semester);
 			return Response.status(201).entity(reportCardDisplay).build();	
 		} catch (Exception e){
 			logger.info(e.getMessage());
@@ -127,9 +128,9 @@ public class StudentRestAPI {
 			return Response.status(201).entity(messages).build();
 		}
 		catch(Exception e) {
-			System.out.println("SYSTEM ERROR,TRY AGAIN!!");
+			return Response.status(500).entity("SYSTEM ERROR,TRY AGAIN!!").build();
 		}
-		break;
+		
 	}
 	
 
@@ -145,8 +146,7 @@ public class StudentRestAPI {
 	 */
 	@POST
 	@Path("/payFee/card")
-	@Consumes("application/json")
-	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes("application/json")	
 	public Response cardPayment(
 			   @NotNull 
                @Min(value = 0, message = "Fee to be paid has to be a positive number!") 
@@ -186,8 +186,7 @@ public class StudentRestAPI {
 	 */
 	@POST
 	@Path("/payFee/netBanking")
-	@Consumes("application/json")
-	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes("application/json")	
 	public Response netBankingPayment(@NotNull 
 			               @Min(value = 0, message = "Fee to be paid has to be a positive number!") 
 						   @QueryParam("amount") int amount,
@@ -221,8 +220,7 @@ public class StudentRestAPI {
 	 */
 	@POST
 	@Path("/semesterRegistration/addCourse")
-	@Consumes("application/json")
-	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes("application/json")	
 	public Response addCourse(@NotNull 
 			                  @Min(value = 1, message = "Course can either be primary or alternate!")
 							  @Max(value = 2, message = "Course can either be primary or alternate!")
@@ -283,12 +281,12 @@ public class StudentRestAPI {
 	 */
 	@POST
 	@Path("/semesterRegistration")
-	@Consumes("application/json")
-	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes("application/json")	
+	@Produces({MediaType.APPLICATION_JSON})
 	public Response semesterRegistration(JSONObject obj) {
 		courseIdPrimary.clear();
 		courseIdAlternate.clear();
-		
+				
 		ArrayList<Integer> primaryCourses = (ArrayList<Integer>)obj.get("primaryCourses");
 		ArrayList<Integer> alternateCourses = (ArrayList<Integer>)obj.get("alternateCourses");
 		int semester = (int)obj.get("semester");
@@ -358,7 +356,7 @@ public class StudentRestAPI {
 		case 1:
 			int dropped = 0;
 			int count=0;
-			for(int primaryCourse: courseIdPrimary) {
+			for(Integer primaryCourse: courseIdPrimary) {
 				if(primaryCourse == courseId) {
 					courseIdPrimary.remove(count);
 					dropped = 1;
@@ -370,7 +368,7 @@ public class StudentRestAPI {
 			if(dropped == 0) {
 				return Response.status(400).entity( "Course not found\\n!").build();
 			}
-
+			break;
 		case 2:
 			dropped = 0;
 			count=0;

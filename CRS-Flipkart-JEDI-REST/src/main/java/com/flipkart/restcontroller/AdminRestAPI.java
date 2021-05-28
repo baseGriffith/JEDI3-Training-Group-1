@@ -48,8 +48,7 @@ public class AdminRestAPI {
 	 */
 	@POST
 	@Path("/addProfessor")
-	@Consumes("application/json")
-	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes("application/json")	
 	public Response addProfessor(Professor p) {
 		AdminInterface adminOp = AdminOperation.getInstance();
 		try {
@@ -68,8 +67,7 @@ public class AdminRestAPI {
 	 */
 	@POST
 	@Path("/addCourse")
-	@Consumes("application/json")
-	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes("application/json")	
 	public Response addCourse(Course c) {
 		CourseCatalogueOperation cco = CourseCatalogueOperation.getInstance();
 		try {

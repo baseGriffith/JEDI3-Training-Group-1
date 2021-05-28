@@ -89,14 +89,15 @@ public class ProfessorDaoImpl implements ProfessorDaoInterface{
         ArrayList<Integer> studentIds=new ArrayList<Integer>();
         try {
 			Connection conn = DBUtil.getConnection();
-			String sql = SQLQueriesConstants.VIEW_REGISTERED_COURSE_QUERY;
+			String sql = "SELECT * FROM `crs-flipkart`.registeredcourses where courseId=?";
 			PreparedStatement statement = conn.prepareStatement(sql);
 
 			statement.setInt(1, courseId);
+			//statement.setInt(2, 1);
 			ResultSet rs = statement.executeQuery();
 
 			while (rs.next()) {
-				studentIds.add(rs.getInt(2));
+				studentIds.add(rs.getInt(1));
 			}			
 			
 

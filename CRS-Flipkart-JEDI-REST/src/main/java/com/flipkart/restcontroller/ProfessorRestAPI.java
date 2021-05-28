@@ -55,7 +55,7 @@ public class ProfessorRestAPI {
 		ProfessorOperation professorImpl=ProfessorOperation.getInstance();
 		try {
 			ArrayList <Student> students=professorImpl.getEnrolledStudents(courseId);			
-			return Response.status(201).entity(students).build();
+			return Response.status(200).entity(students).build();
 		}
 		catch(Exception e) {
 			return Response.status(500).entity("Error occured").build();

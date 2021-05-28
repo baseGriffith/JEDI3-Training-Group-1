@@ -69,7 +69,7 @@ public class UserRestAPI {
 			return Response.status(201).entity("PASSWORD UPDATED!").build();
 			
 		}catch(Exception exception) {
-			return Response.status(500).entity("INVALID LOGIN!!").build();
+			return Response.status(500).entity("INVALID CREDENTIALS!!").build();
 		}
 	}
 	
