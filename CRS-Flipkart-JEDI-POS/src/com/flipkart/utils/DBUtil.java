@@ -21,10 +21,10 @@ public class DBUtil {
             	Properties prop = new Properties();
                 InputStream inputStream = DBUtil.class.getClassLoader().getResourceAsStream("./config.properties");
                 prop.load(inputStream);
-                String driver = "com.mysql.cj.jdbc.Driver";
+                String driver = prop.getProperty("driver");
                 String url = prop.getProperty("url");
                 String user = prop.getProperty("user");
-                String password = "root";
+                String password = prop.getProperty("password");
                 Class.forName(driver);
                 connection = DriverManager.getConnection(url, user, password);
             } catch (ClassNotFoundException e) {
